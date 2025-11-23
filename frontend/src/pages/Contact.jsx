@@ -22,33 +22,69 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // This will be connected to backend
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        phone: '',
-        service: 'consultation',
-        message: ''
+    try {
+      const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+      const response = await fetch(`${API}/contact/consultation`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
       });
-    }, 3000);
+      
+      const data = await response.json();
+      
+      if (response.ok) {
+        setSubmitted(true);
+        setTimeout(() => {
+          setSubmitted(false);
+          setFormData({
+            name: '',
+            email: '',
+            company: '',
+            phone: '',
+            service: 'consultation',
+            message: ''
+          });
+        }, 3000);
+      } else {
+        alert('Failed to submit. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('An error occurred. Please try again.');
+    }
   };
 
-  const handleNewsletterSubmit = (e) => {
+  const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
-    console.log('Newsletter signup:', newsletter);
-    // This will be connected to backend
-    setNewsletterSubmitted(true);
-    setTimeout(() => {
-      setNewsletterSubmitted(false);
-      setNewsletter('');
-    }, 3000);
+    try {
+      const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+      const response = await fetch(`${API}/newsletter/subscribe`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: newsletter })
+      });
+      
+      const data = await response.json();
+      
+      if (response.ok) {
+        setNewsletterSubmitted(true);
+        setTimeout(() => {
+          setNewsletterSubmitted(false);
+          setNewsletter('');
+        }, 3000);
+      } else {
+        alert('Failed to subscribe. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error subscribing:', error);
+      alert('An error occurred. Please try again.');
+    }
   };
 
   return (
