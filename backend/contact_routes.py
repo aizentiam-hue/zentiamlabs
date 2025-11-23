@@ -153,7 +153,7 @@ async def get_subscribers(limit: int = 100, status: str = "active"):
     """
     try:
         query = {"status": status}
-        subscribers = await db.newsletter_subscribers.find(query).sort("subscribed_at", -1).limit(limit).to_list(limit)
+        subscribers = await db.newsletter_subscribers.find(query, {"_id": 0}).sort("subscribed_at", -1).limit(limit).to_list(limit)
         return {"subscribers": subscribers, "count": len(subscribers)}
     except Exception as e:
         logger.error(f"Error getting subscribers: {e}")
