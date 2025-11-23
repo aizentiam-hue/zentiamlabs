@@ -180,11 +180,11 @@ const Footer = () => {
         <div
           style={{
             paddingTop: '2rem',
-            borderTop: '1px solid var(--border-light)',
+            borderTop: '1px solid rgba(147, 51, 234, 0.2)',
             textAlign: 'center'
           }}
         >
-          <p className="caption" style={{ color: 'var(--text-muted)' }}>
+          <p style={{ color: 'rgba(255, 255, 255, 0.5)', fontSize: '0.875rem' }}>
             © 2025 Zentiam. All rights reserved.
           </p>
         </div>
