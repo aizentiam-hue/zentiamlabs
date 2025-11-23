@@ -140,7 +140,7 @@ async def get_consultations(limit: int = 50, status: str = None):
         if status:
             query["status"] = status
         
-        consultations = await db.consultations.find(query).sort("created_at", -1).limit(limit).to_list(limit)
+        consultations = await db.consultations.find(query, {"_id": 0}).sort("created_at", -1).limit(limit).to_list(limit)
         return {"consultations": consultations, "count": len(consultations)}
     except Exception as e:
         logger.error(f"Error getting consultations: {e}")
