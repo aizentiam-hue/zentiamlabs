@@ -90,20 +90,81 @@ const Contact = () => {
   };
 
   return (
-    <div>
+    <div style={{ background: '#0a0a0f', color: 'white', position: 'relative', minHeight: '100vh' }}>
+      <ParticleBackground />
+
       {/* Hero Section */}
       <section
         style={{
-          padding: '10rem 1.5rem 4rem',
-          background: 'var(--gradient-hero-warm)',
-          textAlign: 'center'
+          position: 'relative',
+          minHeight: '60vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
+          padding: '10rem 1.5rem 5rem',
+          overflow: 'hidden'
         }}
       >
-        <div className="container" style={{ maxWidth: '800px' }}>
-          <h1 className="heading-hero" style={{ marginBottom: '1.5rem' }}>
-            Let's Build Something Extraordinary
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'radial-gradient(circle at 50% 20%, rgba(59, 130, 246, 0.15), transparent 70%)',
+            zIndex: 1
+          }}
+        />
+
+        <div className="container" style={{ position: 'relative', zIndex: 2, maxWidth: '900px' }}>
+          <div
+            className="fade-in-up"
+            style={{
+              display: 'inline-block',
+              padding: '0.5rem 1.5rem',
+              background: 'rgba(59, 130, 246, 0.1)',
+              border: '1px solid rgba(59, 130, 246, 0.3)',
+              borderRadius: '50px',
+              marginBottom: '2rem',
+              fontSize: '0.875rem',
+              fontWeight: 600,
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em'
+            }}
+          >
+            Get In Touch
+          </div>
+
+          <h1
+            className="fade-in-up delay-100"
+            style={{
+              fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+              fontWeight: 800,
+              lineHeight: 1.1,
+              marginBottom: '1.5rem',
+              background: 'linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #3b82f6 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}
+          >
+            Let's Build Something
+            <br />
+            Extraordinary
           </h1>
-          <p className="body-large" style={{ color: 'var(--text-secondary)' }}>
+
+          <p
+            className="fade-in-up delay-200"
+            style={{
+              fontSize: 'clamp(1.125rem, 2vw, 1.4rem)',
+              lineHeight: 1.6,
+              color: 'rgba(255, 255, 255, 0.8)',
+              maxWidth: '800px',
+              margin: '0 auto'
+            }}
+          >
             Ready to transform your business with AI? Get in touch with our team to discuss your project.
           </p>
         </div>
