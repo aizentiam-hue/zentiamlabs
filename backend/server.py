@@ -9,6 +9,7 @@ from pydantic import BaseModel, Field, ConfigDict
 from typing import List
 import uuid
 from datetime import datetime, timezone
+from chatbot_routes import router as chatbot_router
 
 
 ROOT_DIR = Path(__file__).parent
