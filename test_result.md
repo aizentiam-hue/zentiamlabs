@@ -230,9 +230,8 @@ test_plan:
   current_focus:
     - "Contact/Consultation Form Submission"
     - "Newsletter Subscription"
-    - "Admin Dashboard Statistics"
-    - "Get Consultations (Admin)"
-    - "Get Newsletter Subscribers (Admin)"
+    - "Newsletter Duplicate Subscription"
+    - "Form Validation"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
