@@ -10,22 +10,50 @@ import Services from './pages/Services';
 import Products from './pages/Products';
 import Contact from './pages/Contact';
 
+// Admin Pages
+import AdminLogin from './pages/admin/Login';
+import Dashboard from './pages/admin/Dashboard';
+import Consultations from './pages/admin/Consultations';
+import Subscribers from './pages/admin/Subscribers';
+import ChatSessions from './pages/admin/ChatSessions';
+import Documents from './pages/admin/Documents';
+import Settings from './pages/admin/Settings';
+
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
-        <Footer />
-        <ChatWidget />
+        <Routes>
+          {/* Public Routes */}
+          <Route
+            path="/*"
+            element={
+              <>
+                <Header />
+                <main>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/services" element={<Services />} />
+                    <Route path="/products" element={<Products />} />
+                    <Route path="/contact" element={<Contact />} />
+                  </Routes>
+                </main>
+                <Footer />
+                <ChatWidget />
+              </>
+            }
+          />
+
+          {/* Admin Routes */}
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin/consultations" element={<Consultations />} />
+          <Route path="/admin/subscribers" element={<Subscribers />} />
+          <Route path="/admin/chats" element={<ChatSessions />} />
+          <Route path="/admin/documents" element={<Documents />} />
+          <Route path="/admin/settings" element={<Settings />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );
