@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Brain, Cpu, Zap, GraduationCap, ArrowRight, CheckCircle, Sparkles, Target, Award, Rocket } from 'lucide-react';
+import { Brain, Cpu, Zap, GraduationCap, ArrowRight, CheckCircle, Sparkles, Target, Award, Rocket, Users } from 'lucide-react';
 import ParticleBackground from '../components/ParticleBackground';
 import AIAssessment from '../components/AIAssessment';
 import ROICalculator from '../components/ROICalculator';
