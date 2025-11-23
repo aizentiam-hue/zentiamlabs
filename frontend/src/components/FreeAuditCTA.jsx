@@ -142,12 +142,12 @@ const FreeAuditCTA = () => {
                 <div style={{ fontSize: '2rem', fontWeight: 700 }}>{String(timeLeft.hours).padStart(2, '0')}</div>
                 <div style={{ fontSize: '0.75rem', opacity: 0.8 }}>Hours</div>
               </div>
-              <div style={{ fontSize: '2rem', fontWeight: 700' }}>:</div>
+              <div style={{ fontSize: '2rem', fontWeight: 700 }}>:</div>
               <div style={{ textAlign: 'center' }}>
                 <div style={{ fontSize: '2rem', fontWeight: 700 }}>{String(timeLeft.minutes).padStart(2, '0')}</div>
                 <div style={{ fontSize: '0.75rem', opacity: 0.8 }}>Mins</div>
               </div>
-              <div style={{ fontSize: '2rem', fontWeight: 700' }}>:</div>
+              <div style={{ fontSize: '2rem', fontWeight: 700 }}>:</div>
               <div style={{ textAlign: 'center' }}>
                 <div style={{ fontSize: '2rem', fontWeight: 700 }}>{String(timeLeft.seconds).padStart(2, '0')}</div>
                 <div style={{ fontSize: '0.75rem', opacity: 0.8 }}>Secs</div>
