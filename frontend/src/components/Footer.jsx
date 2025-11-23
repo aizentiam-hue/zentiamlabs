@@ -78,25 +78,28 @@ const Footer = () => {
           {/* Services */}
           <div>
             <h4
-              className="button-text"
               style={{
                 marginBottom: '1rem',
-                color: 'var(--text-primary)'
+                color: 'white',
+                fontSize: '0.875rem',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em'
               }}
             >
               Services
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <span className="body-small" style={{ color: 'var(--text-secondary)' }}>
+              <span style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.875rem' }}>
                 AI Strategy Consulting
               </span>
-              <span className="body-small" style={{ color: 'var(--text-secondary)' }}>
+              <span style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.875rem' }}>
                 Custom AI Solutions
               </span>
-              <span className="body-small" style={{ color: 'var(--text-secondary)' }}>
+              <span style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.875rem' }}>
                 Automation & Integration
               </span>
-              <span className="body-small" style={{ color: 'var(--text-secondary)' }}>
+              <span style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.875rem' }}>
                 Training & Enablement
               </span>
             </div>
