@@ -7,6 +7,26 @@ Frontend is fully functional with mock data from `/app/frontend/src/mock.js`. Al
 - Services page with detailed service cards
 - Products page with Zentiam Labs products
 - Contact page with consultation form and newsletter signup
+- **NEW:** AI Chatbot widget integrated (bottom right corner)
+
+## Chatbot Implementation ✅ COMPLETE
+The AI chatbot has been successfully implemented with:
+- RAG-based knowledge system using ChromaDB for vector storage
+- OpenAI GPT-4o for conversational AI
+- Automatic website crawling to learn content
+- Natural information collection (name, email, phone)
+- Session management and conversation tracking
+- MongoDB storage for chat sessions
+- Google Sheets integration prepared (requires OAuth setup)
+- Document upload support (PDF, PPTX, TXT)
+
+### Chatbot Features:
+- Floating chat widget on all pages
+- Answers questions about Zentiam services, products, and AI consulting
+- Natural conversation flow
+- Tracks answered vs unanswered questions
+- Captures user information during chat
+- Saves all conversations to MongoDB
 
 ## Mock Data Structure (mock.js)
 
