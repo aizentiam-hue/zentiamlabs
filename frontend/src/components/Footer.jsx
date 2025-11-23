@@ -27,17 +27,20 @@ const Footer = () => {
             <h3
               style={{
                 fontSize: '1.5rem',
-                fontWeight: 600,
+                fontWeight: 700,
                 marginBottom: '1rem',
-                color: 'var(--text-primary)'
+                background: 'linear-gradient(135deg, #ffffff 0%, #a78bfa 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
               }}
             >
               Zentiam
             </h3>
-            <p className="body-small" style={{ marginBottom: '1rem', color: 'var(--text-secondary)' }}>
+            <p style={{ marginBottom: '1rem', color: 'rgba(255, 255, 255, 0.9)', fontSize: '0.875rem', lineHeight: 1.6 }}>
               Where Intelligence Meets Impact.
             </p>
-            <p className="body-small" style={{ color: 'var(--text-secondary)' }}>
+            <p style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.875rem', lineHeight: 1.6 }}>
               Premium AI consulting and innovation for forward-thinking organizations.
             </p>
           </div>
