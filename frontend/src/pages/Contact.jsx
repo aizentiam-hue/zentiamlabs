@@ -571,25 +571,33 @@ const Contact = () => {
       </section>
 
       {/* Newsletter Section */}
-      <section style={{ padding: '4rem 1.5rem', background: 'var(--bg-section)' }}>
-        <div className="container" style={{ maxWidth: '700px', textAlign: 'center' }}>
-          <h2 className="heading-2" style={{ marginBottom: '1rem' }}>
+      <section style={{ padding: '6rem 1.5rem', background: 'rgba(147, 51, 234, 0.03)', position: 'relative', zIndex: 2 }}>
+        <div className="container" style={{ maxWidth: '800px', textAlign: 'center' }}>
+          <h2
+            className="gradient-text"
+            style={{
+              fontSize: 'clamp(2rem, 4vw, 2.5rem)',
+              fontWeight: 700,
+              marginBottom: '1rem'
+            }}
+          >
             Stay Updated
           </h2>
-          <p className="body-medium" style={{ marginBottom: '2rem', color: 'var(--text-secondary)' }}>
+          <p style={{ fontSize: '1.125rem', marginBottom: '3rem', color: 'rgba(255, 255, 255, 0.8)', lineHeight: 1.6 }}>
             Subscribe to our newsletter for the latest insights on AI trends, best practices, and Zentiam updates.
           </p>
 
           {newsletterSubmitted ? (
             <div
               style={{
-                background: 'var(--accent-green-200)',
-                padding: '1.5rem',
-                borderRadius: '0.5rem',
+                background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(34, 197, 94, 0.1) 100%)',
+                border: '1px solid rgba(34, 197, 94, 0.3)',
+                padding: '2rem',
+                borderRadius: '16px',
                 display: 'inline-block'
               }}
             >
-              <p className="body-medium" style={{ fontWeight: 500 }}>
+              <p style={{ fontSize: '1.125rem', fontWeight: 600, color: '#22c55e' }}>
                 Thanks for subscribing!
               </p>
             </div>
@@ -599,7 +607,7 @@ const Contact = () => {
               style={{
                 display: 'flex',
                 gap: '1rem',
-                maxWidth: '500px',
+                maxWidth: '600px',
                 margin: '0 auto',
                 flexWrap: 'wrap'
               }}
@@ -612,17 +620,33 @@ const Contact = () => {
                 required
                 style={{
                   flex: 1,
-                  minWidth: '250px',
-                  padding: '0.75rem 1rem',
-                  borderRadius: '2rem',
-                  border: '1px solid var(--border-input)',
-                  background: 'var(--bg-card)',
+                  minWidth: '300px',
+                  padding: '1rem 1.5rem',
+                  borderRadius: '50px',
+                  border: '1px solid rgba(147, 51, 234, 0.3)',
+                  background: 'rgba(255, 255, 255, 0.05)',
                   fontSize: '1rem',
-                  color: 'var(--text-primary)',
-                  outline: 'none'
+                  color: 'white',
+                  outline: 'none',
+                  transition: 'all 0.3s ease'
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#9333ea';
+                  e.target.style.boxShadow = '0 0 0 3px rgba(147, 51, 234, 0.1)';
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = 'rgba(147, 51, 234, 0.3)';
+                  e.target.style.boxShadow = 'none';
                 }}
               />
-              <button type="submit" className="btn-primary button-text">
+              <button 
+                type="submit" 
+                className="btn-neon btn-neon-purple"
+                style={{
+                  padding: '1rem 2rem',
+                  fontSize: '1rem'
+                }}
+              >
                 Subscribe
               </button>
             </form>
