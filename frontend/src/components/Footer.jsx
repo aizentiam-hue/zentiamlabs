@@ -25,19 +25,9 @@ const Footer = () => {
         >
           {/* Company Info */}
           <div>
-            <h3
-              style={{
-                fontSize: '1.5rem',
-                fontWeight: 700,
-                marginBottom: '1rem',
-                background: 'linear-gradient(135deg, #ffffff 0%, #a78bfa 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
-              }}
-            >
-              Zentiam
-            </h3>
+            <div style={{ marginBottom: '1rem', fontSize: '1.5rem' }}>
+              <Logo width={50} height={50} showText={true} textColor="gradient" />
+            </div>
             <p style={{ marginBottom: '1rem', color: 'rgba(255, 255, 255, 0.9)', fontSize: '0.875rem', lineHeight: 1.6 }}>
               Where Intelligence Meets Impact.
             </p>
