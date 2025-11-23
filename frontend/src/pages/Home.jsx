@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Brain, Cpu, Zap, GraduationCap, ArrowRight, CheckCircle } from 'lucide-react';
+import { Brain, Cpu, Zap, GraduationCap, ArrowRight, CheckCircle, Sparkles, Target, Award } from 'lucide-react';
 import { mockServices, mockStats, mockTestimonials } from '../mock';
+import ParticleBackground from '../components/ParticleBackground';
+import AIAssessment from '../components/AIAssessment';
+import ROICalculator from '../components/ROICalculator';
+import LiveMetrics from '../components/LiveMetrics';
+import SuccessStories from '../components/SuccessStories';
+import FreeAuditCTA from '../components/FreeAuditCTA';
+import '../styles/futuristic.css';
 
 const iconMap = {
   Brain: Brain,
