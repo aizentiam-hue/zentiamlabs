@@ -1,5 +1,4 @@
 import chromadb
-from chromadb.config import Settings
 import os
 from typing import List, Dict
 import logging
