@@ -84,18 +84,18 @@ const Header = () => {
                 key={link.path}
                 to={link.path}
                 style={{
-                  color: location.pathname === link.path ? 'var(--text-primary)' : 'var(--text-secondary)',
+                  color: location.pathname === link.path ? '#a78bfa' : 'rgba(255, 255, 255, 0.8)',
                   textDecoration: 'none',
                   fontSize: '0.875rem',
-                  fontWeight: location.pathname === link.path ? 500 : 400,
+                  fontWeight: location.pathname === link.path ? 600 : 400,
                   transition: 'color 0.2s ease',
                   textTransform: 'uppercase',
-                  letterSpacing: '0.025em'
+                  letterSpacing: '0.05em'
                 }}
-                onMouseEnter={(e) => (e.target.style.color = 'var(--text-primary)')}
+                onMouseEnter={(e) => (e.target.style.color = '#a78bfa')}
                 onMouseLeave={(e) =>
                   (e.target.style.color =
-                    location.pathname === link.path ? 'var(--text-primary)' : 'var(--text-secondary)')
+                    location.pathname === link.path ? '#a78bfa' : 'rgba(255, 255, 255, 0.8)')
                 }
               >
                 {link.label}
