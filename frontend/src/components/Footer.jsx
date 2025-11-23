@@ -108,10 +108,13 @@ const Footer = () => {
           {/* Contact */}
           <div>
             <h4
-              className="button-text"
               style={{
                 marginBottom: '1rem',
-                color: 'var(--text-primary)'
+                color: 'white',
+                fontSize: '0.875rem',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em'
               }}
             >
               Get in Touch
@@ -119,14 +122,17 @@ const Footer = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <a
                 href="mailto:contact@zentiam.com"
-                className="body-small"
                 style={{
-                  color: 'var(--text-secondary)',
+                  color: 'rgba(255, 255, 255, 0.7)',
                   textDecoration: 'none',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.5rem'
+                  gap: '0.5rem',
+                  fontSize: '0.875rem',
+                  transition: 'color 0.2s ease'
                 }}
+                onMouseEnter={(e) => e.target.style.color = '#a78bfa'}
+                onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
               >
                 <Mail size={16} />
                 contact@zentiam.com
@@ -136,8 +142,10 @@ const Footer = () => {
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: 'var(--text-secondary)' }}
+                  style={{ color: 'rgba(255, 255, 255, 0.7)', transition: 'color 0.2s ease' }}
                   aria-label="LinkedIn"
+                  onMouseEnter={(e) => e.target.style.color = '#a78bfa'}
+                  onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
                 >
                   <Linkedin size={20} />
                 </a>
@@ -145,8 +153,10 @@ const Footer = () => {
                   href="https://twitter.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: 'var(--text-secondary)' }}
+                  style={{ color: 'rgba(255, 255, 255, 0.7)', transition: 'color 0.2s ease' }}
                   aria-label="Twitter"
+                  onMouseEnter={(e) => e.target.style.color = '#a78bfa'}
+                  onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
                 >
                   <Twitter size={20} />
                 </a>
@@ -154,8 +164,10 @@ const Footer = () => {
                   href="https://youtube.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: 'var(--text-secondary)' }}
+                  style={{ color: 'rgba(255, 255, 255, 0.7)', transition: 'color 0.2s ease' }}
                   aria-label="YouTube"
+                  onMouseEnter={(e) => e.target.style.color = '#a78bfa'}
+                  onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
                 >
                   <Youtube size={20} />
                 </a>
