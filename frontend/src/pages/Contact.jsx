@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, MessageSquare } from 'lucide-react';
+import ParticleBackground from '../components/ParticleBackground';
+import '../styles/futuristic.css';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
