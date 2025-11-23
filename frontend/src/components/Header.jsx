@@ -57,18 +57,13 @@ const Header = () => {
             to="/"
             style={{
               fontSize: '1.5rem',
-              fontWeight: 700,
-              color: 'white',
               textDecoration: 'none',
-              letterSpacing: '-0.02em',
-              background: 'linear-gradient(135deg, #ffffff 0%, #a78bfa 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
+              display: 'flex',
+              alignItems: 'center',
               transition: 'all 0.3s ease'
             }}
           >
-            Zentiam
+            <Logo width={40} height={40} showText={true} textColor="gradient" />
           </Link>
 
           {/* Desktop Navigation */}
