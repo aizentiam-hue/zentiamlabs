@@ -14,11 +14,10 @@ logger = logging.getLogger(__name__)
 
 class KnowledgeBase:
     def __init__(self):
-        # Initialize ChromaDB for vector storage
-        self.client = chromadb.Client(Settings(
-            chroma_db_impl="duckdb+parquet",
-            persist_directory="/app/backend/chroma_db"
-        ))
+        # Initialize ChromaDB for vector storage (new API)
+        self.client = chromadb.PersistentClient(
+            path="/app/backend/chroma_db"
+        )
         
         # Create or get collection
         try:
