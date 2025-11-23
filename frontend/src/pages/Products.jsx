@@ -321,32 +321,76 @@ const Products = () => {
       </section>
 
       {/* Use Cases Section */}
-      <section style={{ padding: '4rem 1.5rem', background: 'var(--bg-page)' }}>
-        <div className="container" style={{ maxWidth: '900px' }}>
-          <h2 className="heading-1" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            Real-World Applications
-          </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
+      <section style={{ padding: '5rem 1.5rem', position: 'relative', zIndex: 2 }}>
+        <div className="container" style={{ maxWidth: '1100px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2
+              className="gradient-text"
+              style={{
+                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontWeight: 700,
+                marginBottom: '1rem'
+              }}
+            >
+              Real-World Applications
+            </h2>
+            <p style={{ fontSize: '1.25rem', color: 'rgba(255, 255, 255, 0.7)' }}>
+              Transform your business across all departments
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
             {[
-              { title: 'Customer Service', desc: 'Automate support with intelligent chatbots and ticketing systems' },
-              { title: 'Operations', desc: 'Streamline workflows and reduce manual processing time' },
-              { title: 'Analytics', desc: 'Gain actionable insights from your data with predictive models' },
-              { title: 'Sales', desc: 'Identify opportunities and optimize conversion rates with AI' }
+              { 
+                title: 'Customer Service', 
+                desc: 'Automate support with intelligent chatbots and ticketing systems',
+                color: '#9333ea'
+              },
+              { 
+                title: 'Operations', 
+                desc: 'Streamline workflows and reduce manual processing time',
+                color: '#3b82f6'
+              },
+              { 
+                title: 'Analytics', 
+                desc: 'Gain actionable insights from your data with predictive models',
+                color: '#22c55e'
+              },
+              { 
+                title: 'Sales', 
+                desc: 'Identify opportunities and optimize conversion rates with AI',
+                color: '#f59e0b'
+              }
             ].map((useCase, index) => (
               <div
                 key={index}
+                className="glass-card hover-scale"
                 style={{
-                  background: 'var(--bg-card)',
-                  borderRadius: '0.75rem',
-                  padding: '1.5rem',
-                  boxShadow: '0 2px 6px rgba(0, 0, 0, 0.03)'
+                  padding: '2rem',
+                  borderColor: `${useCase.color}40`,
+                  background: `linear-gradient(135deg, ${useCase.color}08 0%, transparent 100%)`
                 }}
-                className="hover-lift"
               >
-                <h3 className="heading-3" style={{ marginBottom: '0.5rem' }}>
+                <div
+                  style={{
+                    width: '50px',
+                    height: '50px',
+                    borderRadius: '12px',
+                    background: `${useCase.color}20`,
+                    border: `2px solid ${useCase.color}40`,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: '1.5rem',
+                    fontSize: '1.5rem'
+                  }}
+                >
+                  {index === 0 ? '💬' : index === 1 ? '⚙️' : index === 2 ? '📊' : '💰'}
+                </div>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.75rem' }}>
                   {useCase.title}
                 </h3>
-                <p className="body-small" style={{ color: 'var(--text-secondary)' }}>
+                <p style={{ color: 'rgba(255, 255, 255, 0.7)', lineHeight: 1.6 }}>
                   {useCase.desc}
                 </p>
               </div>
