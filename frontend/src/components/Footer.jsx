@@ -48,25 +48,28 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h4
-              className="button-text"
               style={{
                 marginBottom: '1rem',
-                color: 'var(--text-primary)'
+                color: 'white',
+                fontSize: '0.875rem',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em'
               }}
             >
               Quick Links
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <Link to="/about" className="body-small" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>
+              <Link to="/about" style={{ color: 'rgba(255, 255, 255, 0.7)', textDecoration: 'none', fontSize: '0.875rem', transition: 'color 0.2s ease' }} onMouseEnter={(e) => e.target.style.color = '#a78bfa'} onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}>
                 About Us
               </Link>
-              <Link to="/services" className="body-small" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>
+              <Link to="/services" style={{ color: 'rgba(255, 255, 255, 0.7)', textDecoration: 'none', fontSize: '0.875rem', transition: 'color 0.2s ease' }} onMouseEnter={(e) => e.target.style.color = '#a78bfa'} onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}>
                 Services
               </Link>
-              <Link to="/products" className="body-small" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>
+              <Link to="/products" style={{ color: 'rgba(255, 255, 255, 0.7)', textDecoration: 'none', fontSize: '0.875rem', transition: 'color 0.2s ease' }} onMouseEnter={(e) => e.target.style.color = '#a78bfa'} onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}>
                 Products
               </Link>
-              <Link to="/contact" className="body-small" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>
+              <Link to="/contact" style={{ color: 'rgba(255, 255, 255, 0.7)', textDecoration: 'none', fontSize: '0.875rem', transition: 'color 0.2s ease' }} onMouseEnter={(e) => e.target.style.color = '#a78bfa'} onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}>
                 Contact
               </Link>
             </div>
