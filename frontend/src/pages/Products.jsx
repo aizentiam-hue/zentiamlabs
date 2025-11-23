@@ -92,77 +92,126 @@ const Products = () => {
       </section>
 
       {/* Products Grid */}
-      <section style={{ padding: '4rem 1.5rem', background: 'var(--bg-page)' }}>
+      <section style={{ padding: '5rem 1.5rem', position: 'relative', zIndex: 2 }}>
         <div className="container">
-          <div className="product-grid" style={{ gap: '2rem' }}>
-            {mockProducts.map((product, index) => (
-              <div
-                key={product.id}
-                className="product-card"
-                style={{
-                  background: index === 0 ? 'var(--accent-purple-200)' : index === 1 ? 'var(--accent-blue-200)' : 'var(--accent-orange-200)'
-                }}
-              >
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2
+              className="gradient-text"
+              style={{
+                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontWeight: 700,
+                marginBottom: '1rem'
+              }}
+            >
+              Our Product Suite
+            </h2>
+            <p style={{ fontSize: '1.25rem', color: 'rgba(255, 255, 255, 0.7)' }}>
+              Enterprise-grade AI platforms built for scale
+            </p>
+          </div>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: '2rem'
+            }}
+          >
+            {mockProducts.map((product, index) => {
+              const color = productColors[index];
+              return (
                 <div
+                  key={product.id}
+                  className="glass-card scan-effect"
                   style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    background: 'rgba(255, 255, 255, 0.5)',
-                    borderRadius: '2rem',
-                    padding: '0.25rem 0.75rem',
-                    marginBottom: '1rem',
-                    fontSize: '0.75rem',
-                    fontWeight: 500,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.025em'
+                    padding: '2.5rem',
+                    background: `linear-gradient(135deg, ${color}10 0%, transparent 100%)`,
+                    borderColor: `${color}40`,
+                    display: 'flex',
+                    flexDirection: 'column'
                   }}
                 >
-                  {product.status === 'Available' ? (
-                    <>
-                      <CheckCircle size={12} />
-                      <span>Available</span>
-                    </>
-                  ) : (
-                    <>
-                      <Clock size={12} />
-                      <span>Coming Soon</span>
-                    </>
+                  <div
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.5rem',
+                      background: product.status === 'Available' ? 'rgba(34, 197, 94, 0.2)' : 'rgba(245, 158, 11, 0.2)',
+                      border: `1px solid ${product.status === 'Available' ? 'rgba(34, 197, 94, 0.4)' : 'rgba(245, 158, 11, 0.4)'}`,
+                      borderRadius: '50px',
+                      padding: '0.5rem 1rem',
+                      marginBottom: '1.5rem',
+                      fontSize: '0.75rem',
+                      fontWeight: 600,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em',
+                      alignSelf: 'flex-start'
+                    }}
+                  >
+                    {product.status === 'Available' ? (
+                      <>
+                        <CheckCircle size={14} style={{ color: '#22c55e' }} />
+                        <span>Available Now</span>
+                      </>
+                    ) : (
+                      <>
+                        <Clock size={14} style={{ color: '#f59e0b' }} />
+                        <span>Coming Soon</span>
+                      </>
+                    )}
+                  </div>
+
+                  <h3 style={{ fontSize: '1.75rem', fontWeight: 600, marginBottom: '1rem' }}>
+                    {product.title}
+                  </h3>
+                  <p style={{ color: 'rgba(255, 255, 255, 0.8)', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+                    {product.description}
+                  </p>
+
+                  <div style={{ marginBottom: '1.5rem' }}>
+                    <h4 style={{ fontSize: '0.875rem', fontWeight: 600, marginBottom: '1rem', textTransform: 'uppercase', color: 'rgba(255, 255, 255, 0.7)' }}>
+                      Key Features:
+                    </h4>
+                    <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                      {product.features.map((feature, idx) => (
+                        <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                          <CheckCircle size={18} style={{ color: color, flexShrink: 0 }} />
+                          <span style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.8)' }}>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {product.status === 'Available' && (
+                    <Link
+                      to="/contact"
+                      style={{
+                        marginTop: 'auto',
+                        padding: '1rem',
+                        background: color,
+                        border: 'none',
+                        borderRadius: '12px',
+                        color: 'white',
+                        fontWeight: 600,
+                        textAlign: 'center',
+                        textDecoration: 'none',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '0.5rem',
+                        fontSize: '0.875rem',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.05em',
+                        transition: 'all 0.3s ease'
+                      }}
+                      className="hover-scale"
+                    >
+                      Request Demo <Rocket size={16} />
+                    </Link>
                   )}
                 </div>
-
-                <h3 className="heading-2" style={{ marginBottom: '1rem' }}>
-                  {product.title}
-                </h3>
-                <p className="body-medium" style={{ marginBottom: '1.5rem', color: 'var(--text-secondary)' }}>
-                  {product.description}
-                </p>
-
-                <div style={{ marginTop: 'auto' }}>
-                  <h4 className="body-small" style={{ fontWeight: 500, marginBottom: '0.75rem' }}>
-                    Key Features:
-                  </h4>
-                  <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                    {product.features.map((feature, idx) => (
-                      <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                        <CheckCircle size={16} color="var(--text-primary)" style={{ flexShrink: 0 }} />
-                        <span className="body-small">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {product.status === 'Available' && (
-                  <button
-                    className="btn-primary button-text"
-                    style={{ marginTop: '1.5rem', width: '100%' }}
-                    onClick={() => alert('Product demo request - will be connected to backend')}
-                  >
-                    Request Demo
-                  </button>
-                )}
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
