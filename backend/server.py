@@ -77,6 +77,7 @@ app.include_router(chatbot_router)
 app.include_router(contact_router)
 app.include_router(newsletter_router)
 app.include_router(admin_router)
+app.include_router(settings_router)
 app.include_router(chatbot_router)
 
 app.add_middleware(
