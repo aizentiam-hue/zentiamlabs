@@ -9,11 +9,17 @@ logger = logging.getLogger(__name__)
 
 class AIService:
     def __init__(self):
-        self.api_key = os.environ.get('EMERGENT_LLM_KEY')
-        if not self.api_key:
-            raise ValueError("EMERGENT_LLM_KEY not found in environment")
-        
+        self.api_key = None
         logger.info("AI Service initialized")
+    
+    def _get_api_key(self):
+        if not self.api_key:
+            from dotenv import load_dotenv
+            load_dotenv()
+            self.api_key = os.environ.get('EMERGENT_LLM_KEY')
+            if not self.api_key:
+                raise ValueError("EMERGENT_LLM_KEY not found in environment")
+        return self.api_key
     
     def create_chat(self, session_id: str, system_message: str) -> LlmChat:
         """Create a new chat instance"""
