@@ -213,13 +213,14 @@ const Contact = () => {
                 {submitted ? (
                   <div
                     style={{
-                      background: 'var(--accent-green-200)',
-                      padding: '1.5rem',
-                      borderRadius: '0.5rem',
+                      background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(34, 197, 94, 0.1) 100%)',
+                      border: '1px solid rgba(34, 197, 94, 0.3)',
+                      padding: '2rem',
+                      borderRadius: '16px',
                       textAlign: 'center'
                     }}
                   >
-                    <p className="body-medium" style={{ fontWeight: 500 }}>
+                    <p style={{ fontSize: '1.125rem', fontWeight: 600, color: '#22c55e' }}>
                       Thank you! We'll get back to you within 24 hours.
                     </p>
                   </div>
