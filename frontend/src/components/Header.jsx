@@ -56,10 +56,15 @@ const Header = () => {
             to="/"
             style={{
               fontSize: '1.5rem',
-              fontWeight: 600,
-              color: 'var(--text-primary)',
+              fontWeight: 700,
+              color: 'white',
               textDecoration: 'none',
-              letterSpacing: '-0.02em'
+              letterSpacing: '-0.02em',
+              background: 'linear-gradient(135deg, #ffffff 0%, #a78bfa 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              transition: 'all 0.3s ease'
             }}
           >
             Zentiam
