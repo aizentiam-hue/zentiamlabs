@@ -67,6 +67,12 @@ async def submit_consultation(request: ConsultationRequest):
         
         logger.info(f"New consultation request from {request.email}")
         
+        # Send confirmation email (async, don't wait)
+        try:
+            await email_service.send_consultation_confirmation(consultation_doc)
+        except Exception as e:
+            logger.error(f"Failed to send email: {e}")
+        
         return ConsultationResponse(
             success=True,
             message="Thank you! We'll get back to you within 24 hours.",
