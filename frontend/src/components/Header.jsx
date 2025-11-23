@@ -158,10 +158,10 @@ const Header = () => {
             top: '80px',
             left: 0,
             right: 0,
-            background: 'var(--bg-overlay)',
-            backdropFilter: 'blur(8px)',
-            WebkitBackdropFilter: 'blur(8px)',
-            borderBottom: '1px solid var(--border-light)',
+            background: 'rgba(10, 10, 15, 0.98)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            borderBottom: '1px solid rgba(147, 51, 234, 0.3)',
             padding: '1.5rem',
             animation: 'slideDown 0.3s ease'
           }}
@@ -173,13 +173,13 @@ const Header = () => {
                 to={link.path}
                 onClick={() => setIsMobileMenuOpen(false)}
                 style={{
-                  color: location.pathname === link.path ? 'var(--text-primary)' : 'var(--text-secondary)',
+                  color: location.pathname === link.path ? '#a78bfa' : 'rgba(255, 255, 255, 0.8)',
                   textDecoration: 'none',
                   fontSize: '0.875rem',
-                  fontWeight: location.pathname === link.path ? 500 : 400,
+                  fontWeight: location.pathname === link.path ? 600 : 400,
                   textTransform: 'uppercase',
-                  letterSpacing: '0.025em',
-                  padding: '0.5rem'
+                  letterSpacing: '0.05em',
+                  padding: '0.75rem'
                 }}
               >
                 {link.label}
@@ -188,8 +188,22 @@ const Header = () => {
             <Link
               to="/contact"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="btn-primary button-text"
-              style={{ marginTop: '1rem' }}
+              style={{
+                marginTop: '1rem',
+                padding: '0.875rem 1.5rem',
+                background: 'linear-gradient(135deg, #9333ea 0%, #7c3aed 100%)',
+                border: 'none',
+                borderRadius: '50px',
+                color: 'white',
+                fontWeight: 600,
+                fontSize: '0.875rem',
+                textDecoration: 'none',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+                textAlign: 'center',
+                display: 'block',
+                boxShadow: '0 4px 15px rgba(147, 51, 234, 0.4)'
+              }}
             >
               Book Consultation
             </Link>
