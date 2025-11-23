@@ -402,20 +402,47 @@ const Products = () => {
       {/* CTA Section */}
       <section
         style={{
-          padding: '5rem 1.5rem',
-          background: 'var(--alternate-gradient-hero-warm)',
-          textAlign: 'center'
+          padding: '6rem 1.5rem',
+          textAlign: 'center',
+          background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%)',
+          position: 'relative',
+          zIndex: 2
         }}
       >
-        <div className="container" style={{ maxWidth: '700px' }}>
-          <h2 className="heading-1" style={{ marginBottom: '1rem' }}>
-            Interested in Our Products?
+        <div className="container" style={{ maxWidth: '800px' }}>
+          <h2
+            className="gradient-text"
+            style={{
+              fontSize: 'clamp(2rem, 4vw, 3rem)',
+              fontWeight: 700,
+              marginBottom: '1.5rem'
+            }}
+          >
+            Ready to Transform Your Operations?
           </h2>
-          <p className="body-large" style={{ marginBottom: '2rem', color: 'var(--text-secondary)' }}>
-            Schedule a demo to see how Zentiam Labs products can transform your operations.
+          <p style={{ fontSize: '1.25rem', marginBottom: '3rem', color: 'rgba(255, 255, 255, 0.8)' }}>
+            Schedule a demo to see how Zentiam Labs products can revolutionize your business
           </p>
-          <Link to="/contact" className="btn-primary button-text">
-            Schedule a Product Demo
+          <Link
+            to="/contact"
+            style={{
+              display: 'inline-block',
+              padding: '1.25rem 3rem',
+              background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
+              border: 'none',
+              borderRadius: '50px',
+              color: 'white',
+              fontWeight: 700,
+              fontSize: '1.125rem',
+              textDecoration: 'none',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+              boxShadow: '0 10px 40px rgba(34, 197, 94, 0.4)',
+              transition: 'all 0.3s ease'
+            }}
+            className="hover-scale"
+          >
+            Schedule Product Demo
           </Link>
         </div>
       </section>
