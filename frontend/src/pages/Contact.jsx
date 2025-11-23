@@ -171,7 +171,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Form & Info Section */}
-      <section style={{ padding: '4rem 1.5rem', background: 'var(--bg-page)' }}>
+      <section style={{ padding: '5rem 1.5rem', position: 'relative', zIndex: 2 }}>
         <div className="container">
           <div
             style={{
@@ -184,16 +184,31 @@ const Contact = () => {
             {/* Contact Form */}
             <div style={{ gridColumn: 'span 2' }}>
               <div
+                className="glass-card"
                 style={{
-                  background: 'var(--bg-card)',
-                  borderRadius: '0.75rem',
-                  padding: '2rem',
-                  boxShadow: '0 2px 6px rgba(0, 0, 0, 0.03)'
+                  padding: '3rem',
+                  borderColor: 'rgba(59, 130, 246, 0.3)'
                 }}
               >
-                <h2 className="heading-2" style={{ marginBottom: '1.5rem' }}>
-                  Book a Consultation
-                </h2>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+                  <div
+                    style={{
+                      width: '50px',
+                      height: '50px',
+                      borderRadius: '12px',
+                      background: 'rgba(59, 130, 246, 0.2)',
+                      border: '2px solid rgba(59, 130, 246, 0.4)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}
+                  >
+                    <MessageSquare size={24} style={{ color: '#3b82f6' }} />
+                  </div>
+                  <h2 style={{ fontSize: '2rem', fontWeight: 700, margin: 0 }}>
+                    Book a Consultation
+                  </h2>
+                </div>
 
                 {submitted ? (
                   <div
