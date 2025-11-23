@@ -8,8 +8,14 @@ import os
 import logging
 from datetime import datetime
 import re
+from dotenv import load_dotenv
+from pathlib import Path
 
 logger = logging.getLogger(__name__)
+
+# Load environment variables
+ROOT_DIR = Path(__file__).parent
+load_dotenv(ROOT_DIR / '.env')
 
 router = APIRouter(prefix="/api/chatbot")
 
