@@ -71,6 +71,12 @@ async def subscribe(subscription: NewsletterSubscribe):
         await db.newsletter_subscribers.insert_one(subscriber)
         logger.info(f"New newsletter subscriber: {subscription.email}")
         
+        # Send welcome email (async, don't wait)
+        try:
+            await email_service.send_newsletter_welcome(subscription.email)
+        except Exception as e:
+            logger.error(f"Failed to send email: {e}")
+        
         return NewsletterResponse(
             success=True,
             message="Thanks for subscribing!"
