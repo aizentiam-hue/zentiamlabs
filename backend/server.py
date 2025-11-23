@@ -10,6 +10,9 @@ from typing import List
 import uuid
 from datetime import datetime, timezone
 from chatbot_routes import router as chatbot_router
+from contact_routes import router as contact_router
+from newsletter_routes import router as newsletter_router
+from admin_routes import router as admin_router
 
 
 ROOT_DIR = Path(__file__).parent
