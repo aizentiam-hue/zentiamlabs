@@ -216,76 +216,106 @@ const Products = () => {
         </div>
       </section>
 
-      {/* Innovation Images Section */}
-      <section style={{ padding: '4rem 1.5rem', background: 'var(--bg-section)' }}>
+      {/* Technology Highlights */}
+      <section style={{ padding: '5rem 1.5rem', background: 'rgba(34, 197, 94, 0.03)', position: 'relative', zIndex: 2 }}>
         <div className="container">
-          <h2 className="heading-1" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            Built on Cutting-Edge Technology
-          </h2>
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2
+              className="gradient-text"
+              style={{
+                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontWeight: 700,
+                marginBottom: '1rem'
+              }}
+            >
+              Built on Cutting-Edge Technology
+            </h2>
+            <p style={{ fontSize: '1.25rem', color: 'rgba(255, 255, 255, 0.7)' }}>
+              State-of-the-art AI infrastructure powering real-world solutions
+            </p>
+          </div>
+
           <div
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-              gap: '1.5rem'
+              gap: '2rem'
             }}
           >
-            <div>
-              <img
-                src="https://images.unsplash.com/photo-1694903089438-bf28d4697d9a"
-                alt="AI automation"
-                style={{
-                  width: '100%',
-                  height: '250px',
-                  objectFit: 'cover',
-                  borderRadius: '0.75rem',
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.06)'
-                }}
-              />
-              <h3 className="heading-3" style={{ marginTop: '1rem', marginBottom: '0.5rem' }}>
-                AI-Powered Automation
-              </h3>
-              <p className="body-small" style={{ color: 'var(--text-secondary)' }}>
-                Leverage advanced machine learning models to automate complex workflows.
-              </p>
-            </div>
-            <div>
-              <img
-                src="https://images.unsplash.com/photo-1716436329836-208bea5a55e6"
-                alt="Intelligent systems"
-                style={{
-                  width: '100%',
-                  height: '250px',
-                  objectFit: 'cover',
-                  borderRadius: '0.75rem',
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.06)'
-                }}
-              />
-              <h3 className="heading-3" style={{ marginTop: '1rem', marginBottom: '0.5rem' }}>
-                Intelligent Processing
-              </h3>
-              <p className="body-small" style={{ color: 'var(--text-secondary)' }}>
-                Built with state-of-the-art AI chips and neural architectures.
-              </p>
-            </div>
-            <div>
-              <img
-                src="https://images.unsplash.com/photo-1609619385076-36a873425636"
-                alt="Futuristic technology"
-                style={{
-                  width: '100%',
-                  height: '250px',
-                  objectFit: 'cover',
-                  borderRadius: '0.75rem',
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.06)'
-                }}
-              />
-              <h3 className="heading-3" style={{ marginTop: '1rem', marginBottom: '0.5rem' }}>
-                Future-Ready Solutions
-              </h3>
-              <p className="body-small" style={{ color: 'var(--text-secondary)' }}>
-                Scalable platforms designed for tomorrow's challenges.
-              </p>
-            </div>
+            {[
+              {
+                icon: Zap,
+                title: 'AI-Powered Automation',
+                description: 'Leverage advanced machine learning models to automate complex workflows.',
+                color: '#f59e0b',
+                image: 'https://images.unsplash.com/photo-1694903089438-bf28d4697d9a'
+              },
+              {
+                icon: Bot,
+                title: 'Intelligent Processing',
+                description: 'Built with state-of-the-art AI chips and neural architectures.',
+                color: '#3b82f6',
+                image: 'https://images.unsplash.com/photo-1716436329836-208bea5a55e6'
+              },
+              {
+                icon: TrendingUp,
+                title: 'Future-Ready Solutions',
+                description: 'Scalable platforms designed for tomorrow\'s challenges.',
+                color: '#22c55e',
+                image: 'https://images.unsplash.com/photo-1609619385076-36a873425636'
+              }
+            ].map((tech, index) => {
+              const Icon = tech.icon;
+              return (
+                <div
+                  key={index}
+                  className="glass-card"
+                  style={{
+                    padding: '0',
+                    overflow: 'hidden',
+                    borderColor: `${tech.color}40`
+                  }}
+                >
+                  <div style={{ position: 'relative', height: '250px', overflow: 'hidden' }}>
+                    <img
+                      src={tech.image}
+                      alt={tech.title}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover'
+                      }}
+                    />
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: '1rem',
+                        right: '1rem',
+                        width: '50px',
+                        height: '50px',
+                        borderRadius: '12px',
+                        background: `${tech.color}20`,
+                        border: `2px solid ${tech.color}`,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        backdropFilter: 'blur(10px)'
+                      }}
+                    >
+                      <Icon size={24} style={{ color: tech.color }} />
+                    </div>
+                  </div>
+                  <div style={{ padding: '2rem' }}>
+                    <h3 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '0.75rem' }}>
+                      {tech.title}
+                    </h3>
+                    <p style={{ color: 'rgba(255, 255, 255, 0.7)', lineHeight: 1.6 }}>
+                      {tech.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
