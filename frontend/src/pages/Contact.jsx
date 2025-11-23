@@ -450,46 +450,96 @@ const Contact = () => {
             {/* Contact Info */}
             <div>
               <div
+                className="glass-card"
                 style={{
-                  background: 'var(--accent-purple-200)',
-                  borderRadius: '0.75rem',
-                  padding: '2rem',
-                  marginBottom: '1.5rem'
+                  padding: '2.5rem',
+                  marginBottom: '2rem',
+                  background: 'linear-gradient(135deg, rgba(147, 51, 234, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%)',
+                  borderColor: 'rgba(147, 51, 234, 0.3)'
                 }}
               >
-                <h3 className="heading-3" style={{ marginBottom: '1.5rem' }}>
+                <h3 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '2rem' }}>
                   Contact Information
                 </h3>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'start', gap: '0.75rem' }}>
-                    <Mail size={20} color="var(--text-primary)" style={{ marginTop: '0.25rem', flexShrink: 0 }} />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'start', gap: '1rem' }}>
+                    <div
+                      style={{
+                        width: '40px',
+                        height: '40px',
+                        borderRadius: '10px',
+                        background: 'rgba(59, 130, 246, 0.2)',
+                        border: '1px solid rgba(59, 130, 246, 0.3)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0
+                      }}
+                    >
+                      <Mail size={18} style={{ color: '#3b82f6' }} />
+                    </div>
                     <div>
-                      <div className="body-small" style={{ fontWeight: 500, marginBottom: '0.25rem' }}>
+                      <div style={{ fontWeight: 600, marginBottom: '0.25rem', fontSize: '0.875rem' }}>
                         Email
                       </div>
-                      <a href="mailto:contact@zentiam.com" className="body-small" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>
+                      <a 
+                        href="mailto:contact@zentiam.com" 
+                        style={{ 
+                          color: 'rgba(255, 255, 255, 0.8)', 
+                          textDecoration: 'none',
+                          fontSize: '0.875rem'
+                        }}
+                      >
                         contact@zentiam.com
                       </a>
                     </div>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'start', gap: '0.75rem' }}>
-                    <Phone size={20} color="var(--text-primary)" style={{ marginTop: '0.25rem', flexShrink: 0 }} />
+                  <div style={{ display: 'flex', alignItems: 'start', gap: '1rem' }}>
+                    <div
+                      style={{
+                        width: '40px',
+                        height: '40px',
+                        borderRadius: '10px',
+                        background: 'rgba(34, 197, 94, 0.2)',
+                        border: '1px solid rgba(34, 197, 94, 0.3)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0
+                      }}
+                    >
+                      <Phone size={18} style={{ color: '#22c55e' }} />
+                    </div>
                     <div>
-                      <div className="body-small" style={{ fontWeight: 500, marginBottom: '0.25rem' }}>
+                      <div style={{ fontWeight: 600, marginBottom: '0.25rem', fontSize: '0.875rem' }}>
                         Phone
                       </div>
-                      <span className="body-small" style={{ color: 'var(--text-secondary)' }}>
+                      <span style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.875rem' }}>
                         +1 (555) 123-4567
                       </span>
                     </div>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'start', gap: '0.75rem' }}>
-                    <MapPin size={20} color="var(--text-primary)" style={{ marginTop: '0.25rem', flexShrink: 0 }} />
+                  <div style={{ display: 'flex', alignItems: 'start', gap: '1rem' }}>
+                    <div
+                      style={{
+                        width: '40px',
+                        height: '40px',
+                        borderRadius: '10px',
+                        background: 'rgba(147, 51, 234, 0.2)',
+                        border: '1px solid rgba(147, 51, 234, 0.3)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0
+                      }}
+                    >
+                      <MapPin size={18} style={{ color: '#9333ea' }} />
+                    </div>
                     <div>
-                      <div className="body-small" style={{ fontWeight: 500, marginBottom: '0.25rem' }}>
+                      <div style={{ fontWeight: 600, marginBottom: '0.25rem', fontSize: '0.875rem' }}>
                         Office
                       </div>
-                      <span className="body-small" style={{ color: 'var(--text-secondary)' }}>
+                      <span style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.875rem' }}>
                         San Francisco, CA
                       </span>
                     </div>
@@ -498,16 +548,23 @@ const Contact = () => {
               </div>
 
               {/* Team Image */}
-              <img
-                src="https://images.unsplash.com/photo-1709715357520-5e1047a2b691?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMG1lZXRpbmd8ZW58MHx8fHwxNzYyMjQzMjg4fDA&ixlib=rb-4.1.0&q=85"
-                alt="Professional consultation"
+              <div
+                className="glass-card"
                 style={{
-                  width: '100%',
-                  height: 'auto',
-                  borderRadius: '0.75rem',
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.06)'
+                  padding: '0',
+                  overflow: 'hidden'
                 }}
-              />
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1709715357520-5e1047a2b691?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMG1lZXRpbmd8ZW58MHx8fHwxNzYyMjQzMjg4fDA&ixlib=rb-4.1.0&q=85"
+                  alt="Professional consultation"
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    display: 'block'
+                  }}
+                />
+              </div>
             </div>
           </div>
         </div>
