@@ -6,9 +6,11 @@ const Footer = () => {
   return (
     <footer
       style={{
-        background: 'var(--bg-card)',
-        borderTop: '1px solid var(--border-light)',
-        marginTop: '5rem'
+        background: 'rgba(10, 10, 15, 0.95)',
+        borderTop: '1px solid rgba(147, 51, 234, 0.3)',
+        marginTop: '0',
+        position: 'relative',
+        zIndex: 10
       }}
     >
       <div className="container" style={{ padding: '3rem 1.5rem' }}>
