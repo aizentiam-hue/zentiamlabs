@@ -23,8 +23,9 @@ class AIService:
     
     def create_chat(self, session_id: str, system_message: str) -> LlmChat:
         """Create a new chat instance"""
+        api_key = self._get_api_key()
         chat = LlmChat(
-            api_key=self.api_key,
+            api_key=api_key,
             session_id=session_id,
             system_message=system_message
         )
