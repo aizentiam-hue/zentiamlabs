@@ -1,41 +1,91 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, CheckCircle, Clock } from 'lucide-react';
+import { Sparkles, CheckCircle, Clock, Rocket, Zap, Bot, TrendingUp } from 'lucide-react';
 import { mockProducts } from '../mock';
+import ParticleBackground from '../components/ParticleBackground';
+import '../styles/futuristic.css';
 
 const Products = () => {
+  const productColors = ['#9333ea', '#3b82f6', '#22c55e'];
+  
   return (
-    <div>
+    <div style={{ background: '#0a0a0f', color: 'white', position: 'relative', minHeight: '100vh' }}>
+      <ParticleBackground />
+
       {/* Hero Section */}
       <section
         style={{
-          padding: '10rem 1.5rem 4rem',
-          background: 'var(--gradient-hero-warm)',
-          textAlign: 'center'
+          position: 'relative',
+          minHeight: '70vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
+          padding: '10rem 1.5rem 5rem',
+          overflow: 'hidden'
         }}
       >
-        <div className="container" style={{ maxWidth: '800px' }}>
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'radial-gradient(circle at 50% 20%, rgba(34, 197, 94, 0.15), transparent 70%)',
+            zIndex: 1
+          }}
+        />
+
+        <div className="container" style={{ position: 'relative', zIndex: 2, maxWidth: '900px' }}>
           <div
+            className="fade-in-up"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '0.5rem',
-              background: 'rgba(255, 255, 255, 0.4)',
-              borderRadius: '2rem',
-              padding: '0.5rem 1rem',
-              marginBottom: '1.5rem',
-              backdropFilter: 'blur(4px)',
-              WebkitBackdropFilter: 'blur(4px)'
+              gap: '0.75rem',
+              background: 'rgba(34, 197, 94, 0.1)',
+              border: '1px solid rgba(34, 197, 94, 0.3)',
+              borderRadius: '50px',
+              padding: '0.75rem 1.5rem',
+              marginBottom: '2rem',
+              backdropFilter: 'blur(10px)'
             }}
-            className="mono-text"
           >
-            <Sparkles size={14} />
-            <span>Zentiam Labs</span>
+            <Sparkles size={18} style={{ color: '#22c55e' }} />
+            <span style={{ fontSize: '0.875rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              Zentiam Labs
+            </span>
           </div>
-          <h1 className="heading-hero" style={{ marginBottom: '1.5rem' }}>
-            Intelligent Systems for the Real World
+
+          <h1
+            className="fade-in-up delay-100"
+            style={{
+              fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+              fontWeight: 800,
+              lineHeight: 1.1,
+              marginBottom: '1.5rem',
+              background: 'linear-gradient(135deg, #ffffff 0%, #6ee7b7 50%, #22c55e 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}
+          >
+            Intelligent Systems
+            <br />
+            for the Real World
           </h1>
-          <p className="body-large" style={{ color: 'var(--text-secondary)' }}>
+
+          <p
+            className="fade-in-up delay-200"
+            style={{
+              fontSize: 'clamp(1.125rem, 2vw, 1.4rem)',
+              lineHeight: 1.6,
+              color: 'rgba(255, 255, 255, 0.8)',
+              maxWidth: '800px',
+              margin: '0 auto'
+            }}
+          >
             Our in-house innovation lab develops AI-powered automation platforms designed to streamline processes, enhance decision-making, and unlock new revenue streams.
           </p>
         </div>
