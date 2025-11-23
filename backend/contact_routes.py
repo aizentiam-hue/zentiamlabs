@@ -6,6 +6,7 @@ import logging
 from datetime import datetime
 from dotenv import load_dotenv
 from pathlib import Path
+from email_service import email_service
 
 logger = logging.getLogger(__name__)
 
