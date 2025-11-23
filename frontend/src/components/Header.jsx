@@ -101,7 +101,32 @@ const Header = () => {
                 {link.label}
               </Link>
             ))}
-            <Link to="/contact" className="btn-primary button-text">
+            <Link 
+              to="/contact" 
+              style={{
+                padding: '0.75rem 1.5rem',
+                background: 'linear-gradient(135deg, #9333ea 0%, #7c3aed 100%)',
+                border: 'none',
+                borderRadius: '50px',
+                color: 'white',
+                fontWeight: 600,
+                fontSize: '0.875rem',
+                textDecoration: 'none',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+                boxShadow: '0 4px 15px rgba(147, 51, 234, 0.4)',
+                transition: 'all 0.3s ease',
+                display: 'inline-block'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.transform = 'translateY(-2px)';
+                e.target.style.boxShadow = '0 6px 20px rgba(147, 51, 234, 0.6)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.boxShadow = '0 4px 15px rgba(147, 51, 234, 0.4)';
+              }}
+            >
               Book Consultation
             </Link>
           </div>
