@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "Test the following backend endpoints for the Zentiam website: Contact/Consultation Form Submission, Newsletter Subscription, Admin Dashboard, Get Consultations (Admin), Get Newsletter Subscribers (Admin)"
+user_problem_statement: "Test the Zentiam website frontend forms at http://localhost:3000 - Contact/Consultation Form, Newsletter Subscription, Newsletter Duplicate Subscription, Form Validation"
 
 backend:
   - task: "Contact/Consultation Form Submission"
