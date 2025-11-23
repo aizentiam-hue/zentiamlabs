@@ -133,7 +133,7 @@ Phone: {user_info.get('phone', 'Not provided')}
         if info_type == "name":
             return "I'd love to help you! By the way, may I know your name so I can assist you better?"
         elif info_type == "email":
-            return f"Thanks for chatting with me! If you'd like me to send you more information or have our team follow up, could you share your email address?"
+            return "Thanks for chatting with me! If you'd like me to send you more information or have our team follow up, could you share your email address?"
         elif info_type == "phone":
             return "Great! And if you'd like a quick call from our team, what's the best number to reach you?"
         return ""
