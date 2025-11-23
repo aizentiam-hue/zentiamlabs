@@ -240,10 +240,10 @@ metadata:
 
 test_plan:
   current_focus:
+    - "Products Page Futuristic Redesign"
+    - "Contact Page Futuristic Redesign"
     - "Contact/Consultation Form Submission"
     - "Newsletter Subscription"
-    - "Newsletter Duplicate Subscription"
-    - "Form Validation"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
