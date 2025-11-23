@@ -32,11 +32,14 @@ const Header = () => {
         right: 0,
         zIndex: 999,
         height: '80px',
-        background: isScrolled ? 'var(--bg-overlay)' : 'transparent',
-        backdropFilter: isScrolled ? 'blur(8px)' : 'none',
-        WebkitBackdropFilter: isScrolled ? 'blur(8px)' : 'none',
-        borderBottom: isScrolled ? '1px solid var(--border-light)' : 'none',
-        transition: 'all 0.3s ease'
+        background: isScrolled 
+          ? 'rgba(10, 10, 15, 0.95)' 
+          : 'rgba(10, 10, 15, 0.7)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        borderBottom: isScrolled ? '1px solid rgba(147, 51, 234, 0.3)' : '1px solid rgba(255, 255, 255, 0.1)',
+        transition: 'all 0.3s ease',
+        boxShadow: isScrolled ? '0 4px 20px rgba(0, 0, 0, 0.3)' : 'none'
       }}
     >
       <div className="container" style={{ height: '100%' }}>
