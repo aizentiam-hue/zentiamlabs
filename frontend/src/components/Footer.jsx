@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Linkedin, Twitter, Youtube } from 'lucide-react';
+import Logo from './Logo';
 
 const Footer = () => {
   return (
