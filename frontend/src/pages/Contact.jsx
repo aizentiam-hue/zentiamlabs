@@ -225,10 +225,10 @@ const Contact = () => {
                     </p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+                  <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
                       <div>
-                        <label className="body-small" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>
+                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600, fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
                           Name *
                         </label>
                         <input
@@ -239,21 +239,27 @@ const Contact = () => {
                           required
                           style={{
                             width: '100%',
-                            padding: '0.75rem',
-                            borderRadius: '0.5rem',
-                            border: '1px solid var(--border-input)',
-                            background: 'var(--bg-page)',
+                            padding: '0.875rem 1rem',
+                            borderRadius: '12px',
+                            border: '1px solid rgba(59, 130, 246, 0.2)',
+                            background: 'rgba(255, 255, 255, 0.05)',
                             fontSize: '1rem',
-                            color: 'var(--text-primary)',
+                            color: 'white',
                             outline: 'none',
-                            transition: 'border-color 0.2s ease'
+                            transition: 'all 0.3s ease'
                           }}
-                          onFocus={(e) => (e.target.style.borderColor = 'var(--border-input-focus)')}
-                          onBlur={(e) => (e.target.style.borderColor = 'var(--border-input)')}
+                          onFocus={(e) => {
+                            e.target.style.borderColor = '#3b82f6';
+                            e.target.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
+                          }}
+                          onBlur={(e) => {
+                            e.target.style.borderColor = 'rgba(59, 130, 246, 0.2)';
+                            e.target.style.boxShadow = 'none';
+                          }}
                         />
                       </div>
                       <div>
-                        <label className="body-small" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>
+                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600, fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
                           Email *
                         </label>
                         <input
@@ -264,17 +270,23 @@ const Contact = () => {
                           required
                           style={{
                             width: '100%',
-                            padding: '0.75rem',
-                            borderRadius: '0.5rem',
-                            border: '1px solid var(--border-input)',
-                            background: 'var(--bg-page)',
+                            padding: '0.875rem 1rem',
+                            borderRadius: '12px',
+                            border: '1px solid rgba(59, 130, 246, 0.2)',
+                            background: 'rgba(255, 255, 255, 0.05)',
                             fontSize: '1rem',
-                            color: 'var(--text-primary)',
+                            color: 'white',
                             outline: 'none',
-                            transition: 'border-color 0.2s ease'
+                            transition: 'all 0.3s ease'
                           }}
-                          onFocus={(e) => (e.target.style.borderColor = 'var(--border-input-focus)')}
-                          onBlur={(e) => (e.target.style.borderColor = 'var(--border-input)')}
+                          onFocus={(e) => {
+                            e.target.style.borderColor = '#3b82f6';
+                            e.target.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
+                          }}
+                          onBlur={(e) => {
+                            e.target.style.borderColor = 'rgba(59, 130, 246, 0.2)';
+                            e.target.style.boxShadow = 'none';
+                          }}
                         />
                       </div>
                     </div>
