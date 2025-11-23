@@ -239,11 +239,7 @@ metadata:
   run_ui: false
 
 test_plan:
-  current_focus:
-    - "Products Page Futuristic Redesign"
-    - "Contact Page Futuristic Redesign"
-    - "Contact/Consultation Form Submission"
-    - "Newsletter Subscription"
+  current_focus: []
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
