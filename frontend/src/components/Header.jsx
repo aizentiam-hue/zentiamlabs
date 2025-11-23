@@ -139,7 +139,7 @@ const Header = () => {
               background: 'transparent',
               border: 'none',
               cursor: 'pointer',
-              color: 'var(--text-primary)',
+              color: 'white',
               padding: '0.5rem'
             }}
             className="mobile-menu-btn"
