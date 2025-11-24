@@ -80,7 +80,7 @@ const Header = () => {
                 key={link.path}
                 to={link.path}
                 style={{
-                  color: location.pathname === link.path ? '#a78bfa' : 'rgba(255, 255, 255, 0.8)',
+                  color: location.pathname === link.path ? '#a78bfa' : 'rgba(255, 255, 255, 0.95)',
                   textDecoration: 'none',
                   fontSize: '0.875rem',
                   fontWeight: location.pathname === link.path ? 600 : 400,
@@ -91,7 +91,7 @@ const Header = () => {
                 onMouseEnter={(e) => (e.target.style.color = '#a78bfa')}
                 onMouseLeave={(e) =>
                   (e.target.style.color =
-                    location.pathname === link.path ? '#a78bfa' : 'rgba(255, 255, 255, 0.8)')
+                    location.pathname === link.path ? '#a78bfa' : 'rgba(255, 255, 255, 0.95)')
                 }
               >
                 {link.label}
@@ -169,7 +169,7 @@ const Header = () => {
                 to={link.path}
                 onClick={() => setIsMobileMenuOpen(false)}
                 style={{
-                  color: location.pathname === link.path ? '#a78bfa' : 'rgba(255, 255, 255, 0.8)',
+                  color: location.pathname === link.path ? '#a78bfa' : 'rgba(255, 255, 255, 0.95)',
                   textDecoration: 'none',
                   fontSize: '0.875rem',
                   fontWeight: location.pathname === link.path ? 600 : 400,

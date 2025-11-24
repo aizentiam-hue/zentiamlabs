@@ -191,7 +191,7 @@ const Services = () => {
             style={{
               fontSize: 'clamp(1.125rem, 2vw, 1.4rem)',
               lineHeight: 1.6,
-              color: 'rgba(255, 255, 255, 0.8)',
+              color: 'rgba(255, 255, 255, 0.95)',
               maxWidth: '800px',
               margin: '0 auto 2rem'
             }}
@@ -310,7 +310,7 @@ const Services = () => {
                     {service.title}
                   </h3>
 
-                  <p style={{ color: 'rgba(255, 255, 255, 0.8)', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+                  <p style={{ color: 'rgba(255, 255, 255, 0.95)', lineHeight: 1.6, marginBottom: '1.5rem' }}>
                     {service.description}
                   </p>
 
@@ -322,7 +322,7 @@ const Services = () => {
                       {service.details.map((detail, i) => (
                         <li key={i} style={{ display: 'flex', alignItems: 'start', gap: '0.75rem' }}>
                           <CheckCircle size={18} style={{ color: service.color, flexShrink: 0, marginTop: '0.125rem' }} />
-                          <span style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.8)' }}>{detail}</span>
+                          <span style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.95)' }}>{detail}</span>
                         </li>
                       ))}
                     </ul>
@@ -453,7 +453,7 @@ const Services = () => {
                     <h3 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '0.75rem' }}>
                       {phase.title}
                     </h3>
-                    <p style={{ color: 'rgba(255, 255, 255, 0.8)', lineHeight: 1.6 }}>
+                    <p style={{ color: 'rgba(255, 255, 255, 0.95)', lineHeight: 1.6 }}>
                       {phase.description}
                     </p>
                   </div>
@@ -485,7 +485,7 @@ const Services = () => {
           >
             Ready to Transform Your Business?
           </h2>
-          <p style={{ fontSize: '1.25rem', marginBottom: '3rem', color: 'rgba(255, 255, 255, 0.8)' }}>
+          <p style={{ fontSize: '1.25rem', marginBottom: '3rem', color: 'rgba(255, 255, 255, 0.95)' }}>
             Let's discuss how our AI solutions can drive growth and efficiency in your organization
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>

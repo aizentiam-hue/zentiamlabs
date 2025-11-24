@@ -153,7 +153,7 @@ const Home = () => {
               marginBottom: '3rem',
               maxWidth: '800px',
               margin: '0 auto 3rem',
-              color: 'rgba(255, 255, 255, 0.8)',
+              color: 'rgba(255, 255, 255, 0.95)',
               lineHeight: 1.6
             }}
           >
@@ -363,7 +363,7 @@ const Home = () => {
                   <h3 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1rem' }}>
                     {service.title}
                   </h3>
-                  <p style={{ color: 'rgba(255, 255, 255, 0.8)', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+                  <p style={{ color: 'rgba(255, 255, 255, 0.95)', lineHeight: 1.6, marginBottom: '1.5rem' }}>
                     {service.description}
                   </p>
                   <Link
@@ -424,7 +424,7 @@ const Home = () => {
           >
             Ready to Transform Your Business?
           </h2>
-          <p style={{ fontSize: '1.25rem', marginBottom: '3rem', color: 'rgba(255, 255, 255, 0.8)' }}>
+          <p style={{ fontSize: '1.25rem', marginBottom: '3rem', color: 'rgba(255, 255, 255, 0.95)' }}>
             Join 150+ companies achieving measurable AI transformation
           </p>
           <Link

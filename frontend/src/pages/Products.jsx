@@ -81,7 +81,7 @@ const Products = () => {
             style={{
               fontSize: 'clamp(1.125rem, 2vw, 1.4rem)',
               lineHeight: 1.6,
-              color: 'rgba(255, 255, 255, 0.8)',
+              color: 'rgba(255, 255, 255, 0.95)',
               maxWidth: '800px',
               margin: '0 auto'
             }}
@@ -164,7 +164,7 @@ const Products = () => {
                   <h3 style={{ fontSize: '1.75rem', fontWeight: 600, marginBottom: '1rem' }}>
                     {product.title}
                   </h3>
-                  <p style={{ color: 'rgba(255, 255, 255, 0.8)', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+                  <p style={{ color: 'rgba(255, 255, 255, 0.95)', lineHeight: 1.6, marginBottom: '1.5rem' }}>
                     {product.description}
                   </p>
 
@@ -176,7 +176,7 @@ const Products = () => {
                       {product.features.map((feature, idx) => (
                         <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                           <CheckCircle size={18} style={{ color: color, flexShrink: 0 }} />
-                          <span style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.8)' }}>{feature}</span>
+                          <span style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.95)' }}>{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -420,7 +420,7 @@ const Products = () => {
           >
             Ready to Transform Your Operations?
           </h2>
-          <p style={{ fontSize: '1.25rem', marginBottom: '3rem', color: 'rgba(255, 255, 255, 0.8)' }}>
+          <p style={{ fontSize: '1.25rem', marginBottom: '3rem', color: 'rgba(255, 255, 255, 0.95)' }}>
             Schedule a demo to see how Zentiam Labs products can revolutionize your business
           </p>
           <Link

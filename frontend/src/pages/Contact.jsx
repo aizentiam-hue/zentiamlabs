@@ -160,7 +160,7 @@ const Contact = () => {
             style={{
               fontSize: 'clamp(1.125rem, 2vw, 1.4rem)',
               lineHeight: 1.6,
-              color: 'rgba(255, 255, 255, 0.8)',
+              color: 'rgba(255, 255, 255, 0.95)',
               maxWidth: '800px',
               margin: '0 auto'
             }}
@@ -485,7 +485,7 @@ const Contact = () => {
                       <a 
                         href="mailto:contact@zentiam.com" 
                         style={{ 
-                          color: 'rgba(255, 255, 255, 0.8)', 
+                          color: 'rgba(255, 255, 255, 0.95)', 
                           textDecoration: 'none',
                           fontSize: '0.875rem'
                         }}
@@ -514,7 +514,7 @@ const Contact = () => {
                       <div style={{ fontWeight: 600, marginBottom: '0.25rem', fontSize: '0.875rem' }}>
                         Phone
                       </div>
-                      <span style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.875rem' }}>
+                      <span style={{ color: 'rgba(255, 255, 255, 0.95)', fontSize: '0.875rem' }}>
                         +1 (555) 123-4567
                       </span>
                     </div>
@@ -539,7 +539,7 @@ const Contact = () => {
                       <div style={{ fontWeight: 600, marginBottom: '0.25rem', fontSize: '0.875rem' }}>
                         Office
                       </div>
-                      <span style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.875rem' }}>
+                      <span style={{ color: 'rgba(255, 255, 255, 0.95)', fontSize: '0.875rem' }}>
                         San Francisco, CA
                       </span>
                     </div>
@@ -583,7 +583,7 @@ const Contact = () => {
           >
             Stay Updated
           </h2>
-          <p style={{ fontSize: '1.125rem', marginBottom: '3rem', color: 'rgba(255, 255, 255, 0.8)', lineHeight: 1.6 }}>
+          <p style={{ fontSize: '1.125rem', marginBottom: '3rem', color: 'rgba(255, 255, 255, 0.95)', lineHeight: 1.6 }}>
             Subscribe to our newsletter for the latest insights on AI trends, best practices, and Zentiam updates.
           </p>
 

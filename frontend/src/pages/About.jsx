@@ -136,7 +136,7 @@ const About = () => {
             style={{
               fontSize: 'clamp(1.125rem, 2vw, 1.4rem)',
               lineHeight: 1.6,
-              color: 'rgba(255, 255, 255, 0.8)',
+              color: 'rgba(255, 255, 255, 0.95)',
               maxWidth: '800px',
               margin: '0 auto'
             }}
@@ -212,7 +212,7 @@ const About = () => {
               >
                 Our Mission
               </h2>
-              <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: 'rgba(255, 255, 255, 0.8)', marginBottom: '1.5rem' }}>
+              <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: 'rgba(255, 255, 255, 0.95)', marginBottom: '1.5rem' }}>
                 To democratize access to enterprise-grade AI solutions and empower organizations of all sizes to compete in an AI-driven world.
               </p>
               <p style={{ fontSize: '1rem', lineHeight: 1.6, color: 'rgba(255, 255, 255, 0.9)' }}>
@@ -306,7 +306,7 @@ const About = () => {
                   <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.6)', marginBottom: '1.5rem' }}>
                     {pillar.detail}
                   </div>
-                  <p style={{ color: 'rgba(255, 255, 255, 0.8)', lineHeight: 1.6 }}>
+                  <p style={{ color: 'rgba(255, 255, 255, 0.95)', lineHeight: 1.6 }}>
                     {pillar.description}
                   </p>
                 </div>
@@ -412,7 +412,7 @@ const About = () => {
               }}
             />
           </div>
-          <p style={{ fontSize: '1.125rem', marginTop: '2rem', color: 'rgba(255, 255, 255, 0.8)', lineHeight: 1.6 }}>
+          <p style={{ fontSize: '1.125rem', marginTop: '2rem', color: 'rgba(255, 255, 255, 0.95)', lineHeight: 1.6 }}>
             A diverse team of AI researchers, data scientists, business strategists, and software engineers united by a passion for innovation and delivering measurable business impact.
           </p>
         </div>
@@ -431,7 +431,7 @@ const About = () => {
           >
             Ready to Work Together?
           </h2>
-          <p style={{ fontSize: '1.25rem', marginBottom: '3rem', color: 'rgba(255, 255, 255, 0.8)' }}>
+          <p style={{ fontSize: '1.25rem', marginBottom: '3rem', color: 'rgba(255, 255, 255, 0.95)' }}>
             Let's transform your business with intelligent AI solutions
           </p>
           <a
