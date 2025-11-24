@@ -209,8 +209,7 @@ const Home = () => {
               display: 'flex',
               gap: '3rem',
               justifyContent: 'center',
-              flexWrap: 'wrap',
-              opacity: 0.7
+              flexWrap: 'wrap'
             }}
           >
             {[
