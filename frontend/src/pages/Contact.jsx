@@ -90,7 +90,7 @@ const Contact = () => {
   };
 
   return (
-    <div style={{ background: '#1a1a2e', color: 'white', position: 'relative', minHeight: '100vh' }}>
+    <div style={{ background: '#2a1e3a', color: 'white', position: 'relative', minHeight: '100vh' }}>
       <ParticleBackground />
 
       {/* Hero Section */}
@@ -383,11 +383,11 @@ const Contact = () => {
                           e.target.style.boxShadow = 'none';
                         }}
                       >
-                        <option value="consultation" style={{ background: '#1a1a2e', color: 'white' }}>AI Strategy Consultation</option>
-                        <option value="custom-solution" style={{ background: '#1a1a2e', color: 'white' }}>Custom AI Solution</option>
-                        <option value="automation" style={{ background: '#1a1a2e', color: 'white' }}>Automation & Integration</option>
-                        <option value="training" style={{ background: '#1a1a2e', color: 'white' }}>Training & Enablement</option>
-                        <option value="products" style={{ background: '#1a1a2e', color: 'white' }}>Zentiam Labs Products</option>
+                        <option value="consultation" style={{ background: '#2a1e3a', color: 'white' }}>AI Strategy Consultation</option>
+                        <option value="custom-solution" style={{ background: '#2a1e3a', color: 'white' }}>Custom AI Solution</option>
+                        <option value="automation" style={{ background: '#2a1e3a', color: 'white' }}>Automation & Integration</option>
+                        <option value="training" style={{ background: '#2a1e3a', color: 'white' }}>Training & Enablement</option>
+                        <option value="products" style={{ background: '#2a1e3a', color: 'white' }}>Zentiam Labs Products</option>
                       </select>
                     </div>
 

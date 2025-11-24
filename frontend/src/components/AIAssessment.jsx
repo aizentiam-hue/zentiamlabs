@@ -296,7 +296,7 @@ Powered by Zentiam AI
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
-          background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
+          background: 'linear-gradient(135deg, #2a1e3a 0%, #16213e 100%)',
           borderRadius: '24px',
           padding: '3rem',
           maxWidth: '700px',
