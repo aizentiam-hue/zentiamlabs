@@ -238,7 +238,7 @@ const Services = () => {
                     <div style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.25rem', color: 'white' }}>
                       {benefit.value}
                     </div>
-                    <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.7)' }}>
+                    <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
                       {benefit.label}
                     </div>
                   </div>
@@ -263,7 +263,7 @@ const Services = () => {
             >
               Comprehensive AI Services
             </h2>
-            <p style={{ fontSize: '1.25rem', color: 'rgba(255, 255, 255, 0.7)' }}>
+            <p style={{ fontSize: '1.25rem', color: 'rgba(255, 255, 255, 0.9)' }}>
               End-to-end solutions that deliver real business value
             </p>
           </div>
@@ -315,7 +315,7 @@ const Services = () => {
                   </p>
 
                   <div style={{ marginBottom: '1.5rem' }}>
-                    <h4 style={{ fontSize: '0.875rem', fontWeight: 600, marginBottom: '1rem', textTransform: 'uppercase', color: 'rgba(255, 255, 255, 0.7)' }}>
+                    <h4 style={{ fontSize: '0.875rem', fontWeight: 600, marginBottom: '1rem', textTransform: 'uppercase', color: 'rgba(255, 255, 255, 0.9)' }}>
                       What's Included:
                     </h4>
                     <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -394,7 +394,7 @@ const Services = () => {
             >
               Our Proven Approach
             </h2>
-            <p style={{ fontSize: '1.25rem', color: 'rgba(255, 255, 255, 0.7)' }}>
+            <p style={{ fontSize: '1.25rem', color: 'rgba(255, 255, 255, 0.9)' }}>
               A systematic methodology that delivers results
             </p>
           </div>

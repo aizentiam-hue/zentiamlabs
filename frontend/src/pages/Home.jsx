@@ -250,7 +250,7 @@ const Home = () => {
             >
               Why Zentiam is Different
             </h2>
-            <p style={{ fontSize: '1.25rem', color: 'rgba(255, 255, 255, 0.7)', maxWidth: '700px', margin: '0 auto' }}>
+            <p style={{ fontSize: '1.25rem', color: 'rgba(255, 255, 255, 0.9)', maxWidth: '700px', margin: '0 auto' }}>
               We don't just consult. We build, deploy, and deliver results.
             </p>
           </div>
@@ -296,7 +296,7 @@ const Home = () => {
                       {diff.stat}
                     </div>
                   )}
-                  <p style={{ color: 'rgba(255, 255, 255, 0.7)', lineHeight: 1.6 }}>
+                  <p style={{ color: 'rgba(255, 255, 255, 0.9)', lineHeight: 1.6 }}>
                     {diff.description}
                   </p>
                 </div>
@@ -320,7 +320,7 @@ const Home = () => {
             >
               Our AI Solutions
             </h2>
-            <p style={{ fontSize: '1.25rem', color: 'rgba(255, 255, 255, 0.7)' }}>
+            <p style={{ fontSize: '1.25rem', color: 'rgba(255, 255, 255, 0.9)' }}>
               End-to-end AI services that deliver real business value
             </p>
           </div>

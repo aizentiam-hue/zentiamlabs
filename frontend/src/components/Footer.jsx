@@ -31,7 +31,7 @@ const Footer = () => {
             <p style={{ marginBottom: '1rem', color: 'rgba(255, 255, 255, 0.9)', fontSize: '0.875rem', lineHeight: 1.6 }}>
               Where Intelligence Meets Impact.
             </p>
-            <p style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.875rem', lineHeight: 1.6 }}>
+            <p style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '0.875rem', lineHeight: 1.6 }}>
               Premium AI consulting and innovation for forward-thinking organizations.
             </p>
           </div>
@@ -51,16 +51,16 @@ const Footer = () => {
               Quick Links
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <Link to="/about" style={{ color: 'rgba(255, 255, 255, 0.7)', textDecoration: 'none', fontSize: '0.875rem', transition: 'color 0.2s ease' }} onMouseEnter={(e) => e.target.style.color = '#a78bfa'} onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}>
+              <Link to="/about" style={{ color: 'rgba(255, 255, 255, 0.9)', textDecoration: 'none', fontSize: '0.875rem', transition: 'color 0.2s ease' }} onMouseEnter={(e) => e.target.style.color = '#a78bfa'} onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.9)'}>
                 About Us
               </Link>
-              <Link to="/services" style={{ color: 'rgba(255, 255, 255, 0.7)', textDecoration: 'none', fontSize: '0.875rem', transition: 'color 0.2s ease' }} onMouseEnter={(e) => e.target.style.color = '#a78bfa'} onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}>
+              <Link to="/services" style={{ color: 'rgba(255, 255, 255, 0.9)', textDecoration: 'none', fontSize: '0.875rem', transition: 'color 0.2s ease' }} onMouseEnter={(e) => e.target.style.color = '#a78bfa'} onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.9)'}>
                 Services
               </Link>
-              <Link to="/products" style={{ color: 'rgba(255, 255, 255, 0.7)', textDecoration: 'none', fontSize: '0.875rem', transition: 'color 0.2s ease' }} onMouseEnter={(e) => e.target.style.color = '#a78bfa'} onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}>
+              <Link to="/products" style={{ color: 'rgba(255, 255, 255, 0.9)', textDecoration: 'none', fontSize: '0.875rem', transition: 'color 0.2s ease' }} onMouseEnter={(e) => e.target.style.color = '#a78bfa'} onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.9)'}>
                 Products
               </Link>
-              <Link to="/contact" style={{ color: 'rgba(255, 255, 255, 0.7)', textDecoration: 'none', fontSize: '0.875rem', transition: 'color 0.2s ease' }} onMouseEnter={(e) => e.target.style.color = '#a78bfa'} onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}>
+              <Link to="/contact" style={{ color: 'rgba(255, 255, 255, 0.9)', textDecoration: 'none', fontSize: '0.875rem', transition: 'color 0.2s ease' }} onMouseEnter={(e) => e.target.style.color = '#a78bfa'} onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.9)'}>
                 Contact
               </Link>
             </div>
@@ -81,16 +81,16 @@ const Footer = () => {
               Services
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <span style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.875rem' }}>
+              <span style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '0.875rem' }}>
                 AI Strategy Consulting
               </span>
-              <span style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.875rem' }}>
+              <span style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '0.875rem' }}>
                 Custom AI Solutions
               </span>
-              <span style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.875rem' }}>
+              <span style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '0.875rem' }}>
                 Automation & Integration
               </span>
-              <span style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.875rem' }}>
+              <span style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '0.875rem' }}>
                 Training & Enablement
               </span>
             </div>
@@ -114,7 +114,7 @@ const Footer = () => {
               <a
                 href="mailto:contact@zentiam.com"
                 style={{
-                  color: 'rgba(255, 255, 255, 0.7)',
+                  color: 'rgba(255, 255, 255, 0.9)',
                   textDecoration: 'none',
                   display: 'flex',
                   alignItems: 'center',
@@ -123,7 +123,7 @@ const Footer = () => {
                   transition: 'color 0.2s ease'
                 }}
                 onMouseEnter={(e) => e.target.style.color = '#a78bfa'}
-                onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
+                onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.9)'}
               >
                 <Mail size={16} />
                 contact@zentiam.com
@@ -133,10 +133,10 @@ const Footer = () => {
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: 'rgba(255, 255, 255, 0.7)', transition: 'color 0.2s ease' }}
+                  style={{ color: 'rgba(255, 255, 255, 0.9)', transition: 'color 0.2s ease' }}
                   aria-label="LinkedIn"
                   onMouseEnter={(e) => e.target.style.color = '#a78bfa'}
-                  onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
+                  onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.9)'}
                 >
                   <Linkedin size={20} />
                 </a>
@@ -144,10 +144,10 @@ const Footer = () => {
                   href="https://twitter.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: 'rgba(255, 255, 255, 0.7)', transition: 'color 0.2s ease' }}
+                  style={{ color: 'rgba(255, 255, 255, 0.9)', transition: 'color 0.2s ease' }}
                   aria-label="Twitter"
                   onMouseEnter={(e) => e.target.style.color = '#a78bfa'}
-                  onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
+                  onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.9)'}
                 >
                   <Twitter size={20} />
                 </a>
@@ -155,10 +155,10 @@ const Footer = () => {
                   href="https://youtube.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: 'rgba(255, 255, 255, 0.7)', transition: 'color 0.2s ease' }}
+                  style={{ color: 'rgba(255, 255, 255, 0.9)', transition: 'color 0.2s ease' }}
                   aria-label="YouTube"
                   onMouseEnter={(e) => e.target.style.color = '#a78bfa'}
-                  onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
+                  onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.9)'}
                 >
                   <Youtube size={20} />
                 </a>

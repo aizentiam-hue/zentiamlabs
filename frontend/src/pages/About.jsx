@@ -180,7 +180,7 @@ const About = () => {
                   >
                     {stat.value}
                   </div>
-                  <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.7)' }}>
+                  <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
                     {stat.label}
                   </div>
                 </div>
@@ -215,7 +215,7 @@ const About = () => {
               <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: 'rgba(255, 255, 255, 0.8)', marginBottom: '1.5rem' }}>
                 To democratize access to enterprise-grade AI solutions and empower organizations of all sizes to compete in an AI-driven world.
               </p>
-              <p style={{ fontSize: '1rem', lineHeight: 1.6, color: 'rgba(255, 255, 255, 0.7)' }}>
+              <p style={{ fontSize: '1rem', lineHeight: 1.6, color: 'rgba(255, 255, 255, 0.9)' }}>
                 Founded by AI researchers and business strategists, Zentiam bridges the gap between AI potential and real business value. We don't just consult—we build, deploy, and deliver measurable results.
               </p>
             </div>
@@ -256,7 +256,7 @@ const About = () => {
             >
               A New Standard for AI Consulting
             </h2>
-            <p style={{ fontSize: '1.25rem', color: 'rgba(255, 255, 255, 0.7)' }}>
+            <p style={{ fontSize: '1.25rem', color: 'rgba(255, 255, 255, 0.9)' }}>
               What makes Zentiam different
             </p>
           </div>
@@ -330,7 +330,7 @@ const About = () => {
             >
               Our Values
             </h2>
-            <p style={{ fontSize: '1.25rem', color: 'rgba(255, 255, 255, 0.7)' }}>
+            <p style={{ fontSize: '1.25rem', color: 'rgba(255, 255, 255, 0.9)' }}>
               The principles that guide everything we do
             </p>
           </div>
@@ -371,7 +371,7 @@ const About = () => {
                   <h3 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.75rem' }}>
                     {value.title}
                   </h3>
-                  <p style={{ color: 'rgba(255, 255, 255, 0.7)', lineHeight: 1.6 }}>
+                  <p style={{ color: 'rgba(255, 255, 255, 0.9)', lineHeight: 1.6 }}>
                     {value.description}
                   </p>
                 </div>

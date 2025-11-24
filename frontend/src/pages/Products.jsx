@@ -105,7 +105,7 @@ const Products = () => {
             >
               Our Product Suite
             </h2>
-            <p style={{ fontSize: '1.25rem', color: 'rgba(255, 255, 255, 0.7)' }}>
+            <p style={{ fontSize: '1.25rem', color: 'rgba(255, 255, 255, 0.9)' }}>
               Enterprise-grade AI platforms built for scale
             </p>
           </div>
@@ -169,7 +169,7 @@ const Products = () => {
                   </p>
 
                   <div style={{ marginBottom: '1.5rem' }}>
-                    <h4 style={{ fontSize: '0.875rem', fontWeight: 600, marginBottom: '1rem', textTransform: 'uppercase', color: 'rgba(255, 255, 255, 0.7)' }}>
+                    <h4 style={{ fontSize: '0.875rem', fontWeight: 600, marginBottom: '1rem', textTransform: 'uppercase', color: 'rgba(255, 255, 255, 0.9)' }}>
                       Key Features:
                     </h4>
                     <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -230,7 +230,7 @@ const Products = () => {
             >
               Built on Cutting-Edge Technology
             </h2>
-            <p style={{ fontSize: '1.25rem', color: 'rgba(255, 255, 255, 0.7)' }}>
+            <p style={{ fontSize: '1.25rem', color: 'rgba(255, 255, 255, 0.9)' }}>
               State-of-the-art AI infrastructure powering real-world solutions
             </p>
           </div>
@@ -309,7 +309,7 @@ const Products = () => {
                     <h3 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '0.75rem' }}>
                       {tech.title}
                     </h3>
-                    <p style={{ color: 'rgba(255, 255, 255, 0.7)', lineHeight: 1.6 }}>
+                    <p style={{ color: 'rgba(255, 255, 255, 0.9)', lineHeight: 1.6 }}>
                       {tech.description}
                     </p>
                   </div>
@@ -334,7 +334,7 @@ const Products = () => {
             >
               Real-World Applications
             </h2>
-            <p style={{ fontSize: '1.25rem', color: 'rgba(255, 255, 255, 0.7)' }}>
+            <p style={{ fontSize: '1.25rem', color: 'rgba(255, 255, 255, 0.9)' }}>
               Transform your business across all departments
             </p>
           </div>
@@ -390,7 +390,7 @@ const Products = () => {
                 <h3 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.75rem' }}>
                   {useCase.title}
                 </h3>
-                <p style={{ color: 'rgba(255, 255, 255, 0.7)', lineHeight: 1.6 }}>
+                <p style={{ color: 'rgba(255, 255, 255, 0.9)', lineHeight: 1.6 }}>
                   {useCase.desc}
                 </p>
               </div>

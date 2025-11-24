@@ -149,14 +149,14 @@ const SuccessStories = () => {
             </h3>
 
             <div style={{ marginBottom: '1.5rem' }}>
-              <h4 style={{ fontSize: '0.875rem', fontWeight: 600, color: 'rgba(255, 255, 255, 0.7)', marginBottom: '0.5rem', textTransform: 'uppercase' }}>
+              <h4 style={{ fontSize: '0.875rem', fontWeight: 600, color: 'rgba(255, 255, 255, 0.9)', marginBottom: '0.5rem', textTransform: 'uppercase' }}>
                 Challenge
               </h4>
               <p style={{ color: 'rgba(255, 255, 255, 0.9)' }}>{currentStory.challenge}</p>
             </div>
 
             <div style={{ marginBottom: '1.5rem' }}>
-              <h4 style={{ fontSize: '0.875rem', fontWeight: 600, color: 'rgba(255, 255, 255, 0.7)', marginBottom: '0.5rem', textTransform: 'uppercase' }}>
+              <h4 style={{ fontSize: '0.875rem', fontWeight: 600, color: 'rgba(255, 255, 255, 0.9)', marginBottom: '0.5rem', textTransform: 'uppercase' }}>
                 Solution
               </h4>
               <p style={{ color: 'rgba(255, 255, 255, 0.9)' }}>{currentStory.solution}</p>
@@ -177,7 +177,7 @@ const SuccessStories = () => {
             >
               <TrendingUp size={24} color="#22c55e" />
               <div>
-                <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.7)' }}>ROI Achieved</div>
+                <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.9)' }}>ROI Achieved</div>
                 <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#22c55e' }}>{currentStory.roi}</div>
               </div>
             </div>
@@ -207,7 +207,7 @@ const SuccessStories = () => {
                     <div style={{ fontSize: '1.75rem', fontWeight: 700, color: 'white', marginBottom: '0.25rem' }}>
                       {result.value}
                     </div>
-                    <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.7)' }}>
+                    <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.9)' }}>
                       {result.label}
                     </div>
                   </div>
