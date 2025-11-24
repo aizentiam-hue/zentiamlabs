@@ -34,8 +34,8 @@ const Header = () => {
         zIndex: 999,
         height: '80px',
         background: isScrolled 
-          ? 'rgba(10, 10, 15, 0.95)' 
-          : 'rgba(10, 10, 15, 0.7)',
+          ? 'rgba(26, 26, 46, 0.95)' 
+          : 'rgba(26, 26, 46, 0.7)',
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
         borderBottom: isScrolled ? '1px solid rgba(147, 51, 234, 0.3)' : '1px solid rgba(255, 255, 255, 0.1)',
@@ -154,7 +154,7 @@ const Header = () => {
             top: '80px',
             left: 0,
             right: 0,
-            background: 'rgba(10, 10, 15, 0.98)',
+            background: 'rgba(26, 26, 46, 0.98)',
             backdropFilter: 'blur(12px)',
             WebkitBackdropFilter: 'blur(12px)',
             borderBottom: '1px solid rgba(147, 51, 234, 0.3)',
