@@ -53,7 +53,7 @@ const Products = () => {
             }}
           >
             <Sparkles size={18} style={{ color: '#22c55e' }} />
-            <span style={{ fontSize: '0.875rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            <span style={{ fontSize: '0.875rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               Zentiam Labs
             </span>
           </div>
@@ -142,7 +142,7 @@ const Products = () => {
                       padding: '0.5rem 1rem',
                       marginBottom: '1.5rem',
                       fontSize: '0.75rem',
-                      fontWeight: 600,
+                      fontWeight: 700,
                       textTransform: 'uppercase',
                       letterSpacing: '0.05em',
                       alignSelf: 'flex-start'
@@ -161,7 +161,7 @@ const Products = () => {
                     )}
                   </div>
 
-                  <h3 style={{ fontSize: '1.75rem', fontWeight: 600, marginBottom: '1rem' }}>
+                  <h3 style={{ fontSize: '1.75rem', fontWeight: 700, marginBottom: '1rem' }}>
                     {product.title}
                   </h3>
                   <p style={{ color: 'rgba(255, 255, 255, 0.95)', lineHeight: 1.6, marginBottom: '1.5rem' }}>
@@ -169,7 +169,7 @@ const Products = () => {
                   </p>
 
                   <div style={{ marginBottom: '1.5rem' }}>
-                    <h4 style={{ fontSize: '0.875rem', fontWeight: 600, marginBottom: '1rem', textTransform: 'uppercase', color: 'rgba(255, 255, 255, 0.9)' }}>
+                    <h4 style={{ fontSize: '0.875rem', fontWeight: 700, marginBottom: '1rem', textTransform: 'uppercase', color: 'rgba(255, 255, 255, 0.9)' }}>
                       Key Features:
                     </h4>
                     <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -192,7 +192,7 @@ const Products = () => {
                         border: 'none',
                         borderRadius: '12px',
                         color: 'white',
-                        fontWeight: 600,
+                        fontWeight: 700,
                         textAlign: 'center',
                         textDecoration: 'none',
                         display: 'flex',
@@ -306,7 +306,7 @@ const Products = () => {
                     </div>
                   </div>
                   <div style={{ padding: '2rem' }}>
-                    <h3 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '0.75rem' }}>
+                    <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.75rem' }}>
                       {tech.title}
                     </h3>
                     <p style={{ color: 'rgba(255, 255, 255, 0.9)', lineHeight: 1.6 }}>
@@ -387,7 +387,7 @@ const Products = () => {
                 >
                   {index === 0 ? '💬' : index === 1 ? '⚙️' : index === 2 ? '📊' : '💰'}
                 </div>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.75rem' }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>
                   {useCase.title}
                 </h3>
                 <p style={{ color: 'rgba(255, 255, 255, 0.9)', lineHeight: 1.6 }}>

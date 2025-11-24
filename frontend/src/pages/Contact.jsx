@@ -129,7 +129,7 @@ const Contact = () => {
               borderRadius: '50px',
               marginBottom: '2rem',
               fontSize: '0.875rem',
-              fontWeight: 600,
+              fontWeight: 700,
               textTransform: 'uppercase',
               letterSpacing: '0.05em'
             }}
@@ -220,7 +220,7 @@ const Contact = () => {
                       textAlign: 'center'
                     }}
                   >
-                    <p style={{ fontSize: '1.125rem', fontWeight: 600, color: '#22c55e' }}>
+                    <p style={{ fontSize: '1.125rem', fontWeight: 700, color: '#22c55e' }}>
                       Thank you! We'll get back to you within 24 hours.
                     </p>
                   </div>
@@ -228,7 +228,7 @@ const Contact = () => {
                   <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
                       <div>
-                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600, fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
+                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 700, fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
                           Name *
                         </label>
                         <input
@@ -259,7 +259,7 @@ const Contact = () => {
                         />
                       </div>
                       <div>
-                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600, fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
+                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 700, fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
                           Email *
                         </label>
                         <input
@@ -293,7 +293,7 @@ const Contact = () => {
 
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
                       <div>
-                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600, fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
+                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 700, fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
                           Company
                         </label>
                         <input
@@ -323,7 +323,7 @@ const Contact = () => {
                         />
                       </div>
                       <div>
-                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600, fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
+                        <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 700, fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
                           Phone
                         </label>
                         <input
@@ -355,7 +355,7 @@ const Contact = () => {
                     </div>
 
                     <div>
-                      <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600, fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
+                      <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 700, fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
                         Service Interested In *
                       </label>
                       <select
@@ -392,7 +392,7 @@ const Contact = () => {
                     </div>
 
                     <div>
-                      <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600, fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
+                      <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 700, fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
                         Message *
                       </label>
                       <textarea
@@ -458,7 +458,7 @@ const Contact = () => {
                   borderColor: 'rgba(147, 51, 234, 0.3)'
                 }}
               >
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '2rem' }}>
+                <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '2rem' }}>
                   Contact Information
                 </h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -479,7 +479,7 @@ const Contact = () => {
                       <Mail size={18} style={{ color: '#3b82f6' }} />
                     </div>
                     <div>
-                      <div style={{ fontWeight: 600, marginBottom: '0.25rem', fontSize: '0.875rem' }}>
+                      <div style={{ fontWeight: 700, marginBottom: '0.25rem', fontSize: '0.875rem' }}>
                         Email
                       </div>
                       <a 
@@ -511,7 +511,7 @@ const Contact = () => {
                       <Phone size={18} style={{ color: '#22c55e' }} />
                     </div>
                     <div>
-                      <div style={{ fontWeight: 600, marginBottom: '0.25rem', fontSize: '0.875rem' }}>
+                      <div style={{ fontWeight: 700, marginBottom: '0.25rem', fontSize: '0.875rem' }}>
                         Phone
                       </div>
                       <span style={{ color: 'rgba(255, 255, 255, 0.95)', fontSize: '0.875rem' }}>
@@ -536,7 +536,7 @@ const Contact = () => {
                       <MapPin size={18} style={{ color: '#9333ea' }} />
                     </div>
                     <div>
-                      <div style={{ fontWeight: 600, marginBottom: '0.25rem', fontSize: '0.875rem' }}>
+                      <div style={{ fontWeight: 700, marginBottom: '0.25rem', fontSize: '0.875rem' }}>
                         Office
                       </div>
                       <span style={{ color: 'rgba(255, 255, 255, 0.95)', fontSize: '0.875rem' }}>
@@ -597,7 +597,7 @@ const Contact = () => {
                 display: 'inline-block'
               }}
             >
-              <p style={{ fontSize: '1.125rem', fontWeight: 600, color: '#22c55e' }}>
+              <p style={{ fontSize: '1.125rem', fontWeight: 700, color: '#22c55e' }}>
                 Thanks for subscribing!
               </p>
             </div>

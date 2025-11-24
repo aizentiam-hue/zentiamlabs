@@ -105,7 +105,7 @@ const About = () => {
               borderRadius: '50px',
               marginBottom: '2rem',
               fontSize: '0.875rem',
-              fontWeight: 600,
+              fontWeight: 700,
               textTransform: 'uppercase',
               letterSpacing: '0.05em'
             }}
@@ -297,7 +297,7 @@ const About = () => {
                   >
                     <Icon size={40} style={{ color: pillar.color }} />
                   </div>
-                  <h3 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1rem' }}>
+                  <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem' }}>
                     {pillar.title}
                   </h3>
                   <div style={{ fontSize: '2rem', fontWeight: 700, color: pillar.color, marginBottom: '0.5rem' }}>
@@ -368,7 +368,7 @@ const About = () => {
                   >
                     <Icon size={28} style={{ color: value.color }} />
                   </div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.75rem' }}>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>
                     {value.title}
                   </h3>
                   <p style={{ color: 'rgba(255, 255, 255, 0.9)', lineHeight: 1.6 }}>
