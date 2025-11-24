@@ -65,9 +65,13 @@ find pages components -name "*.jsx" -exec sed -i 's/rgba(42, 30, 58,/rgba(26, 26
 7. `/app/frontend/src/components/Footer.jsx`
 
 ## 📅 Change History
-- **Nov 23, 2025 (V1)**: Original dark background
-- **Nov 23, 2025 (V2)**: First lightening with purple undertone
-- **Nov 23, 2025 (V3)**: Current version with rose-purple undertones
+- **Nov 23, 2025 (V1)**: Original dark background (#0a0a0f)
+- **Nov 23, 2025 (V2)**: First lightening with purple undertone (#1a1a2e)
+- **Nov 23, 2025 (V3)**: Rose-purple undertones (#2a1e3a) - Tested & Rejected
+- **Nov 23, 2025 (V2 - FINAL)**: Reverted to lighter purple - User Approved ✅
 
 ## ✅ Current Status
-Version 3 (Rose-Purple) - Applied and testing
+**Version 2 (Lighter Purple) - FINAL & APPROVED**
+- Color: `#1a1a2e`
+- RGB: (26, 26, 46)
+- Status: ✅ Production Ready
