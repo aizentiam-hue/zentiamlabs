@@ -64,7 +64,7 @@ const Services = () => {
                       width: '3.5rem',
                       height: '3.5rem',
                       borderRadius: '50%',
-                      background: 'rgba(255, 255, 255, 0.5)',
+                      background: 'rgba(255, 255, 255, 0.75)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',

@@ -175,7 +175,7 @@ const Footer = () => {
             textAlign: 'center'
           }}
         >
-          <p style={{ color: 'rgba(255, 255, 255, 0.5)', fontSize: '0.875rem' }}>
+          <p style={{ color: 'rgba(255, 255, 255, 0.75)', fontSize: '0.875rem' }}>
             © 2025 Zentiam. All rights reserved.
           </p>
         </div>

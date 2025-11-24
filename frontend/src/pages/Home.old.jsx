@@ -174,7 +174,7 @@ const Home = () => {
                       width: '3rem',
                       height: '3rem',
                       borderRadius: '50%',
-                      background: 'rgba(255, 255, 255, 0.5)',
+                      background: 'rgba(255, 255, 255, 0.75)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',

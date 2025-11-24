@@ -138,7 +138,7 @@ const LiveMetrics = () => {
           })}
         </div>
 
-        <div style={{ marginTop: '1.5rem', fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.5)', textAlign: 'center' }}>
+        <div style={{ marginTop: '1.5rem', fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.75)', textAlign: 'center' }}>
           Data updated in real-time from industry sources
         </div>
       </div>
