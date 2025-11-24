@@ -315,7 +315,8 @@ const Home = () => {
               style={{
                 fontSize: 'clamp(2rem, 5vw, 3rem)',
                 fontWeight: 800,
-                marginBottom: '1rem'
+                marginBottom: '1rem',
+                textShadow: '0 0 30px rgba(192, 132, 252, 0.5)'
               }}
             >
               Our AI Solutions
