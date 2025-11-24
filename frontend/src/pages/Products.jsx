@@ -9,7 +9,7 @@ const Products = () => {
   const productColors = ['#9333ea', '#3b82f6', '#22c55e'];
   
   return (
-    <div style={{ background: '#2a1e3a', color: 'white', position: 'relative', minHeight: '100vh' }}>
+    <div style={{ background: '#1a1a2e', color: 'white', position: 'relative', minHeight: '100vh' }}>
       <ParticleBackground />
 
       {/* Hero Section */}
