@@ -257,6 +257,7 @@ const Services = () => {
               className="gradient-text"
               style={{
                 fontSize: 'clamp(2rem, 4vw, 3rem)',
+                textShadow: '0 0 30px rgba(192, 132, 252, 0.5)'
                 fontWeight: 800,
                 marginBottom: '1rem'
               }}
@@ -388,6 +389,7 @@ const Services = () => {
               className="gradient-text"
               style={{
                 fontSize: 'clamp(2rem, 4vw, 3rem)',
+                textShadow: '0 0 30px rgba(192, 132, 252, 0.5)'
                 fontWeight: 800,
                 marginBottom: '1rem'
               }}
@@ -479,6 +481,7 @@ const Services = () => {
             className="gradient-text"
             style={{
               fontSize: 'clamp(2rem, 4vw, 3rem)',
+                textShadow: '0 0 30px rgba(192, 132, 252, 0.5)'
               fontWeight: 800,
               marginBottom: '1.5rem'
             }}
