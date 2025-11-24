@@ -123,7 +123,7 @@ const Home = () => {
             }}
           >
             <Sparkles size={18} style={{ color: '#9333ea' }} />
-            <span style={{ fontSize: '0.875rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            <span style={{ fontSize: '0.875rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               AI Solutions in Days, Not Months
             </span>
           </div>
@@ -218,7 +218,7 @@ const Home = () => {
               { label: '$184B+ AI Market', value: 'Growing 28% YoY' }
             ].map((stat, i) => (
               <div key={i} style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '0.875rem', fontWeight: 700, color: '#9333ea', marginBottom: '0.25rem' }}>
+                <div style={{ fontSize: '0.875rem', fontWeight: 800, color: '#9333ea', marginBottom: '0.25rem' }}>
                   {stat.value}
                 </div>
                 <div style={{ fontSize: '0.75rem' }}>{stat.label}</div>
@@ -243,7 +243,7 @@ const Home = () => {
               className="gradient-text"
               style={{
                 fontSize: 'clamp(2rem, 5vw, 3rem)',
-                fontWeight: 700,
+                fontWeight: 800,
                 marginBottom: '1rem'
               }}
             >
@@ -287,11 +287,11 @@ const Home = () => {
                   >
                     <Icon size={32} style={{ color: diff.color }} />
                   </div>
-                  <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.5rem' }}>
+                  <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.5rem' }}>
                     {diff.title}
                   </h3>
                   {diff.stat && (
-                    <div style={{ fontSize: '2rem', fontWeight: 700, color: diff.color, marginBottom: '0.75rem' }}>
+                    <div style={{ fontSize: '2rem', fontWeight: 800, color: diff.color, marginBottom: '0.75rem' }}>
                       {diff.stat}
                     </div>
                   )}
@@ -313,7 +313,7 @@ const Home = () => {
               className="gradient-text"
               style={{
                 fontSize: 'clamp(2rem, 5vw, 3rem)',
-                fontWeight: 700,
+                fontWeight: 800,
                 marginBottom: '1rem'
               }}
             >
@@ -359,7 +359,7 @@ const Home = () => {
                   >
                     <Icon size={36} style={{ color: service.color }} />
                   </div>
-                  <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem' }}>
+                  <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>
                     {service.title}
                   </h3>
                   <p style={{ color: 'rgba(255, 255, 255, 0.95)', lineHeight: 1.6, marginBottom: '1.5rem' }}>
@@ -373,7 +373,7 @@ const Home = () => {
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '0.5rem',
-                      fontWeight: 700,
+                      fontWeight: 800,
                       fontSize: '0.875rem',
                       textTransform: 'uppercase',
                       letterSpacing: '0.05em'
@@ -417,7 +417,7 @@ const Home = () => {
             className="gradient-text"
             style={{
               fontSize: 'clamp(2rem, 5vw, 3rem)',
-              fontWeight: 700,
+              fontWeight: 800,
               marginBottom: '1.5rem'
             }}
           >
@@ -435,7 +435,7 @@ const Home = () => {
               border: 'none',
               borderRadius: '50px',
               color: 'white',
-              fontWeight: 700,
+              fontWeight: 800,
               fontSize: '1.125rem',
               textDecoration: 'none',
               textTransform: 'uppercase',

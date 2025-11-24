@@ -160,7 +160,7 @@ const Services = () => {
               borderRadius: '50px',
               marginBottom: '2rem',
               fontSize: '0.875rem',
-              fontWeight: 700,
+              fontWeight: 800,
               textTransform: 'uppercase',
               letterSpacing: '0.05em'
             }}
@@ -235,7 +235,7 @@ const Services = () => {
                 return (
                   <div key={index} style={{ textAlign: 'center' }}>
                     <Icon size={32} style={{ color: '#9333ea', marginBottom: '0.75rem' }} />
-                    <div style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.25rem', color: 'white' }}>
+                    <div style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.25rem', color: 'white' }}>
                       {benefit.value}
                     </div>
                     <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
@@ -257,7 +257,7 @@ const Services = () => {
               className="gradient-text"
               style={{
                 fontSize: 'clamp(2rem, 4vw, 3rem)',
-                fontWeight: 700,
+                fontWeight: 800,
                 marginBottom: '1rem'
               }}
             >
@@ -306,7 +306,7 @@ const Services = () => {
                     <Icon size={40} style={{ color: service.color }} />
                   </div>
 
-                  <h3 style={{ fontSize: '1.75rem', fontWeight: 700, marginBottom: '1rem' }}>
+                  <h3 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '1rem' }}>
                     {service.title}
                   </h3>
 
@@ -315,7 +315,7 @@ const Services = () => {
                   </p>
 
                   <div style={{ marginBottom: '1.5rem' }}>
-                    <h4 style={{ fontSize: '0.875rem', fontWeight: 700, marginBottom: '1rem', textTransform: 'uppercase', color: 'rgba(255, 255, 255, 0.9)' }}>
+                    <h4 style={{ fontSize: '0.875rem', fontWeight: 800, marginBottom: '1rem', textTransform: 'uppercase', color: 'rgba(255, 255, 255, 0.9)' }}>
                       What's Included:
                     </h4>
                     <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -340,11 +340,11 @@ const Services = () => {
                   >
                     <div>
                       <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.85)', marginBottom: '0.25rem' }}>Timeline</div>
-                      <div style={{ fontSize: '1rem', fontWeight: 700, color: service.color }}>{service.deliverables}</div>
+                      <div style={{ fontSize: '1rem', fontWeight: 800, color: service.color }}>{service.deliverables}</div>
                     </div>
                     <div style={{ textAlign: 'right' }}>
                       <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.85)', marginBottom: '0.25rem' }}>Expected ROI</div>
-                      <div style={{ fontSize: '1rem', fontWeight: 700, color: service.color }}>{service.roi}</div>
+                      <div style={{ fontSize: '1rem', fontWeight: 800, color: service.color }}>{service.roi}</div>
                     </div>
                   </div>
 
@@ -357,7 +357,7 @@ const Services = () => {
                       border: 'none',
                       borderRadius: '12px',
                       color: 'white',
-                      fontWeight: 700,
+                      fontWeight: 800,
                       textAlign: 'center',
                       textDecoration: 'none',
                       display: 'flex',
@@ -388,7 +388,7 @@ const Services = () => {
               className="gradient-text"
               style={{
                 fontSize: 'clamp(2rem, 4vw, 3rem)',
-                fontWeight: 700,
+                fontWeight: 800,
                 marginBottom: '1rem'
               }}
             >
@@ -450,7 +450,7 @@ const Services = () => {
                     </div>
                   </div>
                   <div style={{ flex: 1 }}>
-                    <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.75rem' }}>
+                    <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.75rem' }}>
                       {phase.title}
                     </h3>
                     <p style={{ color: 'rgba(255, 255, 255, 0.95)', lineHeight: 1.6 }}>
@@ -479,7 +479,7 @@ const Services = () => {
             className="gradient-text"
             style={{
               fontSize: 'clamp(2rem, 4vw, 3rem)',
-              fontWeight: 700,
+              fontWeight: 800,
               marginBottom: '1.5rem'
             }}
           >
@@ -498,7 +498,7 @@ const Services = () => {
                 border: 'none',
                 borderRadius: '50px',
                 color: 'white',
-                fontWeight: 700,
+                fontWeight: 800,
                 fontSize: '1.125rem',
                 textDecoration: 'none',
                 textTransform: 'uppercase',
@@ -518,7 +518,7 @@ const Services = () => {
                 border: '2px solid #9333ea',
                 borderRadius: '50px',
                 color: 'white',
-                fontWeight: 700,
+                fontWeight: 800,
                 fontSize: '1.125rem',
                 textTransform: 'uppercase',
                 letterSpacing: '0.05em',
