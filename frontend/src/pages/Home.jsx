@@ -420,7 +420,8 @@ const Home = () => {
             style={{
               fontSize: 'clamp(2rem, 5vw, 3rem)',
               fontWeight: 800,
-              marginBottom: '1.5rem'
+              marginBottom: '1.5rem',
+              textShadow: '0 0 30px rgba(192, 132, 252, 0.5)'
             }}
           >
             Ready to Transform Your Business?
