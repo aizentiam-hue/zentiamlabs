@@ -339,11 +339,11 @@ const Services = () => {
                     }}
                   >
                     <div>
-                      <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.6)', marginBottom: '0.25rem' }}>Timeline</div>
+                      <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.85)', marginBottom: '0.25rem' }}>Timeline</div>
                       <div style={{ fontSize: '1rem', fontWeight: 600, color: service.color }}>{service.deliverables}</div>
                     </div>
                     <div style={{ textAlign: 'right' }}>
-                      <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.6)', marginBottom: '0.25rem' }}>Expected ROI</div>
+                      <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.85)', marginBottom: '0.25rem' }}>Expected ROI</div>
                       <div style={{ fontSize: '1rem', fontWeight: 600, color: service.color }}>{service.roi}</div>
                     </div>
                   </div>

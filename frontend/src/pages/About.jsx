@@ -303,7 +303,7 @@ const About = () => {
                   <div style={{ fontSize: '2rem', fontWeight: 700, color: pillar.color, marginBottom: '0.5rem' }}>
                     {pillar.stat}
                   </div>
-                  <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.6)', marginBottom: '1.5rem' }}>
+                  <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.85)', marginBottom: '1.5rem' }}>
                     {pillar.detail}
                   </div>
                   <p style={{ color: 'rgba(255, 255, 255, 0.95)', lineHeight: 1.6 }}>
