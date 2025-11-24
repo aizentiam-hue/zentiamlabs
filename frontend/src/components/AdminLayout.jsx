@@ -36,7 +36,7 @@ const AdminLayout = ({ children }) => {
         {/* Logo */}
         <div style={{ marginBottom: '2rem' }}>
           <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '0.25rem' }}>Zentiam</h2>
-          <p className="caption" style={{ color: 'var(--text-muted)' }}>Admin Portal</p>
+          <p className="caption" style={{ color: 'rgba(255, 255, 255, 0.75)' }}>Admin Portal</p>
         </div>
 
         {/* Navigation */}
@@ -88,7 +88,7 @@ const AdminLayout = ({ children }) => {
             borderRadius: '0.5rem',
             background: 'transparent',
             border: '1px solid var(--border-primary)',
-            color: 'var(--text-primary)',
+            color: 'rgba(255, 255, 255, 0.95)',
             cursor: 'pointer',
             fontSize: '0.875rem',
             transition: 'all 0.2s ease',

@@ -181,7 +181,7 @@ const ChatWidget = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'var(--text-primary)'
+                  color: 'rgba(255, 255, 255, 0.95)'
                 }}
               >
                 <MessageCircle size={20} />
@@ -244,7 +244,7 @@ const ChatWidget = () => {
                 <div
                   style={{
                     fontSize: '0.7rem',
-                    color: 'var(--text-muted)',
+                    color: 'rgba(255, 255, 255, 0.75)',
                     marginTop: '0.25rem',
                     padding: '0 0.25rem'
                   }}
@@ -255,8 +255,8 @@ const ChatWidget = () => {
             ))}
             {isLoading && (
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <Loader2 size={16} className="spin" style={{ color: 'var(--text-muted)' }} />
-                <span style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>Typing...</span>
+                <Loader2 size={16} className="spin" style={{ color: 'rgba(255, 255, 255, 0.75)' }} />
+                <span style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.75)' }}>Typing...</span>
               </div>
             )}
             <div ref={messagesEndRef} />
