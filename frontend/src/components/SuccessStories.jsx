@@ -68,10 +68,10 @@ const SuccessStories = () => {
   return (
     <div>
       <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-        <h2 className="heading-1 gradient-text" style={{ marginBottom: '1rem' }}>
+        <h2 className="heading-1 gradient-text" style={{ marginBottom: '1rem', fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 800, textShadow: '0 0 30px rgba(192, 132, 252, 0.5)' }}>
           Real Results, Real Impact
         </h2>
-        <p className="body-large" style={{ color: 'var(--text-secondary)', maxWidth: '700px', margin: '0 auto' }}>
+        <p style={{ fontSize: '1.25rem', color: 'rgba(255, 255, 255, 0.95)', maxWidth: '700px', margin: '0 auto', lineHeight: 1.6 }}>
           See how we've helped organizations achieve measurable transformation
         </p>
       </div>
