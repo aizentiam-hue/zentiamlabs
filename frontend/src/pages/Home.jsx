@@ -77,7 +77,7 @@ const Home = () => {
   ];
 
   return (
-    <div style={{ background: '#0a0a0f', color: 'white', position: 'relative' }}>
+    <div style={{ background: '#1a1a2e', color: 'white', position: 'relative' }}>
       <ParticleBackground />
 
       {/* Hero Section - Futuristic */}

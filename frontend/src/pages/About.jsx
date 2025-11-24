@@ -66,7 +66,7 @@ const About = () => {
   ];
 
   return (
-    <div style={{ background: '#0a0a0f', color: 'white', position: 'relative', minHeight: '100vh' }}>
+    <div style={{ background: '#1a1a2e', color: 'white', position: 'relative', minHeight: '100vh' }}>
       <ParticleBackground />
 
       {/* Hero Section */}
