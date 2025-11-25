@@ -105,10 +105,13 @@ cp /app/frontend/src/pages/Home_Hero_V4_Asymmetric.jsx.backup /app/frontend/src/
 ## Testing Progress
 
 ✅ **Version 1 (Split Layout)** - TESTED & IMPLEMENTED
-- Status: Live on site
-- User feedback: Pending
-- Next: Test Version 2 (Wider Centered) when requested
+- Status: Completed, backed up
+- User feedback: Reviewed
 
-⏳ **Version 2 (Wider Centered)** - Ready to implement
+✅ **Version 2 (Wider Centered)** - TESTED & IMPLEMENTED
+- Status: Currently live on site
+- User feedback: Pending
+- Next: Test Version 3 (Side Decorations) when requested
+
 ⏳ **Version 3 (Side Decorations)** - Ready to implement  
 ⏳ **Version 4 (Asymmetric)** - Ready to implement
