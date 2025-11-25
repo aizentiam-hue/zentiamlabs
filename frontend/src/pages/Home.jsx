@@ -111,123 +111,268 @@ const Home = () => {
             gap: '3rem',
             alignItems: 'center'
           }}>
-          {/* Announcement Badge */}
-          <div
-            className="fade-in-up"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.75rem',
-              background: 'rgba(147, 51, 234, 0.1)',
-              border: '1px solid rgba(147, 51, 234, 0.3)',
-              borderRadius: '50px',
-              padding: '0.75rem 1.5rem',
-              marginBottom: '2rem',
-              backdropFilter: 'blur(10px)'
-            }}
-          >
-            <Sparkles size={18} style={{ color: '#9333ea' }} />
-            <span style={{ fontSize: '0.875rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              AI Solutions in Days, Not Months
-            </span>
-          </div>
-
-          <h1
-            className="fade-in-up delay-100"
-            style={{
-              fontSize: 'clamp(2.5rem, 7vw, 5rem)',
-              fontWeight: 800,
-              lineHeight: 1.1,
-              marginBottom: '1.5rem',
-              background: 'linear-gradient(135deg, #ffffff 0%, #a78bfa 50%, #9333ea 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
-            }}
-          >
-            Where Intelligence
-            <br />
-            Meets Impact
-          </h1>
-
-          <p
-            className="fade-in-up delay-200"
-            style={{
-              fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
-              marginBottom: '3rem',
-              maxWidth: '800px',
-              margin: '0 auto 3rem',
-              color: 'rgba(255, 255, 255, 0.95)',
-              lineHeight: 1.6
-            }}
-          >
-            Transform your business with AI solutions that deliver{' '}
-            <span style={{ color: '#22c55e', fontWeight: 700 }}>3.7x ROI</span>,{' '}
-            <span style={{ color: '#3b82f6', fontWeight: 700 }}>40% productivity gains</span>, and measurable results in weeks.
-          </p>
-
-          <div
-            className="fade-in-up delay-300"
-            style={{
-              display: 'flex',
-              gap: '1rem',
-              justifyContent: 'center',
-              flexWrap: 'wrap',
-              marginBottom: '3rem'
-            }}
-          >
-            <button
-              onClick={() => setShowAssessment(true)}
-              className="btn-neon btn-neon-purple"
-              style={{
-                padding: '1.25rem 2.5rem',
-                fontSize: '1rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem'
-              }}
-            >
-              <Brain size={20} />
-              Take AI Assessment
-            </button>
-            <button
-              onClick={() => setShowROICalc(true)}
-              className="btn-neon btn-neon-blue"
-              style={{
-                padding: '1.25rem 2.5rem',
-                fontSize: '1rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem'
-              }}
-            >
-              <Zap size={20} />
-              Calculate Your ROI
-            </button>
-          </div>
-
-          {/* Trust Indicators */}
-          <div
-            className="fade-in-up delay-400"
-            style={{
-              display: 'flex',
-              gap: '3rem',
-              justifyContent: 'center',
-              flexWrap: 'wrap'
-            }}
-          >
-            {[
-              { label: '78% Enterprise Adoption', value: 'Industry Leading' },
-              { label: '150+ Projects Delivered', value: 'Proven Track Record' },
-              { label: '$184B+ AI Market', value: 'Growing 28% YoY' }
-            ].map((stat, i) => (
-              <div key={i} style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '0.875rem', fontWeight: 800, color: '#9333ea', marginBottom: '0.25rem' }}>
-                  {stat.value}
-                </div>
-                <div style={{ fontSize: '0.75rem' }}>{stat.label}</div>
+            {/* LEFT COLUMN - Content (Offset Left) */}
+            <div style={{ textAlign: 'left', paddingLeft: '2rem' }}>
+              {/* Announcement Badge */}
+              <div
+                className="fade-in-up"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.75rem',
+                  background: 'rgba(147, 51, 234, 0.1)',
+                  border: '1px solid rgba(147, 51, 234, 0.3)',
+                  borderRadius: '50px',
+                  padding: '0.75rem 1.5rem',
+                  marginBottom: '2rem',
+                  backdropFilter: 'blur(10px)'
+                }}
+              >
+                <Sparkles size={18} style={{ color: '#9333ea' }} />
+                <span style={{ fontSize: '0.875rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  AI Solutions in Days, Not Months
+                </span>
               </div>
-            ))}
+
+              <h1
+                className="fade-in-up delay-100"
+                style={{
+                  fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+                  fontWeight: 800,
+                  lineHeight: 1.1,
+                  marginBottom: '1.5rem',
+                  background: 'linear-gradient(135deg, #ffffff 0%, #a78bfa 50%, #9333ea 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}
+              >
+                Where Intelligence
+                <br />
+                Meets Impact
+              </h1>
+
+              <p
+                className="fade-in-up delay-200"
+                style={{
+                  fontSize: 'clamp(1.125rem, 2vw, 1.35rem)',
+                  marginBottom: '3rem',
+                  maxWidth: '550px',
+                  color: 'rgba(255, 255, 255, 0.95)',
+                  lineHeight: 1.6
+                }}
+              >
+                Transform your business with AI solutions that deliver{' '}
+                <span style={{ color: '#22c55e', fontWeight: 700 }}>3.7x ROI</span>,{' '}
+                <span style={{ color: '#3b82f6', fontWeight: 700 }}>40% productivity gains</span>, and measurable results in weeks.
+              </p>
+
+              <div
+                className="fade-in-up delay-300"
+                style={{
+                  display: 'flex',
+                  gap: '1rem',
+                  flexWrap: 'wrap',
+                  marginBottom: '3rem'
+                }}
+              >
+                <button
+                  onClick={() => setShowAssessment(true)}
+                  className="btn-neon btn-neon-purple"
+                  style={{
+                    padding: '1.25rem 2.5rem',
+                    fontSize: '1rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem'
+                  }}
+                >
+                  <Brain size={20} />
+                  Take AI Assessment
+                </button>
+                <button
+                  onClick={() => setShowROICalc(true)}
+                  className="btn-neon btn-neon-blue"
+                  style={{
+                    padding: '1.25rem 2.5rem',
+                    fontSize: '1rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem'
+                  }}
+                >
+                  <Zap size={20} />
+                  Calculate Your ROI
+                </button>
+              </div>
+
+              {/* Trust Indicators */}
+              <div
+                className="fade-in-up delay-400"
+                style={{
+                  display: 'flex',
+                  gap: '2rem',
+                  flexWrap: 'wrap'
+                }}
+              >
+                {[
+                  { label: '78% Enterprise Adoption', value: 'Industry Leading' },
+                  { label: '150+ Projects', value: 'Proven Track Record' }
+                ].map((stat, i) => (
+                  <div key={i}>
+                    <div style={{ fontSize: '0.875rem', fontWeight: 800, color: '#9333ea', marginBottom: '0.25rem' }}>
+                      {stat.value}
+                    </div>
+                    <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.85)' }}>{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* RIGHT COLUMN - Floating Interactive Widgets */}
+            <div className="fade-in-up delay-500" style={{ position: 'relative', minHeight: '600px' }}>
+              
+              {/* Assessment Preview Card */}
+              <div
+                className="glass-card hover-scale"
+                style={{
+                  position: 'absolute',
+                  top: '0',
+                  right: '0',
+                  width: '320px',
+                  padding: '2rem',
+                  background: 'linear-gradient(135deg, rgba(147, 51, 234, 0.2) 0%, rgba(147, 51, 234, 0.05) 100%)',
+                  borderColor: 'rgba(147, 51, 234, 0.4)',
+                  animation: 'float 7s ease-in-out infinite',
+                  cursor: 'pointer'
+                }}
+                onClick={() => setShowAssessment(true)}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+                  <div style={{ 
+                    width: '60px', 
+                    height: '60px', 
+                    borderRadius: '16px', 
+                    background: 'rgba(147, 51, 234, 0.3)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                    <Brain size={32} style={{ color: '#9333ea' }} />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: '1.25rem', fontWeight: 800, color: 'white' }}>
+                      AI Assessment
+                    </div>
+                    <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.85)' }}>
+                      2 min quiz
+                    </div>
+                  </div>
+                </div>
+                <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)', marginBottom: '1rem' }}>
+                  Discover your AI readiness score and get personalized recommendations
+                </div>
+                <div style={{ display: 'flex', gap: '0.5rem' }}>
+                  {[1,2,3,4,5].map(i => (
+                    <div key={i} style={{ 
+                      flex: 1, 
+                      height: '4px', 
+                      background: i <= 3 ? '#9333ea' : 'rgba(147, 51, 234, 0.2)',
+                      borderRadius: '2px'
+                    }} />
+                  ))}
+                </div>
+              </div>
+
+              {/* ROI Calculator Preview */}
+              <div
+                className="glass-card hover-scale"
+                style={{
+                  position: 'absolute',
+                  top: '200px',
+                  right: '40px',
+                  width: '300px',
+                  padding: '2rem',
+                  background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(34, 197, 94, 0.05) 100%)',
+                  borderColor: 'rgba(34, 197, 94, 0.4)',
+                  animation: 'float 8s ease-in-out infinite 1s',
+                  cursor: 'pointer'
+                }}
+                onClick={() => setShowROICalc(true)}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+                  <div style={{ 
+                    width: '60px', 
+                    height: '60px', 
+                    borderRadius: '16px', 
+                    background: 'rgba(34, 197, 94, 0.3)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                    <Target size={32} style={{ color: '#22c55e' }} />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: '1.25rem', fontWeight: 800, color: 'white' }}>
+                      ROI Calculator
+                    </div>
+                    <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.85)' }}>
+                      Instant results
+                    </div>
+                  </div>
+                </div>
+                <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)', marginBottom: '1rem' }}>
+                  See your potential savings and revenue increase
+                </div>
+                <div style={{ 
+                  fontSize: '2rem', 
+                  fontWeight: 800, 
+                  color: '#22c55e',
+                  textAlign: 'center'
+                }}>
+                  3.7x ROI
+                </div>
+              </div>
+
+              {/* Success Metric Card */}
+              <div
+                className="glass-card"
+                style={{
+                  position: 'absolute',
+                  top: '420px',
+                  right: '10px',
+                  width: '280px',
+                  padding: '1.5rem',
+                  background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0.05) 100%)',
+                  borderColor: 'rgba(59, 130, 246, 0.4)',
+                  animation: 'float 9s ease-in-out infinite 2s'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.75rem' }}>
+                  <Award size={28} style={{ color: '#3b82f6' }} />
+                  <div style={{ fontSize: '1.125rem', fontWeight: 800, color: 'white' }}>
+                    150+ Success Stories
+                  </div>
+                </div>
+                <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
+                  Join companies achieving measurable AI transformation
+                </div>
+              </div>
+
+              {/* Background glow */}
+              <div style={{
+                position: 'absolute',
+                top: '50%',
+                right: '0',
+                transform: 'translateY(-50%)',
+                width: '500px',
+                height: '500px',
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(147, 51, 234, 0.15) 0%, transparent 70%)',
+                zIndex: -1,
+                filter: 'blur(60px)'
+              }} />
+            </div>
           </div>
         </div>
       </section>
