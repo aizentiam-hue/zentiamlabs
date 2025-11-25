@@ -80,7 +80,7 @@ const Home = () => {
     <div style={{ background: '#1a1a2e', color: 'white', position: 'relative' }}>
       <ParticleBackground />
 
-      {/* Hero Section - Wider Centered (Version 2) */}
+      {/* Hero Section - Futuristic */}
       <section
         style={{
           position: 'relative',
@@ -89,7 +89,7 @@ const Home = () => {
           alignItems: 'center',
           justifyContent: 'center',
           textAlign: 'center',
-          padding: '10rem 3rem 4rem',
+          padding: '10rem 1.5rem 4rem',
           overflow: 'hidden'
         }}
       >
@@ -106,7 +106,7 @@ const Home = () => {
           }}
         />
 
-        <div className="container" style={{ position: 'relative', zIndex: 2, maxWidth: '1400px' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 2, maxWidth: '1100px' }}>
           {/* Announcement Badge */}
           <div
             className="fade-in-up"
@@ -151,7 +151,7 @@ const Home = () => {
             style={{
               fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
               marginBottom: '3rem',
-              maxWidth: '950px',
+              maxWidth: '800px',
               margin: '0 auto 3rem',
               color: 'rgba(255, 255, 255, 0.95)',
               lineHeight: 1.6
@@ -207,11 +207,9 @@ const Home = () => {
             className="fade-in-up delay-400"
             style={{
               display: 'flex',
-              gap: '4rem',
+              gap: '3rem',
               justifyContent: 'center',
-              flexWrap: 'wrap',
-              maxWidth: '1200px',
-              margin: '0 auto'
+              flexWrap: 'wrap'
             }}
           >
             {[
