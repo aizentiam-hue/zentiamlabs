@@ -108,44 +108,40 @@
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
-/* Neon Buttons */
+/* Clean Solid Buttons */
 .btn-neon {
   position: relative;
   padding: 1rem 2rem;
-  border: 2px solid;
-  border-radius: 50px;
-  background: transparent;
+  border: none;
+  border-radius: 12px;
   color: white;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.3s ease;
   overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .btn-neon-purple {
-  border-color: #9333ea;
-  color: #9333ea;
+  background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%);
 }
 
 .btn-neon-purple:hover {
-  background: #9333ea;
-  color: white;
-  box-shadow: 0 0 30px rgba(147, 51, 234, 0.6);
-  transform: scale(1.05);
+  background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+  box-shadow: 0 6px 20px rgba(147, 51, 234, 0.3);
+  transform: translateY(-2px);
 }
 
 .btn-neon-blue {
-  border-color: #3b82f6;
-  color: #3b82f6;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
 }
 
 .btn-neon-blue:hover {
-  background: #3b82f6;
-  color: white;
-  box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
-  transform: scale(1.05);
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+  transform: translateY(-2px);
 }
 
 /* Holographic Effect */
