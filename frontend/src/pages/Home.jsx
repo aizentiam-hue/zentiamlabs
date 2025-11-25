@@ -111,123 +111,248 @@ const Home = () => {
             gap: '4rem',
             alignItems: 'center'
           }}>
-          {/* Announcement Badge */}
-          <div
-            className="fade-in-up"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.75rem',
-              background: 'rgba(147, 51, 234, 0.1)',
-              border: '1px solid rgba(147, 51, 234, 0.3)',
-              borderRadius: '50px',
-              padding: '0.75rem 1.5rem',
-              marginBottom: '2rem',
-              backdropFilter: 'blur(10px)'
-            }}
-          >
-            <Sparkles size={18} style={{ color: '#9333ea' }} />
-            <span style={{ fontSize: '0.875rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              AI Solutions in Days, Not Months
-            </span>
-          </div>
-
-          <h1
-            className="fade-in-up delay-100"
-            style={{
-              fontSize: 'clamp(2.5rem, 7vw, 5rem)',
-              fontWeight: 800,
-              lineHeight: 1.1,
-              marginBottom: '1.5rem',
-              background: 'linear-gradient(135deg, #ffffff 0%, #a78bfa 50%, #9333ea 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
-            }}
-          >
-            Where Intelligence
-            <br />
-            Meets Impact
-          </h1>
-
-          <p
-            className="fade-in-up delay-200"
-            style={{
-              fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
-              marginBottom: '3rem',
-              maxWidth: '800px',
-              margin: '0 auto 3rem',
-              color: 'rgba(255, 255, 255, 0.95)',
-              lineHeight: 1.6
-            }}
-          >
-            Transform your business with AI solutions that deliver{' '}
-            <span style={{ color: '#22c55e', fontWeight: 700 }}>3.7x ROI</span>,{' '}
-            <span style={{ color: '#3b82f6', fontWeight: 700 }}>40% productivity gains</span>, and measurable results in weeks.
-          </p>
-
-          <div
-            className="fade-in-up delay-300"
-            style={{
-              display: 'flex',
-              gap: '1rem',
-              justifyContent: 'center',
-              flexWrap: 'wrap',
-              marginBottom: '3rem'
-            }}
-          >
-            <button
-              onClick={() => setShowAssessment(true)}
-              className="btn-neon btn-neon-purple"
-              style={{
-                padding: '1.25rem 2.5rem',
-                fontSize: '1rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem'
-              }}
-            >
-              <Brain size={20} />
-              Take AI Assessment
-            </button>
-            <button
-              onClick={() => setShowROICalc(true)}
-              className="btn-neon btn-neon-blue"
-              style={{
-                padding: '1.25rem 2.5rem',
-                fontSize: '1rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem'
-              }}
-            >
-              <Zap size={20} />
-              Calculate Your ROI
-            </button>
-          </div>
-
-          {/* Trust Indicators */}
-          <div
-            className="fade-in-up delay-400"
-            style={{
-              display: 'flex',
-              gap: '3rem',
-              justifyContent: 'center',
-              flexWrap: 'wrap'
-            }}
-          >
-            {[
-              { label: '78% Enterprise Adoption', value: 'Industry Leading' },
-              { label: '150+ Projects Delivered', value: 'Proven Track Record' },
-              { label: '$184B+ AI Market', value: 'Growing 28% YoY' }
-            ].map((stat, i) => (
-              <div key={i} style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '0.875rem', fontWeight: 800, color: '#9333ea', marginBottom: '0.25rem' }}>
-                  {stat.value}
-                </div>
-                <div style={{ fontSize: '0.75rem' }}>{stat.label}</div>
+            {/* LEFT COLUMN - Content */}
+            <div style={{ textAlign: 'left' }}>
+              {/* Announcement Badge */}
+              <div
+                className="fade-in-up"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.75rem',
+                  background: 'rgba(147, 51, 234, 0.1)',
+                  border: '1px solid rgba(147, 51, 234, 0.3)',
+                  borderRadius: '50px',
+                  padding: '0.75rem 1.5rem',
+                  marginBottom: '2rem',
+                  backdropFilter: 'blur(10px)'
+                }}
+              >
+                <Sparkles size={18} style={{ color: '#9333ea' }} />
+                <span style={{ fontSize: '0.875rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  AI Solutions in Days, Not Months
+                </span>
               </div>
-            ))}
+
+              <h1
+                className="fade-in-up delay-100"
+                style={{
+                  fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+                  fontWeight: 800,
+                  lineHeight: 1.1,
+                  marginBottom: '1.5rem',
+                  background: 'linear-gradient(135deg, #ffffff 0%, #a78bfa 50%, #9333ea 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}
+              >
+                Where Intelligence
+                <br />
+                Meets Impact
+              </h1>
+
+              <p
+                className="fade-in-up delay-200"
+                style={{
+                  fontSize: 'clamp(1.125rem, 2vw, 1.35rem)',
+                  marginBottom: '3rem',
+                  color: 'rgba(255, 255, 255, 0.95)',
+                  lineHeight: 1.6,
+                  maxWidth: '600px'
+                }}
+              >
+                Transform your business with AI solutions that deliver{' '}
+                <span style={{ color: '#22c55e', fontWeight: 700 }}>3.7x ROI</span>,{' '}
+                <span style={{ color: '#3b82f6', fontWeight: 700 }}>40% productivity gains</span>, and measurable results in weeks.
+              </p>
+
+              <div
+                className="fade-in-up delay-300"
+                style={{
+                  display: 'flex',
+                  gap: '1rem',
+                  flexWrap: 'wrap',
+                  marginBottom: '3rem'
+                }}
+              >
+                <button
+                  onClick={() => setShowAssessment(true)}
+                  className="btn-neon btn-neon-purple"
+                  style={{
+                    padding: '1.25rem 2.5rem',
+                    fontSize: '1rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem'
+                  }}
+                >
+                  <Brain size={20} />
+                  Take AI Assessment
+                </button>
+                <button
+                  onClick={() => setShowROICalc(true)}
+                  className="btn-neon btn-neon-blue"
+                  style={{
+                    padding: '1.25rem 2.5rem',
+                    fontSize: '1rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem'
+                  }}
+                >
+                  <Zap size={20} />
+                  Calculate Your ROI
+                </button>
+              </div>
+
+              {/* Trust Indicators */}
+              <div
+                className="fade-in-up delay-400"
+                style={{
+                  display: 'flex',
+                  gap: '2rem',
+                  flexWrap: 'wrap'
+                }}
+              >
+                {[
+                  { label: '78% Enterprise Adoption', value: 'Industry Leading' },
+                  { label: '150+ Projects Delivered', value: 'Proven Track Record' },
+                  { label: '$184B+ AI Market', value: 'Growing 28% YoY' }
+                ].map((stat, i) => (
+                  <div key={i}>
+                    <div style={{ fontSize: '0.875rem', fontWeight: 800, color: '#9333ea', marginBottom: '0.25rem' }}>
+                      {stat.value}
+                    </div>
+                    <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.85)' }}>{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* RIGHT COLUMN - Visual Elements */}
+            <div className="fade-in-up delay-500" style={{ position: 'relative', minHeight: '500px' }}>
+              {/* Floating Stat Card 1 */}
+              <div
+                className="glass-card hover-scale"
+                style={{
+                  position: 'absolute',
+                  top: '0',
+                  right: '10%',
+                  width: '280px',
+                  padding: '1.5rem',
+                  background: 'linear-gradient(135deg, rgba(147, 51, 234, 0.15) 0%, rgba(59, 130, 246, 0.1) 100%)',
+                  borderColor: 'rgba(147, 51, 234, 0.4)',
+                  animation: 'float 6s ease-in-out infinite'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.75rem' }}>
+                  <div style={{ 
+                    width: '50px', 
+                    height: '50px', 
+                    borderRadius: '12px', 
+                    background: 'rgba(147, 51, 234, 0.3)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                    <TrendingUp size={24} style={{ color: '#9333ea' }} />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: '2rem', fontWeight: 800, color: '#9333ea' }}>3.7x</div>
+                    <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.85)' }}>Average ROI</div>
+                  </div>
+                </div>
+                <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
+                  Proven returns across 150+ projects
+                </div>
+              </div>
+
+              {/* Floating Stat Card 2 */}
+              <div
+                className="glass-card hover-scale"
+                style={{
+                  position: 'absolute',
+                  top: '180px',
+                  right: '30%',
+                  width: '260px',
+                  padding: '1.5rem',
+                  background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(16, 185, 129, 0.1) 100%)',
+                  borderColor: 'rgba(34, 197, 94, 0.4)',
+                  animation: 'float 7s ease-in-out infinite 1s'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.75rem' }}>
+                  <div style={{ 
+                    width: '50px', 
+                    height: '50px', 
+                    borderRadius: '12px', 
+                    background: 'rgba(34, 197, 94, 0.3)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                    <Zap size={24} style={{ color: '#22c55e' }} />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: '2rem', fontWeight: 800, color: '#22c55e' }}>40%</div>
+                    <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.85)' }}>Productivity Gain</div>
+                  </div>
+                </div>
+                <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
+                  Immediate efficiency improvements
+                </div>
+              </div>
+
+              {/* Floating Stat Card 3 */}
+              <div
+                className="glass-card hover-scale"
+                style={{
+                  position: 'absolute',
+                  top: '350px',
+                  right: '5%',
+                  width: '240px',
+                  padding: '1.5rem',
+                  background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.1) 100%)',
+                  borderColor: 'rgba(59, 130, 246, 0.4)',
+                  animation: 'float 8s ease-in-out infinite 2s'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.75rem' }}>
+                  <div style={{ 
+                    width: '50px', 
+                    height: '50px', 
+                    borderRadius: '12px', 
+                    background: 'rgba(59, 130, 246, 0.3)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                    <Rocket size={24} style={{ color: '#3b82f6' }} />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: '2rem', fontWeight: 800, color: '#3b82f6' }}>10x</div>
+                    <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.85)' }}>Faster Deploy</div>
+                  </div>
+                </div>
+                <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
+                  Solutions in days, not months
+                </div>
+              </div>
+
+              {/* Background decorative elements */}
+              <div style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '400px',
+                height: '400px',
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(147, 51, 234, 0.1) 0%, transparent 70%)',
+                zIndex: -1
+              }} />
+            </div>
           </div>
         </div>
       </section>
