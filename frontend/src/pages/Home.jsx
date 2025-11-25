@@ -151,7 +151,7 @@ const Home = () => {
             style={{
               fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
               marginBottom: '3rem',
-              maxWidth: '800px',
+              maxWidth: '950px',
               margin: '0 auto 3rem',
               color: 'rgba(255, 255, 255, 0.95)',
               lineHeight: 1.6
