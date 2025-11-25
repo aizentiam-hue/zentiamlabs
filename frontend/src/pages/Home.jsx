@@ -207,9 +207,11 @@ const Home = () => {
             className="fade-in-up delay-400"
             style={{
               display: 'flex',
-              gap: '3rem',
+              gap: '4rem',
               justifyContent: 'center',
-              flexWrap: 'wrap'
+              flexWrap: 'wrap',
+              maxWidth: '1200px',
+              margin: '0 auto'
             }}
           >
             {[
