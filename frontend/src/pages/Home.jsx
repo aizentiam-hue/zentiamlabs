@@ -80,7 +80,7 @@ const Home = () => {
     <div style={{ background: '#1a1a2e', color: 'white', position: 'relative' }}>
       <ParticleBackground />
 
-      {/* Hero Section - Futuristic */}
+      {/* Hero Section - Full-Width with Side Decorations (Version 3) */}
       <section
         style={{
           position: 'relative',
@@ -105,6 +105,121 @@ const Home = () => {
             zIndex: 1
           }}
         />
+
+        {/* LEFT SIDE DECORATIONS */}
+        <div style={{
+          position: 'absolute',
+          left: '5%',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          zIndex: 1,
+          opacity: 0.6
+        }}>
+          {/* Decorative Icons */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', alignItems: 'center' }}>
+            <div className="glass-card" style={{
+              width: '80px',
+              height: '80px',
+              borderRadius: '16px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'rgba(147, 51, 234, 0.15)',
+              borderColor: 'rgba(147, 51, 234, 0.3)',
+              animation: 'float 6s ease-in-out infinite'
+            }}>
+              <Brain size={40} style={{ color: '#9333ea' }} />
+            </div>
+            
+            <div className="glass-card" style={{
+              width: '80px',
+              height: '80px',
+              borderRadius: '16px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'rgba(59, 130, 246, 0.15)',
+              borderColor: 'rgba(59, 130, 246, 0.3)',
+              animation: 'float 7s ease-in-out infinite 1s'
+            }}>
+              <Cpu size={40} style={{ color: '#3b82f6' }} />
+            </div>
+            
+            <div className="glass-card" style={{
+              width: '80px',
+              height: '80px',
+              borderRadius: '16px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'rgba(34, 197, 94, 0.15)',
+              borderColor: 'rgba(34, 197, 94, 0.3)',
+              animation: 'float 8s ease-in-out infinite 2s'
+            }}>
+              <Zap size={40} style={{ color: '#22c55e' }} />
+            </div>
+          </div>
+        </div>
+
+        {/* RIGHT SIDE DECORATIONS - Stats Mini Cards */}
+        <div style={{
+          position: 'absolute',
+          right: '5%',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          zIndex: 1,
+          opacity: 0.7
+        }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            {/* Stat 1 */}
+            <div className="glass-card" style={{
+              padding: '1.5rem',
+              width: '200px',
+              background: 'rgba(147, 51, 234, 0.1)',
+              borderColor: 'rgba(147, 51, 234, 0.3)',
+              animation: 'float 6s ease-in-out infinite'
+            }}>
+              <div style={{ fontSize: '2.5rem', fontWeight: 800, color: '#9333ea', marginBottom: '0.5rem' }}>
+                3.7x
+              </div>
+              <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
+                Average ROI
+              </div>
+            </div>
+
+            {/* Stat 2 */}
+            <div className="glass-card" style={{
+              padding: '1.5rem',
+              width: '200px',
+              background: 'rgba(34, 197, 94, 0.1)',
+              borderColor: 'rgba(34, 197, 94, 0.3)',
+              animation: 'float 7s ease-in-out infinite 1.5s'
+            }}>
+              <div style={{ fontSize: '2.5rem', fontWeight: 800, color: '#22c55e', marginBottom: '0.5rem' }}>
+                40%
+              </div>
+              <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
+                Productivity Gain
+              </div>
+            </div>
+
+            {/* Stat 3 */}
+            <div className="glass-card" style={{
+              padding: '1.5rem',
+              width: '200px',
+              background: 'rgba(59, 130, 246, 0.1)',
+              borderColor: 'rgba(59, 130, 246, 0.3)',
+              animation: 'float 8s ease-in-out infinite 2.5s'
+            }}>
+              <div style={{ fontSize: '2.5rem', fontWeight: 800, color: '#3b82f6', marginBottom: '0.5rem' }}>
+                150+
+              </div>
+              <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
+                Projects Delivered
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div className="container" style={{ position: 'relative', zIndex: 2, maxWidth: '1100px' }}>
           {/* Announcement Badge */}
