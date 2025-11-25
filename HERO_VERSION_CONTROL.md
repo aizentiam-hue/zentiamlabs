@@ -97,7 +97,7 @@ cp /app/frontend/src/pages/Home_Hero_V4_Asymmetric.jsx.backup /app/frontend/src/
 ---
 
 ## Current Active Version
-**Active**: Version 1 (Split Hero Layout)
+**Active**: Version 2 (Wider Centered Layout)
 **Last Updated**: November 25, 2025
 
 ---
