@@ -80,16 +80,14 @@ const Home = () => {
     <div style={{ background: '#1a1a2e', color: 'white', position: 'relative' }}>
       <ParticleBackground />
 
-      {/* Hero Section - Futuristic */}
+      {/* Hero Section - Split Layout (Version 1) */}
       <section
         style={{
           position: 'relative',
           minHeight: '100vh',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
-          textAlign: 'center',
-          padding: '10rem 1.5rem 4rem',
+          padding: '10rem 2rem 4rem',
           overflow: 'hidden'
         }}
       >
@@ -101,12 +99,18 @@ const Home = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'radial-gradient(circle at 50% 20%, rgba(147, 51, 234, 0.15), transparent 70%)',
+            background: 'radial-gradient(circle at 30% 20%, rgba(147, 51, 234, 0.15), transparent 70%)',
             zIndex: 1
           }}
         />
 
-        <div className="container" style={{ position: 'relative', zIndex: 2, maxWidth: '1100px' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 2, maxWidth: '1400px', width: '100%' }}>
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))',
+            gap: '4rem',
+            alignItems: 'center'
+          }}>
           {/* Announcement Badge */}
           <div
             className="fade-in-up"
