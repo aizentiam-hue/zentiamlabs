@@ -108,7 +108,7 @@ cp /app/frontend/src/pages/Home_Hero_V4_Asymmetric.jsx.backup /app/frontend/src/
 ---
 
 ## Current Active Version
-**Active**: Version 2 (Wider Centered Layout)
+**Active**: Version 3 (Full-Width with Side Decorations)
 **Last Updated**: November 25, 2025
 
 ---
