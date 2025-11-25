@@ -80,7 +80,7 @@ const Home = () => {
     <div style={{ background: '#1a1a2e', color: 'white', position: 'relative' }}>
       <ParticleBackground />
 
-      {/* Hero Section - Asymmetric with Floating Elements (Version 4) */}
+      {/* Hero Section - Split Layout (Version 1) */}
       <section
         style={{
           position: 'relative',
@@ -99,7 +99,7 @@ const Home = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'radial-gradient(circle at 30% 30%, rgba(147, 51, 234, 0.2), transparent 60%)',
+            background: 'radial-gradient(circle at 30% 20%, rgba(147, 51, 234, 0.15), transparent 70%)',
             zIndex: 1
           }}
         />
@@ -107,12 +107,12 @@ const Home = () => {
         <div className="container" style={{ position: 'relative', zIndex: 2, maxWidth: '1400px', width: '100%' }}>
           <div style={{ 
             display: 'grid', 
-            gridTemplateColumns: '55% 45%',
-            gap: '3rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))',
+            gap: '4rem',
             alignItems: 'center'
           }}>
-            {/* LEFT COLUMN - Content (Offset Left) */}
-            <div style={{ textAlign: 'left', paddingLeft: '2rem' }}>
+            {/* LEFT COLUMN - Content */}
+            <div style={{ textAlign: 'left' }}>
               {/* Announcement Badge */}
               <div
                 className="fade-in-up"
@@ -157,9 +157,9 @@ const Home = () => {
                 style={{
                   fontSize: 'clamp(1.125rem, 2vw, 1.35rem)',
                   marginBottom: '3rem',
-                  maxWidth: '550px',
                   color: 'rgba(255, 255, 255, 0.95)',
-                  lineHeight: 1.6
+                  lineHeight: 1.6,
+                  maxWidth: '600px'
                 }}
               >
                 Transform your business with AI solutions that deliver{' '}
@@ -217,7 +217,8 @@ const Home = () => {
               >
                 {[
                   { label: '78% Enterprise Adoption', value: 'Industry Leading' },
-                  { label: '150+ Projects', value: 'Proven Track Record' }
+                  { label: '150+ Projects Delivered', value: 'Proven Track Record' },
+                  { label: '$184B+ AI Market', value: 'Growing 28% YoY' }
                 ].map((stat, i) => (
                   <div key={i}>
                     <div style={{ fontSize: '0.875rem', fontWeight: 800, color: '#9333ea', marginBottom: '0.25rem' }}>
@@ -229,148 +230,127 @@ const Home = () => {
               </div>
             </div>
 
-            {/* RIGHT COLUMN - Floating Interactive Widgets */}
-            <div className="fade-in-up delay-500" style={{ position: 'relative', minHeight: '600px' }}>
-              
-              {/* Assessment Preview Card */}
+            {/* RIGHT COLUMN - Visual Elements */}
+            <div className="fade-in-up delay-500" style={{ position: 'relative', minHeight: '500px' }}>
+              {/* Floating Stat Card 1 */}
               <div
                 className="glass-card hover-scale"
                 style={{
                   position: 'absolute',
                   top: '0',
-                  right: '0',
-                  width: '320px',
-                  padding: '2rem',
-                  background: 'linear-gradient(135deg, rgba(147, 51, 234, 0.2) 0%, rgba(147, 51, 234, 0.05) 100%)',
+                  right: '10%',
+                  width: '280px',
+                  padding: '1.5rem',
+                  background: 'linear-gradient(135deg, rgba(147, 51, 234, 0.15) 0%, rgba(59, 130, 246, 0.1) 100%)',
                   borderColor: 'rgba(147, 51, 234, 0.4)',
-                  animation: 'float 7s ease-in-out infinite',
-                  cursor: 'pointer'
+                  animation: 'float 6s ease-in-out infinite'
                 }}
-                onClick={() => setShowAssessment(true)}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.75rem' }}>
                   <div style={{ 
-                    width: '60px', 
-                    height: '60px', 
-                    borderRadius: '16px', 
+                    width: '50px', 
+                    height: '50px', 
+                    borderRadius: '12px', 
                     background: 'rgba(147, 51, 234, 0.3)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center'
                   }}>
-                    <Brain size={32} style={{ color: '#9333ea' }} />
+                    <TrendingUp size={24} style={{ color: '#9333ea' }} />
                   </div>
                   <div>
-                    <div style={{ fontSize: '1.25rem', fontWeight: 800, color: 'white' }}>
-                      AI Assessment
-                    </div>
-                    <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.85)' }}>
-                      2 min quiz
-                    </div>
+                    <div style={{ fontSize: '2rem', fontWeight: 800, color: '#9333ea' }}>3.7x</div>
+                    <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.85)' }}>Average ROI</div>
                   </div>
                 </div>
-                <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)', marginBottom: '1rem' }}>
-                  Discover your AI readiness score and get personalized recommendations
-                </div>
-                <div style={{ display: 'flex', gap: '0.5rem' }}>
-                  {[1,2,3,4,5].map(i => (
-                    <div key={i} style={{ 
-                      flex: 1, 
-                      height: '4px', 
-                      background: i <= 3 ? '#9333ea' : 'rgba(147, 51, 234, 0.2)',
-                      borderRadius: '2px'
-                    }} />
-                  ))}
+                <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
+                  Proven returns across 150+ projects
                 </div>
               </div>
 
-              {/* ROI Calculator Preview */}
+              {/* Floating Stat Card 2 */}
               <div
                 className="glass-card hover-scale"
                 style={{
                   position: 'absolute',
-                  top: '200px',
-                  right: '40px',
-                  width: '300px',
-                  padding: '2rem',
-                  background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(34, 197, 94, 0.05) 100%)',
+                  top: '180px',
+                  right: '30%',
+                  width: '260px',
+                  padding: '1.5rem',
+                  background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(16, 185, 129, 0.1) 100%)',
                   borderColor: 'rgba(34, 197, 94, 0.4)',
-                  animation: 'float 8s ease-in-out infinite 1s',
-                  cursor: 'pointer'
+                  animation: 'float 7s ease-in-out infinite 1s'
                 }}
-                onClick={() => setShowROICalc(true)}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.75rem' }}>
                   <div style={{ 
-                    width: '60px', 
-                    height: '60px', 
-                    borderRadius: '16px', 
+                    width: '50px', 
+                    height: '50px', 
+                    borderRadius: '12px', 
                     background: 'rgba(34, 197, 94, 0.3)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center'
                   }}>
-                    <Target size={32} style={{ color: '#22c55e' }} />
+                    <Zap size={24} style={{ color: '#22c55e' }} />
                   </div>
                   <div>
-                    <div style={{ fontSize: '1.25rem', fontWeight: 800, color: 'white' }}>
-                      ROI Calculator
-                    </div>
-                    <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.85)' }}>
-                      Instant results
-                    </div>
-                  </div>
-                </div>
-                <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)', marginBottom: '1rem' }}>
-                  See your potential savings and revenue increase
-                </div>
-                <div style={{ 
-                  fontSize: '2rem', 
-                  fontWeight: 800, 
-                  color: '#22c55e',
-                  textAlign: 'center'
-                }}>
-                  3.7x ROI
-                </div>
-              </div>
-
-              {/* Success Metric Card */}
-              <div
-                className="glass-card"
-                style={{
-                  position: 'absolute',
-                  top: '420px',
-                  right: '10px',
-                  width: '280px',
-                  padding: '1.5rem',
-                  background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0.05) 100%)',
-                  borderColor: 'rgba(59, 130, 246, 0.4)',
-                  animation: 'float 9s ease-in-out infinite 2s'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.75rem' }}>
-                  <Award size={28} style={{ color: '#3b82f6' }} />
-                  <div style={{ fontSize: '1.125rem', fontWeight: 800, color: 'white' }}>
-                    150+ Success Stories
+                    <div style={{ fontSize: '2rem', fontWeight: 800, color: '#22c55e' }}>40%</div>
+                    <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.85)' }}>Productivity Gain</div>
                   </div>
                 </div>
                 <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
-                  Join companies achieving measurable AI transformation
+                  Immediate efficiency improvements
                 </div>
               </div>
 
-              {/* Background glow */}
+              {/* Floating Stat Card 3 */}
+              <div
+                className="glass-card hover-scale"
+                style={{
+                  position: 'absolute',
+                  top: '350px',
+                  right: '5%',
+                  width: '240px',
+                  padding: '1.5rem',
+                  background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.1) 100%)',
+                  borderColor: 'rgba(59, 130, 246, 0.4)',
+                  animation: 'float 8s ease-in-out infinite 2s'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.75rem' }}>
+                  <div style={{ 
+                    width: '50px', 
+                    height: '50px', 
+                    borderRadius: '12px', 
+                    background: 'rgba(59, 130, 246, 0.3)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                    <Rocket size={24} style={{ color: '#3b82f6' }} />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: '2rem', fontWeight: 800, color: '#3b82f6' }}>10x</div>
+                    <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.85)' }}>Faster Deploy</div>
+                  </div>
+                </div>
+                <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
+                  Solutions in days, not months
+                </div>
+              </div>
+
+              {/* Background decorative elements */}
               <div style={{
                 position: 'absolute',
                 top: '50%',
-                right: '0',
-                transform: 'translateY(-50%)',
-                width: '500px',
-                height: '500px',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '400px',
+                height: '400px',
                 borderRadius: '50%',
-                background: 'radial-gradient(circle, rgba(147, 51, 234, 0.15) 0%, transparent 70%)',
-                zIndex: -1,
-                filter: 'blur(60px)'
+                background: 'radial-gradient(circle, rgba(147, 51, 234, 0.1) 0%, transparent 70%)',
+                zIndex: -1
               }} />
             </div>
           </div>
