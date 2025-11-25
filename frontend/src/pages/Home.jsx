@@ -80,7 +80,7 @@ const Home = () => {
     <div style={{ background: '#1a1a2e', color: 'white', position: 'relative' }}>
       <ParticleBackground />
 
-      {/* Hero Section - Futuristic */}
+      {/* Hero Section - Wider Centered (Version 2) */}
       <section
         style={{
           position: 'relative',
@@ -89,7 +89,7 @@ const Home = () => {
           alignItems: 'center',
           justifyContent: 'center',
           textAlign: 'center',
-          padding: '10rem 1.5rem 4rem',
+          padding: '10rem 3rem 4rem',
           overflow: 'hidden'
         }}
       >
@@ -106,7 +106,7 @@ const Home = () => {
           }}
         />
 
-        <div className="container" style={{ position: 'relative', zIndex: 2, maxWidth: '1100px' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 2, maxWidth: '1400px' }}>
           {/* Announcement Badge */}
           <div
             className="fade-in-up"
