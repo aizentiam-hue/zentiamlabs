@@ -35,11 +35,17 @@
 ---
 
 ### Version 2: Wider Centered Layout (Option 1)
-**Status**: ⏳ PENDING
+**Status**: ✅ COMPLETE
+**File**: `/app/frontend/src/pages/Home_Hero_V2_Wider.jsx.backup`
 **Description**: 
 - Keep centered layout
-- Increase maxWidth to 1400px
-- Better spacing
+- Max-width: 1100px → 1400px (+27% wider)
+- Description max-width: 800px → 950px
+- Trust indicators gap: 3rem → 4rem
+- Padding: 1.5rem → 3rem
+- More spacious, better use of screen space
+**Implementation Date**: November 25, 2025
+**Screenshots**: v2_hero_wider.png, v2_hero_with_trust.png
 
 ---
 
