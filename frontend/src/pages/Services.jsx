@@ -123,6 +123,12 @@ const Services = () => {
 
   return (
     <div style={{ background: '#1a1a2e', color: 'white', position: 'relative', minHeight: '100vh' }}>
+      <SEO 
+        title="AI Services - Strategy, Custom Solutions & Automation | Zentiam"
+        description="Comprehensive AI services: strategic consulting, custom AI development, automation integration, and training. From idea to implementation in days with guaranteed ROI."
+        keywords="AI services, AI consulting services, custom AI development, AI automation, AI strategy, machine learning services, AI implementation"
+        canonical="/services"
+      />
       <ParticleBackground />
 
       {/* Hero Section */}
