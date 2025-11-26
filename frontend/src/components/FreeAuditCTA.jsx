@@ -71,12 +71,13 @@ const FreeAuditCTA = () => {
   return (
     <div
       style={{
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        background: 'linear-gradient(135deg, #9333ea 0%, #7c3aed 100%)',
         borderRadius: '24px',
         padding: '3rem',
         position: 'relative',
         overflow: 'hidden',
-        color: 'white'
+        color: 'white',
+        border: '2px solid rgba(147, 51, 234, 0.3)'
       }}
       className="holographic"
     >
