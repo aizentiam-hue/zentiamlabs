@@ -499,18 +499,25 @@ const Home = () => {
                   <Link
                     to="/services"
                     style={{
-                      color: service.color,
+                      color: 'white',
                       textDecoration: 'none',
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '0.5rem',
                       fontWeight: 800,
-                      fontSize: '0.875rem',
+                      fontSize: '0.9rem',
                       textTransform: 'uppercase',
-                      letterSpacing: '0.05em'
+                      letterSpacing: '0.05em',
+                      padding: '0.75rem 1.5rem',
+                      background: `linear-gradient(135deg, ${service.color} 0%, ${service.color}dd 100%)`,
+                      borderRadius: '8px',
+                      border: `2px solid ${service.color}`,
+                      transition: 'all 0.3s ease',
+                      boxShadow: `0 4px 12px ${service.color}40`
                     }}
+                    className="hover-scale"
                   >
-                    Learn More <ArrowRight size={16} />
+                    Learn More <ArrowRight size={18} />
                   </Link>
                 </div>
               );
