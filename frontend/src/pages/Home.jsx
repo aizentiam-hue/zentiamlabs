@@ -331,8 +331,8 @@ const Home = () => {
                     <Rocket size={24} style={{ color: '#3b82f6' }} />
                   </div>
                   <div>
-                    <div style={{ fontSize: '2rem', fontWeight: 800, color: '#3b82f6' }}>10x</div>
-                    <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.85)' }}>Faster Deploy</div>
+                    <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#60a5fa', textShadow: '0 0 20px rgba(96, 165, 250, 0.5)' }}>10x</div>
+                    <div style={{ fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 600 }}>Faster Deploy</div>
                   </div>
                 </div>
                 <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
