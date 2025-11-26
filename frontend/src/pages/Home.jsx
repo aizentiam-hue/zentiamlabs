@@ -7,6 +7,7 @@ import ROICalculator from '../components/ROICalculator';
 import LiveMetrics from '../components/LiveMetrics';
 import SuccessStories from '../components/SuccessStories';
 import FreeAuditCTA from '../components/FreeAuditCTA';
+import SEO from '../components/SEO';
 import '../styles/futuristic.css';
 
 const iconMap = {
