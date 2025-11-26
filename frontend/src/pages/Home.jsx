@@ -211,7 +211,7 @@ const Home = () => {
                 className="fade-in-up delay-400"
                 style={{
                   display: 'flex',
-                  gap: '2rem',
+                  gap: '2.5rem',
                   flexWrap: 'wrap'
                 }}
               >
@@ -221,10 +221,10 @@ const Home = () => {
                   { label: '$184B+ AI Market', value: 'Growing 28% YoY' }
                 ].map((stat, i) => (
                   <div key={i}>
-                    <div style={{ fontSize: '0.875rem', fontWeight: 800, color: '#9333ea', marginBottom: '0.25rem' }}>
+                    <div style={{ fontSize: '1rem', fontWeight: 800, color: '#c084fc', marginBottom: '0.25rem' }}>
                       {stat.value}
                     </div>
-                    <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.85)' }}>{stat.label}</div>
+                    <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 600 }}>{stat.label}</div>
                   </div>
                 ))}
               </div>
