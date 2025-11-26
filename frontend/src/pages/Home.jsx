@@ -573,17 +573,17 @@ const Home = () => {
             to="/contact"
             style={{
               display: 'inline-block',
-              padding: '1.25rem 3rem',
-              background: 'linear-gradient(135deg, #9333ea 0%, #7c3aed 100%)',
-              border: 'none',
+              padding: '1.5rem 3.5rem',
+              background: 'linear-gradient(135deg, #a855f7 0%, #9333ea 100%)',
+              border: '2px solid #c084fc',
               borderRadius: '50px',
               color: 'white',
-              fontWeight: 800,
-              fontSize: '1.125rem',
+              fontWeight: 900,
+              fontSize: '1.2rem',
               textDecoration: 'none',
               textTransform: 'uppercase',
-              letterSpacing: '0.05em',
-              boxShadow: '0 10px 40px rgba(147, 51, 234, 0.4)',
+              letterSpacing: '0.08em',
+              boxShadow: '0 12px 48px rgba(147, 51, 234, 0.6), 0 0 40px rgba(192, 132, 252, 0.3)',
               transition: 'all 0.3s ease'
             }}
             className="hover-scale"
