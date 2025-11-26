@@ -56,9 +56,11 @@ function App() {
           <Route path="/admin/chats" element={<ChatSessions />} />
           <Route path="/admin/documents" element={<Documents />} />
           <Route path="/admin/settings" element={<Settings />} />
+          <Route path="/admin/seo" element={<SEOManagement />} />
         </Routes>
       </BrowserRouter>
     </div>
+    </HelmetProvider>
   );
 }
 
