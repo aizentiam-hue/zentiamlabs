@@ -1,6 +1,7 @@
 import React from 'react';
 import { Target, Users, Lightbulb, Award, Rocket, Zap, Brain, TrendingUp } from 'lucide-react';
 import ParticleBackground from '../components/ParticleBackground';
+import SEO from '../components/SEO';
 import '../styles/futuristic.css';
 
 const About = () => {
