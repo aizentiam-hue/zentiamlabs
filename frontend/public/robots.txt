@@ -1,0 +1,7 @@
+# robots.txt for Zentiam
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+Sitemap: https://zentiam.com/sitemap.xml
