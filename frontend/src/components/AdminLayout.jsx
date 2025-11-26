@@ -17,6 +17,7 @@ const AdminLayout = ({ children }) => {
     { path: '/admin/subscribers', label: 'Subscribers', icon: Mail },
     { path: '/admin/chats', label: 'Chat Sessions', icon: MessageSquare },
     { path: '/admin/documents', label: 'Documents', icon: Upload },
+    { path: '/admin/seo', label: 'SEO Management', icon: Search },
     { path: '/admin/settings', label: 'Settings', icon: Settings }
   ];
 
