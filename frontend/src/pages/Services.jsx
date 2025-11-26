@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Brain, Cpu, Zap, GraduationCap, CheckCircle, ArrowRight, Rocket, Target, Clock, DollarSign } from 'lucide-react';
 import ParticleBackground from '../components/ParticleBackground';
 import ROICalculator from '../components/ROICalculator';
+import SEO from '../components/SEO';
 import '../styles/futuristic.css';
 
 const Services = () => {

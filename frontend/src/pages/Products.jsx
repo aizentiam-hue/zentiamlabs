@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles, CheckCircle, Clock, Rocket, Zap, Bot, TrendingUp } from 'lucide-react';
 import { mockProducts } from '../mock';
+import SEO from '../components/SEO';
 import ParticleBackground from '../components/ParticleBackground';
 import '../styles/futuristic.css';
 
