@@ -68,6 +68,12 @@ const About = () => {
 
   return (
     <div style={{ background: '#1a1a2e', color: 'white', position: 'relative', minHeight: '100vh' }}>
+      <SEO 
+        title="About Zentiam - AI Consulting Experts | Our Story & Mission"
+        description="Learn about Zentiam's team of AI strategists and engineers. We democratize enterprise-grade AI solutions to help organizations of all sizes compete in an AI-driven world."
+        keywords="about zentiam, AI consulting team, AI experts, AI strategy consulting, machine learning consultants, AI agency"
+        canonical="/about"
+      />
       <ParticleBackground />
 
       {/* Hero Section */}
