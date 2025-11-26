@@ -180,28 +180,32 @@ const Home = () => {
                   onClick={() => setShowAssessment(true)}
                   className="btn-neon btn-neon-purple"
                   style={{
-                    padding: '1.25rem 2.5rem',
-                    fontSize: '1rem',
+                    padding: '1.25rem 2.75rem',
+                    fontSize: '1.05rem',
+                    fontWeight: 800,
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '0.5rem'
+                    gap: '0.75rem',
+                    boxShadow: '0 8px 24px rgba(147, 51, 234, 0.5)'
                   }}
                 >
-                  <Brain size={20} />
+                  <Brain size={22} />
                   Take AI Assessment
                 </button>
                 <button
                   onClick={() => setShowROICalc(true)}
                   className="btn-neon btn-neon-blue"
                   style={{
-                    padding: '1.25rem 2.5rem',
-                    fontSize: '1rem',
+                    padding: '1.25rem 2.75rem',
+                    fontSize: '1.05rem',
+                    fontWeight: 800,
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '0.5rem'
+                    gap: '0.75rem',
+                    boxShadow: '0 8px 24px rgba(59, 130, 246, 0.5)'
                   }}
                 >
-                  <Zap size={20} />
+                  <Zap size={22} />
                   Calculate Your ROI
                 </button>
               </div>
