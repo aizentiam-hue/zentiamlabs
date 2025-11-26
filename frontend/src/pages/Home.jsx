@@ -120,16 +120,16 @@ const Home = () => {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '0.75rem',
-                  background: 'rgba(147, 51, 234, 0.1)',
-                  border: '1px solid rgba(147, 51, 234, 0.3)',
+                  background: 'rgba(147, 51, 234, 0.2)',
+                  border: '2px solid rgba(147, 51, 234, 0.6)',
                   borderRadius: '50px',
-                  padding: '0.75rem 1.5rem',
+                  padding: '0.875rem 1.75rem',
                   marginBottom: '2rem',
                   backdropFilter: 'blur(10px)'
                 }}
               >
-                <Sparkles size={18} style={{ color: '#9333ea' }} />
-                <span style={{ fontSize: '0.875rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <Sparkles size={20} style={{ color: '#c084fc' }} />
+                <span style={{ fontSize: '0.95rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'white' }}>
                   AI Solutions in Days, Not Months
                 </span>
               </div>
