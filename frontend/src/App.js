@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ChatWidget from './components/ChatWidget';
@@ -18,11 +19,13 @@ import Subscribers from './pages/admin/Subscribers';
 import ChatSessions from './pages/admin/ChatSessions';
 import Documents from './pages/admin/Documents';
 import Settings from './pages/admin/Settings';
+import SEOManagement from './pages/admin/SEOManagement';
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
+    <HelmetProvider>
+      <div className="App">
+        <BrowserRouter>
         <Routes>
           {/* Public Routes */}
           <Route
