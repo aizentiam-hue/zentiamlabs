@@ -421,11 +421,11 @@ const Home = () => {
                   >
                     <Icon size={32} style={{ color: diff.color }} />
                   </div>
-                  <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.5rem' }}>
+                  <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.5rem', color: 'white' }}>
                     {diff.title}
                   </h3>
                   {diff.stat && (
-                    <div style={{ fontSize: '2rem', fontWeight: 800, color: diff.color, marginBottom: '0.75rem' }}>
+                    <div style={{ fontSize: '2.5rem', fontWeight: 900, color: diff.color, marginBottom: '0.75rem', textShadow: `0 0 20px ${diff.color}80` }}>
                       {diff.stat}
                     </div>
                   )}
