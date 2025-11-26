@@ -227,17 +227,18 @@ const FreeAuditCTA = () => {
             <button
               type="submit"
               style={{
-                padding: '1rem 2rem',
+                padding: '1.25rem 2.5rem',
                 background: 'white',
-                color: '#667eea',
+                color: '#7c3aed',
                 border: 'none',
                 borderRadius: '12px',
-                fontWeight: 700,
-                fontSize: '1rem',
+                fontWeight: 800,
+                fontSize: '1.05rem',
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
                 textTransform: 'uppercase',
-                letterSpacing: '0.05em'
+                letterSpacing: '0.05em',
+                boxShadow: '0 4px 20px rgba(255, 255, 255, 0.3)'
               }}
               className="hover-scale"
             >
