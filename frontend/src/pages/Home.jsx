@@ -295,8 +295,8 @@ const Home = () => {
                     <Zap size={24} style={{ color: '#22c55e' }} />
                   </div>
                   <div>
-                    <div style={{ fontSize: '2rem', fontWeight: 800, color: '#22c55e' }}>40%</div>
-                    <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.85)' }}>Productivity Gain</div>
+                    <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#4ade80', textShadow: '0 0 20px rgba(74, 222, 128, 0.5)' }}>40%</div>
+                    <div style={{ fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 600 }}>Productivity Gain</div>
                   </div>
                 </div>
                 <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
