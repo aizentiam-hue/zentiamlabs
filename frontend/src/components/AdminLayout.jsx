@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Users, Mail, MessageSquare, Settings, Upload, LogOut } from 'lucide-react';
+import { LayoutDashboard, Users, Mail, MessageSquare, Settings, Upload, LogOut, Search } from 'lucide-react';
 
 const AdminLayout = ({ children }) => {
   const navigate = useNavigate();
