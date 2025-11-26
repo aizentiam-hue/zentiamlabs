@@ -259,8 +259,8 @@ const Home = () => {
                     <TrendingUp size={24} style={{ color: '#9333ea' }} />
                   </div>
                   <div>
-                    <div style={{ fontSize: '2rem', fontWeight: 800, color: '#9333ea' }}>3.7x</div>
-                    <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.85)' }}>Average ROI</div>
+                    <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#c084fc', textShadow: '0 0 20px rgba(192, 132, 252, 0.5)' }}>3.7x</div>
+                    <div style={{ fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 600 }}>Average ROI</div>
                   </div>
                 </div>
                 <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.9)' }}>
