@@ -77,8 +77,29 @@ const Home = () => {
     }
   ];
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Zentiam",
+    "url": window.location.origin,
+    "logo": `${window.location.origin}/logo.png`,
+    "description": "AI consulting agency delivering 3.7x ROI with custom AI solutions, automation, and strategic consulting",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "contact@zentiam.com",
+      "contactType": "Customer Service"
+    },
+    "sameAs": []
+  };
+
   return (
     <div style={{ background: '#1a1a2e', color: 'white', position: 'relative' }}>
+      <SEO 
+        title="Zentiam - AI Solutions That Transform Your Business | 3.7x ROI"
+        description="Transform your business with AI solutions that deliver 3.7x ROI, 40% productivity gains, and measurable results in weeks. Expert AI consulting, custom solutions, and automation services."
+        keywords="AI consulting, artificial intelligence solutions, business automation, AI strategy, machine learning consulting, AI transformation, custom AI development"
+        structuredData={structuredData}
+      />
       <ParticleBackground />
 
       {/* Hero Section - Split Layout (Version 1) */}
