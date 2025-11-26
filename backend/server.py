@@ -14,6 +14,7 @@ from contact_routes import router as contact_router
 from newsletter_routes import router as newsletter_router
 from admin_routes import router as admin_router
 from settings_routes import router as settings_router
+from seo_routes import router as seo_router
 
 
 ROOT_DIR = Path(__file__).parent
