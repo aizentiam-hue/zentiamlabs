@@ -51,6 +51,7 @@ async def submit_consultation(request: ConsultationRequest):
     try:
         # Create consultation document
         consultation_doc = {
+            "id": str(result.inserted_id) if result.inserted_id else str(uuid4()),
             "name": request.name,
             "email": request.email,
             "company": request.company,
