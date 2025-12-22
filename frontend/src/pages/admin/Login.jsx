@@ -10,8 +10,8 @@ const AdminLogin = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     
-    // Simple password check (you can change this)
-    const ADMIN_PASSWORD = 'zentiam2025';
+    // Secure admin password - Keep this confidential
+    const ADMIN_PASSWORD = 'MHeGIYH9u#gqztsB';
     
     if (password === ADMIN_PASSWORD) {
       localStorage.setItem('adminAuth', 'true');
