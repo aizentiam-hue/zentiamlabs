@@ -20,6 +20,7 @@ import ChatSessions from './pages/admin/ChatSessions';
 import Documents from './pages/admin/Documents';
 import Settings from './pages/admin/Settings';
 import SEOManagement from './pages/admin/SEOManagement';
+import EmailTemplates from './pages/admin/EmailTemplates';
 
 function App() {
   return (
