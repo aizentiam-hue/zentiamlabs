@@ -175,10 +175,8 @@ async def update_consultation_status(consultation_id: str, status: str):
     Update consultation status (admin endpoint)
     """
     try:
-        from bson import ObjectId
-        
         result = await db.consultations.update_one(
-            {"_id": ObjectId(consultation_id)},
+            {"id": consultation_id},
             {
                 "$set": {
                     "status": status,
