@@ -32,24 +32,36 @@ class EmailService:
                 logger.warning("Email not configured, skipping notification")
                 return False
             
+            # Get template from database
+            template = await db.email_templates.find_one(
+                {"templateId": "consultation_confirmation", "isActive": True},
+                {"_id": 0}
+            )
+            
+            if not template:
+                logger.warning("Consultation email template not found")
+                return False
+            
             if config["provider"] == "resend":
                 resend.api_key = config["apiKey"]
+                
+                # Replace template variables
+                html_content = template["htmlContent"]
+                variables = {
+                    "name": consultation.get("name", ""),
+                    "service": consultation.get("service", ""),
+                    "company": consultation.get("company", "N/A"),
+                    "email": consultation.get("email", "")
+                }
+                
+                for key, value in variables.items():
+                    html_content = html_content.replace(f"{{{{{key}}}}}", str(value))
                 
                 params = {
                     "from": f"{config['fromName']} <{config['fromEmail']}>",
                     "to": [consultation["email"]],
-                    "subject": "Thank you for contacting Zentiam",
-                    "html": f"""
-                    <h2>Thank you for your consultation request!</h2>
-                    <p>Hi {consultation['name']},</p>
-                    <p>We've received your consultation request and our team will get back to you within 24 hours.</p>
-                    <p><strong>Your Details:</strong></p>
-                    <ul>
-                        <li>Service: {consultation['service']}</li>
-                        <li>Company: {consultation.get('company', 'N/A')}</li>
-                    </ul>
-                    <p>Best regards,<br>Zentiam Team</p>
-                    """
+                    "subject": template["subject"],
+                    "html": html_content
                 }
                 
                 email = resend.Emails.send(params)
