@@ -58,6 +58,7 @@ function App() {
           <Route path="/admin/documents" element={<Documents />} />
           <Route path="/admin/settings" element={<Settings />} />
           <Route path="/admin/seo" element={<SEOManagement />} />
+          <Route path="/admin/email-templates" element={<EmailTemplates />} />
         </Routes>
       </BrowserRouter>
     </div>
