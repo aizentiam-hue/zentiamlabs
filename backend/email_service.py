@@ -82,25 +82,33 @@ class EmailService:
                 logger.warning("Email not configured, skipping notification")
                 return False
             
+            # Get template from database
+            template = await db.email_templates.find_one(
+                {"templateId": "newsletter_welcome", "isActive": True},
+                {"_id": 0}
+            )
+            
+            if not template:
+                logger.warning("Newsletter email template not found")
+                return False
+            
             if config["provider"] == "resend":
                 resend.api_key = config["apiKey"]
+                
+                # Replace template variables
+                html_content = template["htmlContent"]
+                variables = {
+                    "unsubscribe_link": "https://zentiam.com/unsubscribe"
+                }
+                
+                for key, value in variables.items():
+                    html_content = html_content.replace(f"{{{{{key}}}}}", str(value))
                 
                 params = {
                     "from": f"{config['fromName']} <{config['fromEmail']}>",
                     "to": [email_address],
-                    "subject": "Welcome to Zentiam Newsletter",
-                    "html": """
-                    <h2>Welcome to Zentiam!</h2>
-                    <p>Thank you for subscribing to our newsletter.</p>
-                    <p>You'll receive updates about:</p>
-                    <ul>
-                        <li>Latest AI trends and insights</li>
-                        <li>Zentiam product updates</li>
-                        <li>Industry best practices</li>
-                        <li>Exclusive offers and events</li>
-                    </ul>
-                    <p>Best regards,<br>Zentiam Team</p>
-                    """
+                    "subject": template["subject"],
+                    "html": html_content
                 }
                 
                 email = resend.Emails.send(params)
