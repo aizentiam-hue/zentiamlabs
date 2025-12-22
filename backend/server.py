@@ -15,6 +15,7 @@ from newsletter_routes import router as newsletter_router
 from admin_routes import router as admin_router
 from settings_routes import router as settings_router
 from seo_routes import router as seo_router
+from email_template_routes import router as email_template_router
 
 
 ROOT_DIR = Path(__file__).parent
