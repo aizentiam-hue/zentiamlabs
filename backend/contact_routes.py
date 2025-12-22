@@ -49,9 +49,11 @@ async def submit_consultation(request: ConsultationRequest):
     Handle consultation booking form submissions
     """
     try:
-        # Create consultation document
+        # Create consultation document with unique ID
+        from uuid import uuid4
+        consultation_id = str(uuid4())
         consultation_doc = {
-            "id": str(result.inserted_id) if result.inserted_id else str(uuid4()),
+            "id": consultation_id,
             "name": request.name,
             "email": request.email,
             "company": request.company,
