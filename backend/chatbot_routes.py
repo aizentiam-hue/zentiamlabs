@@ -179,7 +179,11 @@ async def upload_document(file: UploadFile = File(...)):
 async def get_sessions(limit: int = 50):
     """Get all chat sessions"""
     try:
-        sessions = await db.chat_sessions.find().sort("created_at", -1).limit(limit).to_list(limit)
+        # Only get sessions that have at least one message
+        sessions = await db.chat_sessions.find(
+            {"messages.0": {"$exists": True}},
+            {"_id": 0}
+        ).sort("created_at", -1).limit(limit).to_list(limit)
         return {"sessions": sessions}
     except Exception as e:
         logger.error(f"Error getting sessions: {e}")
@@ -189,7 +193,10 @@ async def get_sessions(limit: int = 50):
 async def get_session(session_id: str):
     """Get specific session details"""
     try:
-        session = await db.chat_sessions.find_one({"session_id": session_id})
+        session = await db.chat_sessions.find_one(
+            {"session_id": session_id},
+            {"_id": 0}
+        )
         if not session:
             raise HTTPException(status_code=404, detail="Session not found")
         return session
