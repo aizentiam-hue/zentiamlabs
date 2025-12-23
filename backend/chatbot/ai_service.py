@@ -37,19 +37,19 @@ class AIService:
         session_id: str,
         user_message: str,
         user_info: Dict,
-        conversation_history: List[Dict]
+        conversation_history: List[Dict],
+        show_closure: bool = False
     ) -> Dict:
         """Generate AI response with RAG"""
         try:
-            # Check if we just completed collecting phone (the last piece)
-            # Look for phone pattern in current message
-            phone_pattern = r"\\+?\\d[\\d\\s\\-\\(\\)]{8,}\\d"
-            just_provided_phone = re.search(phone_pattern, user_message)
-            
-            # If user just provided phone and we already have name & email, show closure
-            if just_provided_phone and user_info.get('name') and user_info.get('email'):
+            # If we just completed collecting all info, show closure message
+            if show_closure:
+                name = user_info.get('name', 'there')
+                email = user_info.get('email', 'your email')
+                phone = user_info.get('phone', 'your phone')
+                
                 return {
-                    "response": f"Perfect! Thank you, {user_info.get('name')}. I've noted down your details. Our team will review your inquiry and reach out to you at {user_info.get('email')} or {user_message.strip()} within 24 hours. In the meantime, feel free to ask me any questions about our AI services!",
+                    "response": f"Perfect! Thank you, {name}. I've noted down your details. Our team will review your inquiry and reach out to you at {email} or {phone} within 24 hours. In the meantime, feel free to ask me any questions about our AI services!",
                     "needs_info": False,
                     "is_answered": True,
                     "info_complete": True
