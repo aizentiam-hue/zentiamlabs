@@ -239,8 +239,10 @@ metadata:
   run_ui: false
 
 test_plan:
-  current_focus: []
-  stuck_tasks: []
+  current_focus:
+    - "Chatbot Conversation Closure Fix"
+  stuck_tasks:
+    - "Chatbot Conversation Closure Fix"
   test_all: false
   test_priority: "high_first"
 
