@@ -32,7 +32,7 @@ const SEOManagement = () => {
   const [activeTab, setActiveTab] = useState('edit');
 
   useEffect(() => {
-    const isAuthenticated = localStorage.getItem('adminAuthenticated');
+    const isAuthenticated = localStorage.getItem('adminAuth');
     if (!isAuthenticated) {
       navigate('/admin/login');
     }
