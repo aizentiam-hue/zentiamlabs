@@ -41,21 +41,22 @@ class AIService:
     ) -> Dict:
         """Generate AI response with RAG"""
         try:
+            # Check if we just completed collecting phone (the last piece)
+            # Look for phone pattern in current message
+            phone_pattern = r"\\+?\\d[\\d\\s\\-\\(\\)]{8,}\\d"
+            just_provided_phone = re.search(phone_pattern, user_message)
+            
+            # If user just provided phone and we already have name & email, show closure
+            if just_provided_phone and user_info.get('name') and user_info.get('email'):
+                return {
+                    "response": f"Perfect! Thank you, {user_info.get('name')}. I've noted down your details. Our team will review your inquiry and reach out to you at {user_info.get('email')} or {user_message.strip()} within 24 hours. In the meantime, feel free to ask me any questions about our AI services!",
+                    "needs_info": False,
+                    "is_answered": True,
+                    "info_complete": True
+                }
+            
             # Check if we need to collect user info
             needs_info, info_type = self._check_needs_info(user_info, user_message)
-            
-            # Check if we just completed collecting all info
-            if not needs_info and user_info.get('name') and user_info.get('email') and user_info.get('phone'):
-                # Check if this is right after collecting the phone (last piece of info)
-                last_message = conversation_history[-1] if conversation_history else None
-                if last_message and 'phone' in last_message.get('message', '').lower():
-                    # This is the closure message
-                    return {
-                        "response": f"Perfect! Thank you, {user_info.get('name')}. I've noted down your details. Our team will review your inquiry and reach out to you at {user_info.get('email')} or {user_info.get('phone')} within 24 hours. In the meantime, feel free to ask me any questions about our AI services!",
-                        "needs_info": False,
-                        "is_answered": True,
-                        "info_complete": True
-                    }
             
             if needs_info:
                 return {
