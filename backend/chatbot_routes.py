@@ -208,35 +208,39 @@ def extract_user_info(message: str, current_info: dict) -> dict:
     """Extract user information from message"""
     extracted = {}
     
-    # Extract name
-    if not current_info.get("name"):
-        name_patterns = [
-            r"(?:my name is|i'm|i am|this is|call me)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)",
-            r"^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)$"  # Just a name
-        ]
-        for pattern in name_patterns:
-            match = re.search(pattern, message, re.IGNORECASE)
-            if match:
-                extracted["name"] = match.group(1).strip()
-                break
-    
-    # Extract email
+    # Extract email (most reliable)
     if not current_info.get("email"):
         email_pattern = r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
         match = re.search(email_pattern, message)
         if match:
             extracted["email"] = match.group(0)
     
-    # Extract phone
+    # Extract phone (check for various formats)
     if not current_info.get("phone"):
-        phone_patterns = [
-            r"\+?\d[\d\s\-\(\)]{8,}\d",
-            r"\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}"
-        ]
-        for pattern in phone_patterns:
-            match = re.search(pattern, message)
+        # Remove spaces and special characters for checking
+        clean_message = re.sub(r'[^\d+]', '', message)
+        if len(clean_message) >= 10:  # At least 10 digits
+            phone_pattern = r"[\d\s\-\+\(\)]{10,}"
+            match = re.search(phone_pattern, message)
             if match:
                 extracted["phone"] = match.group(0).strip()
-                break
+    
+    # Extract name - accept any reasonable text ONLY when bot explicitly asked for name
+    if not current_info.get("name"):
+        # Check if message looks like a name (not an email, not just numbers, has letters)
+        has_email = '@' in message
+        has_url = 'http' in message.lower() or 'www' in message.lower()
+        is_mostly_numbers = len(re.findall(r'\d', message)) > len(message) / 2
+        
+        if not has_email and not has_url and not is_mostly_numbers:
+            # Clean the message - remove common prefixes
+            clean_name = re.sub(r'(?i)^(my name is|i am|i\'m|this is|call me)\s+', '', message.strip())
+            clean_name = re.sub(r'[^\w\s]', '', clean_name).strip()
+            
+            # If it's 1-4 words and each word starts with a letter, consider it a name
+            words = clean_name.split()
+            if 1 <= len(words) <= 4 and all(word[0].isalpha() for word in words if word):
+                # Capitalize properly
+                extracted["name"] = ' '.join(word.capitalize() for word in words)
     
     return extracted
