@@ -241,8 +241,7 @@ metadata:
 test_plan:
   current_focus:
     - "Chatbot Conversation Closure Fix"
-  stuck_tasks:
-    - "Chatbot Conversation Closure Fix"
+  stuck_tasks: []
   test_all: false
   test_priority: "high_first"
 
