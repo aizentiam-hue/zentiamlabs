@@ -80,7 +80,7 @@ Provide helpful, accurate answers based on the context. If you don't have specif
             chat = self.create_chat(session_id, system_message)
             
             # Get response
-            response = chat.send_message(UserMessage(content=user_message))
+            response = chat.send_message(UserMessage(text=user_message))
             is_answered = self._is_question_answered(response, context)
             
             return {
