@@ -70,8 +70,14 @@ async def chat(request: ChatRequest):
             "phone": session.get("user_phone")
         }
         
-        # Check for natural info sharing in message
+        # Extract user info BEFORE generating response
         extracted_info = extract_user_info(request.message, user_info)
+        
+        # Track what was just extracted
+        just_got_name = "name" in extracted_info
+        just_got_email = "email" in extracted_info
+        just_got_phone = "phone" in extracted_info
+        
         if extracted_info:
             user_info.update(extracted_info)
             # Update session
@@ -87,6 +93,9 @@ async def chat(request: ChatRequest):
                     }
                 }
             )
+        
+        # Check if we just completed info collection (got phone and have name + email)
+        show_closure = (just_got_phone and user_info.get("name") and user_info.get("email"))
         
         # Add user message to session
         await db.chat_sessions.update_one(
