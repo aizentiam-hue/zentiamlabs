@@ -44,51 +44,50 @@ class AIService:
             # Check if we need to collect user info
             needs_info, info_type = self._check_needs_info(user_info, user_message)
             
+            # Check if we just completed collecting all info
+            if not needs_info and user_info.get('name') and user_info.get('email') and user_info.get('phone'):
+                # Check if this is right after collecting the phone (last piece of info)
+                last_message = conversation_history[-1] if conversation_history else None
+                if last_message and 'phone' in last_message.get('message', '').lower():
+                    # This is the closure message
+                    return {
+                        "response": f"Perfect! Thank you, {user_info.get('name')}. I've noted down your details. Our team will review your inquiry and reach out to you at {user_info.get('email')} or {user_info.get('phone')} within 24 hours. In the meantime, feel free to ask me any questions about our AI services!",
+                        "needs_info": False,
+                        "is_answered": True,
+                        "info_complete": True
+                    }
+            
             if needs_info:
                 return {
                     "response": self._get_info_collection_prompt(info_type, user_info),
                     "needs_info": True,
-                    "info_type": info_type
+                    "is_answered": False,
+                    "info_complete": False
                 }
             
-            # Query knowledge base for relevant context
-            relevant_docs = knowledge_base.query(user_message, n_results=3)
-            context = "\n\n".join(relevant_docs) if relevant_docs else ""
+            # Search knowledge base
+            context = knowledge_base.search(user_message)
             
-            # Build system message with context
-            system_message = f"""You are Zentiam's AI assistant, helping visitors learn about our AI consulting and automation services.
-
-IMPORTANT CONTEXT FROM ZENTIAM WEBSITE:
+            # Create chat with context
+            system_message = f"""You are Zentiam's AI assistant. You help answer questions about AI consulting, custom solutions, automation, and training services.
+            
+Context from knowledge base:
 {context}
 
-Your role:
-1. Answer questions about Zentiam's services, products, and AI consulting expertise
-2. Be helpful, professional, and conversational
-3. If asked about something not in the context, politely say you don't have that specific information but offer to connect them with the team
-4. Keep responses concise and engaging
-5. Use the context provided to give accurate, specific answers
-
-User Information:
-Name: {user_info.get('name', 'Not provided')}
-Email: {user_info.get('email', 'Not provided')}
-Phone: {user_info.get('phone', 'Not provided')}
-"""
+Provide helpful, accurate answers based on the context. If you don't have specific information, provide general guidance and invite them to contact the team directly."""
             
-            # Create chat instance
             chat = self.create_chat(session_id, system_message)
             
-            # Send message
-            user_msg = UserMessage(text=user_message)
-            response = await chat.send_message(user_msg)
-            
-            # Classify if question was answered
+            # Get response
+            response = chat.send_message(UserMessage(content=user_message))
             is_answered = self._is_question_answered(response, context)
             
             return {
                 "response": response,
                 "needs_info": False,
                 "is_answered": is_answered,
-                "has_context": bool(context)
+                "has_context": bool(context),
+                "info_complete": all([user_info.get('name'), user_info.get('email'), user_info.get('phone')])
             }
             
         except Exception as e:
@@ -96,7 +95,8 @@ Phone: {user_info.get('phone', 'Not provided')}
             return {
                 "response": "I apologize, but I'm having trouble processing your request right now. Please try again or contact us directly at contact@zentiam.com.",
                 "needs_info": False,
-                "is_answered": False
+                "is_answered": False,
+                "info_complete": False
             }
     
     def _check_needs_info(self, user_info: Dict, message: str) -> tuple:
