@@ -117,7 +117,8 @@ async def chat(request: ChatRequest):
             session_id=request.session_id,
             user_message=request.message,
             user_info=user_info,
-            conversation_history=session.get("messages", [])
+            conversation_history=session.get("messages", []),
+            show_closure=show_closure
         )
         
         # Add bot response to session
