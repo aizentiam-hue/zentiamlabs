@@ -66,7 +66,8 @@ class AIService:
                 }
             
             # Search knowledge base
-            context = knowledge_base.search(user_message)
+            context_results = knowledge_base.query(user_message)
+            context = "\n".join(context_results) if context_results else ""
             
             # Create chat with context
             system_message = f"""You are Zentiam's AI assistant. You help answer questions about AI consulting, custom solutions, automation, and training services.
