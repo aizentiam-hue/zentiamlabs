@@ -1,17 +1,5 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException
 from chatbot.models import ChatRequest, ChatResponse, ChatSession
-
-# Import both AI services - enhanced with fallback to basic
-try:
-    from chatbot.enhanced_ai_service import enhanced_ai_service
-    ai_service = enhanced_ai_service
-    USE_ENHANCED = True
-    logging.info("Using Enhanced AI Service")
-except Exception as e:
-    logging.warning(f"Enhanced AI Service not available, using basic: {e}")
-    from chatbot.ai_service import ai_service
-    USE_ENHANCED = False
-
 from chatbot.knowledge_base import knowledge_base
 from chatbot.sheets_service import sheets_service
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -23,6 +11,17 @@ from dotenv import load_dotenv
 from pathlib import Path
 
 logger = logging.getLogger(__name__)
+
+# Import both AI services - enhanced with fallback to basic
+try:
+    from chatbot.enhanced_ai_service import enhanced_ai_service
+    ai_service = enhanced_ai_service
+    USE_ENHANCED = True
+    logger.info("✅ Using Enhanced AI Service")
+except Exception as e:
+    logger.warning(f"⚠️ Enhanced AI Service not available, using basic: {e}")
+    from chatbot.ai_service import ai_service
+    USE_ENHANCED = False
 
 # Load environment variables
 ROOT_DIR = Path(__file__).parent
