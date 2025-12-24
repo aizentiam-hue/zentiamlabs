@@ -165,10 +165,9 @@ class EnhancedAIService:
         ])
         
         # Determine if we should collect contact info
+        # Only if genuinely frustrated or explicitly can't help
         needs_contact_collection = (
-            is_frustrated or 
-            cant_find_answer or
-            intent == 'specific_problem' and len(history) >= 3
+            is_frustrated and len(history) >= 2  # Frustrated after trying to help
         )
         
         return {
