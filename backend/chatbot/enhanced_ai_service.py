@@ -61,8 +61,23 @@ class EnhancedAIService:
                 user_info
             )
             
-            # Check if we need to collect info based on context
-            if context_analysis['needs_contact_collection']:
+            # Don't ask for contact immediately - help first!
+            # Only ask for contact if:
+            # 1. User is frustrated after we tried to help
+            # 2. User explicitly asks to be contacted
+            # 3. After 4+ exchanges and user seems ready
+            should_request_contact = (
+                context_analysis['conversation_depth'] >= 4 and 
+                context_analysis['intent'] in ['specific_problem', 'ready_to_convert'] and
+                not all([user_info.get('name'), user_info.get('email')])
+            ) or context_analysis['is_frustrated']
+            
+            # Check for explicit contact requests
+            contact_request_phrases = ['contact me', 'call me', 'reach out', 'get in touch', 'send me info']
+            if any(phrase in user_message.lower() for phrase in contact_request_phrases):
+                should_request_contact = True
+            
+            if should_request_contact and context_analysis['needs_contact_collection']:
                 return self._generate_contact_request(context_analysis, user_info)
             
             # If we need basic info collection (name/email/phone progression)
