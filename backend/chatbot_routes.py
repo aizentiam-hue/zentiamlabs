@@ -298,31 +298,41 @@ def extract_user_info(message: str, current_info: dict, last_bot_message: str = 
         
         # Check if user is explicitly providing their name (can appear anywhere in message)
         # These patterns match name introduction phrases and capture just the name (1-2 words)
-        # Pattern captures a capitalized word (e.g., "Sarah") followed optionally by another word
-        name_word_pattern = r"([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)"
+        # Name pattern: captures words that look like names (letters only, reasonable length)
+        name_capture = r"([a-zA-Z]{2,15}(?:\s+[a-zA-Z]{2,15})?)"
         
         explicit_name_patterns = [
-            r"my name is\s+" + name_word_pattern + r"\b",
-            r"i am\s+" + name_word_pattern + r"\b",
-            r"i'm\s+" + name_word_pattern + r"\b",
-            r"this is\s+" + name_word_pattern + r"\b",
-            r"call me\s+" + name_word_pattern + r"\b",
-            r"name:\s*" + name_word_pattern + r"\b",
+            r"my name is\s+" + name_capture,
+            r"i am\s+" + name_capture,
+            r"i'm\s+" + name_capture,
+            r"this is\s+" + name_capture,
+            r"call me\s+" + name_capture,
+            r"name:\s*" + name_capture,
         ]
         
         explicit_name = None
         for pattern in explicit_name_patterns:
             match = re.search(pattern, message.strip(), re.IGNORECASE)
             if match:
-                explicit_name = match.group(1).strip()
-                # Ensure proper capitalization
-                explicit_name = ' '.join(w.capitalize() for w in explicit_name.split())
-                # Validate it's not a common word that might be capitalized
-                common_words = ['here', 'there', 'looking', 'interested', 'wondering', 'trying', 'and', 'but', 'or', 'the', 'help', 'need']
-                if explicit_name.lower() in common_words:
-                    explicit_name = None
-                    continue
-                break
+                captured = match.group(1).strip()
+                # Split and check each word
+                words = captured.split()
+                # Only take words that look like names (not common words)
+                common_non_names = [
+                    'here', 'there', 'looking', 'interested', 'wondering', 'trying', 
+                    'and', 'but', 'or', 'the', 'help', 'need', 'want', 'have',
+                    'with', 'for', 'about', 'from', 'this', 'that', 'some'
+                ]
+                valid_name_words = []
+                for w in words:
+                    if w.lower() not in common_non_names:
+                        valid_name_words.append(w.capitalize())
+                    else:
+                        break  # Stop at first non-name word
+                
+                if valid_name_words:
+                    explicit_name = ' '.join(valid_name_words)
+                    break
         
         # If bot asked for name OR user explicitly provided name, try to extract
         if bot_asked_for_name or explicit_name:
