@@ -340,46 +340,58 @@ def _validate_and_extract_name(text: str) -> str:
     Validate and clean a potential name string.
     Returns cleaned name or empty string if invalid.
     """
-    # Comprehensive list of phrases that are NOT names
-    excluded_phrases = [
-        # Common greetings and fillers
-        'hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening',
-        'thanks', 'thank you', 'please', 'okay', 'ok', 'sure', 'yes', 'no', 'yeah', 'yep', 'nope',
-        
-        # Help-related phrases
-        'i need', 'i want', 'i have', 'i am looking', 'i would like', 'i\'d like',
-        'help', 'help me', 'help with', 'question', 'questions', 'query',
-        'assistance', 'support', 'information', 'info', 'details',
-        
-        # Service-related phrases
-        'pricing', 'cost', 'price', 'quote', 'demo', 'consultation', 'consult',
-        'ai services', 'ai solutions', 'services', 'products', 'solutions',
-        'automation', 'chatbot', 'machine learning', 'data', 'analytics',
-        
-        # Question starters
-        'what', 'how', 'why', 'when', 'where', 'which', 'who', 'can you', 'could you',
-        'do you', 'does', 'is there', 'are there', 'tell me',
-        
-        # Action phrases
-        'looking for', 'interested in', 'want to know', 'need to know',
-        'trying to', 'wondering', 'curious', 'exploring', 'checking',
-        
-        # Common sentence starters that aren't names
-        'just', 'actually', 'basically', 'well', 'so', 'anyway', 'like',
-        'something', 'anything', 'nothing', 'someone', 'anyone',
-        
-        # Problem descriptions
-        'problem', 'issue', 'trouble', 'struggling', 'difficult', 'challenge',
-        'not working', 'broken', 'error', 'bug',
-        
-        # General inquiries
-        'general inquiry', 'inquiry', 'enquiry', 'contact', 'reach',
-    ]
-    
     text_lower = text.lower().strip()
     
-    # Check if it's an excluded phrase
+    # Comprehensive list of phrases that are NOT names - use exact word matching
+    excluded_exact_words = {
+        # Common greetings and fillers
+        'hello', 'hi', 'hey', 'thanks', 'thank', 'please', 'okay', 'ok', 
+        'sure', 'yes', 'no', 'yeah', 'yep', 'nope', 'bye', 'goodbye',
+        
+        # Help-related single words
+        'help', 'question', 'questions', 'query', 'assistance', 
+        'support', 'information', 'info', 'details',
+        
+        # Service-related single words
+        'pricing', 'cost', 'price', 'quote', 'demo', 'consultation', 'consult',
+        'services', 'products', 'solutions', 'automation', 'chatbot',
+        'data', 'analytics',
+        
+        # Question words
+        'what', 'how', 'why', 'when', 'where', 'which', 'who',
+        
+        # Common words that shouldn't be names
+        'just', 'actually', 'basically', 'well', 'anyway', 'like',
+        'something', 'anything', 'nothing', 'someone', 'anyone',
+        
+        # Problem words
+        'problem', 'issue', 'trouble', 'error', 'bug',
+        
+        # General words
+        'inquiry', 'enquiry', 'contact', 'reach', 'need', 'want', 'have',
+    }
+    
+    # Phrases that should not be names (multi-word)
+    excluded_phrases = [
+        'good morning', 'good afternoon', 'good evening', 
+        'thank you', 'i need', 'i want', 'i have', 'i am looking', 
+        'i would like', "i'd like", 'help me', 'help with',
+        'ai services', 'ai solutions', 'machine learning',
+        'can you', 'could you', 'do you', 'is there', 'are there', 'tell me',
+        'looking for', 'interested in', 'want to know', 'need to know',
+        'trying to', 'wondering about', 'general inquiry', 'not working',
+    ]
+    
+    # Check for excluded phrases
     if any(phrase in text_lower for phrase in excluded_phrases):
+        return ""
+    
+    # Split into words for checking
+    words = text_lower.split()
+    
+    # If any word is in excluded_exact_words, reject
+    # But only if the message is just that word (for single-word names like "Hi Alex")
+    if len(words) == 1 and words[0] in excluded_exact_words:
         return ""
     
     # Check for clear non-name patterns
@@ -389,24 +401,23 @@ def _validate_and_extract_name(text: str) -> str:
     has_question_mark = '?' in text
     
     # Sentences that are likely questions or statements, not names
-    is_sentence = len(text.split()) > 5 or text.endswith('?') or text.endswith('!')
+    is_sentence = len(words) > 5 or text.endswith('?') or text.endswith('!')
     
     if has_email or has_url or is_mostly_numbers or has_question_mark or is_sentence:
         return ""
     
-    # Clean the text
-    # Remove punctuation except hyphens and apostrophes (common in names)
+    # Clean the text - remove punctuation except hyphens and apostrophes
     clean_name = re.sub(r"[^\w\s\-\']", '', text).strip()
     
     # Split into words
-    words = clean_name.split()
+    name_words = clean_name.split()
     
     # Valid name should be 1-4 words
-    if not (1 <= len(words) <= 4):
+    if not (1 <= len(name_words) <= 4):
         return ""
     
     # Each word should start with a letter and be reasonable length
-    for word in words:
+    for word in name_words:
         if not word or not word[0].isalpha():
             return ""
         # Names are typically 2-20 characters
@@ -414,6 +425,6 @@ def _validate_and_extract_name(text: str) -> str:
             return ""
     
     # Capitalize properly (Title Case)
-    formatted_name = ' '.join(word.capitalize() for word in words)
+    formatted_name = ' '.join(word.capitalize() for word in name_words)
     
     return formatted_name
