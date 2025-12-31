@@ -11,7 +11,7 @@ from datetime import datetime
 import uuid
 
 # Get backend URL from environment
-BACKEND_URL = "https://zentiam-rebrand-1.preview.emergentagent.com/api"
+BACKEND_URL = "https://chat-name-extract.preview.emergentagent.com/api"
 
 def test_consultation_form():
     """Test POST /api/contact/consultation endpoint"""

@@ -175,7 +175,7 @@ All routes are accessible:
 
 **Admin Portal URL:**
 ```
-https://zentiam-rebrand-1.preview.emergentagent.com/admin/login
+https://chat-name-extract.preview.emergentagent.com/admin/login
 ```
 
 **Admin Password:**
