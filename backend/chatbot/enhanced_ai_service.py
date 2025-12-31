@@ -363,18 +363,32 @@ Feel free to ask me anything else in the meantime! I'm here to help."""
         if user_info.get('name') and user_info.get('email') and user_info.get('phone'):
             return False, None
         
+        # Check if user is declining to provide info
+        decline_phrases = [
+            "don't want to", "dont want to", "no thanks", "skip", 
+            "i'd rather not", "id rather not", "prefer not to",
+            "not share", "not comfortable", "pass on that"
+        ]
+        message_lower = message.lower()
+        is_declining = any(phrase in message_lower for phrase in decline_phrases)
+        
         # Check if message naturally contains info
         has_email = '@' in message
         has_phone_pattern = re.search(r'\d{10,}', message.replace(' ', '').replace('-', ''))
         
-        if not user_info.get('name') and not has_email and not has_phone_pattern:
+        if not user_info.get('name') and not has_email and not has_phone_pattern and not is_declining:
             return True, "name"
         
-        if not user_info.get('email'):
+        if not user_info.get('email') and not is_declining:
             return True, "email"
         
-        if not user_info.get('phone'):
+        # Phone is optional - if user declines, skip it
+        if not user_info.get('phone') and not is_declining:
             return True, "phone"
+        
+        # If user declined phone, mark it as completed with "skipped"
+        if is_declining and not user_info.get('phone'):
+            return False, None  # Don't ask again
         
         return False, None
     
