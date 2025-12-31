@@ -297,24 +297,24 @@ def extract_user_info(message: str, current_info: dict, last_bot_message: str = 
             bot_asked_for_name = any(pattern in last_bot_message.lower() for pattern in name_ask_patterns)
         
         # Check if user is explicitly providing their name (can appear anywhere in message)
+        # These patterns match name introduction phrases and capture just the name (1-2 words)
         explicit_name_patterns = [
-            r"my name is\s+([A-Za-z][A-Za-z\-\']*(?:\s+[A-Za-z][A-Za-z\-\']*)?)",
-            r"i am\s+([A-Za-z][A-Za-z\-\']*(?:\s+[A-Za-z][A-Za-z\-\']*)?)",
-            r"i'm\s+([A-Za-z][A-Za-z\-\']*(?:\s+[A-Za-z][A-Za-z\-\']*)?)",
-            r"this is\s+([A-Za-z][A-Za-z\-\']*(?:\s+[A-Za-z][A-Za-z\-\']*)?)",
-            r"call me\s+([A-Za-z][A-Za-z\-\']*(?:\s+[A-Za-z][A-Za-z\-\']*)?)",
-            r"name:\s*([A-Za-z][A-Za-z\-\']*(?:\s+[A-Za-z][A-Za-z\-\']*)?)",
+            r"my name is\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\b",
+            r"i am\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\b",
+            r"i'm\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\b",
+            r"this is\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\b",
+            r"call me\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\b",
+            r"name:\s*([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\b",
         ]
         
         explicit_name = None
         for pattern in explicit_name_patterns:
-            match = re.search(pattern, message_lower.strip(), re.IGNORECASE)
+            match = re.search(pattern, message.strip())
             if match:
-                # Get the original case from the message
-                start, end = match.span(1)
-                explicit_name = message.strip()[start:end].strip()
-                # Validate it's not a common non-name word
-                if explicit_name.lower() in ['here', 'there', 'looking', 'interested', 'wondering', 'trying']:
+                explicit_name = match.group(1).strip()
+                # Validate it's not a common word that might be capitalized
+                common_words = ['here', 'there', 'looking', 'interested', 'wondering', 'trying', 'and', 'but', 'or', 'the']
+                if explicit_name.lower() in common_words:
                     explicit_name = None
                     continue
                 break
