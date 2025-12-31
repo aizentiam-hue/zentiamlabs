@@ -240,7 +240,7 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Chatbot Conversation Closure Fix"
+    - "Chatbot Name Extraction Fix"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
