@@ -375,15 +375,19 @@ Feel free to ask me anything else in the meantime! I'm here to help."""
     
     def _check_needs_info(self, user_info: Dict, message: str) -> Tuple[bool, Optional[str]]:
         """Check if we need to collect user information"""
-        # If we have all info, no need to collect
-        if user_info.get('name') and user_info.get('email') and user_info.get('phone'):
+        # If phone is marked as skipped, treat it as collected
+        phone_collected = user_info.get('phone') and user_info.get('phone') != ""
+        
+        # If we have all info (including skipped phone), no need to collect
+        if user_info.get('name') and user_info.get('email') and phone_collected:
             return False, None
         
         # Check if user is declining to provide info
         decline_phrases = [
             "don't want to", "dont want to", "no thanks", "skip", 
             "i'd rather not", "id rather not", "prefer not to",
-            "not share", "not comfortable", "pass on that"
+            "not share", "not comfortable", "pass on that", "no phone",
+            "rather not", "don't have", "dont have", "no number"
         ]
         message_lower = message.lower()
         is_declining = any(phrase in message_lower for phrase in decline_phrases)
@@ -398,14 +402,11 @@ Feel free to ask me anything else in the meantime! I'm here to help."""
         if not user_info.get('email') and not is_declining:
             return True, "email"
         
-        # Phone is optional - if user declines, skip it
-        if not user_info.get('phone') and not is_declining:
+        # Phone is optional - if user declines, skip it completely
+        if not phone_collected and not is_declining:
             return True, "phone"
         
-        # If user declined phone, mark it as completed with "skipped"
-        if is_declining and not user_info.get('phone'):
-            return False, None  # Don't ask again
-        
+        # User declined phone - don't ask again, return False
         return False, None
     
     def _get_info_collection_prompt(self, info_type: str, user_info: Dict) -> str:
