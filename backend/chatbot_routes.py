@@ -299,17 +299,17 @@ def extract_user_info(message: str, current_info: dict, last_bot_message: str = 
         # Check if user is explicitly providing their name (can appear anywhere in message)
         # These patterns match name introduction phrases and capture just the name (1-2 words)
         explicit_name_patterns = [
-            r"my name is\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\b",
-            r"i am\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\b",
-            r"i'm\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\b",
-            r"this is\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\b",
-            r"call me\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\b",
-            r"name:\s*([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\b",
+            (r"(?i)my name is\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\b", re.IGNORECASE),
+            (r"(?i)i am\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\b", re.IGNORECASE),
+            (r"(?i)i'm\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\b", re.IGNORECASE),
+            (r"(?i)this is\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\b", re.IGNORECASE),
+            (r"(?i)call me\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\b", re.IGNORECASE),
+            (r"(?i)name:\s*([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\b", re.IGNORECASE),
         ]
         
         explicit_name = None
-        for pattern in explicit_name_patterns:
-            match = re.search(pattern, message.strip())
+        for pattern, flags in explicit_name_patterns:
+            match = re.search(pattern, message.strip(), flags)
             if match:
                 explicit_name = match.group(1).strip()
                 # Validate it's not a common word that might be capitalized
