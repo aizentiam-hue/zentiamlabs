@@ -116,20 +116,23 @@ async def chat(request: ChatRequest):
         decline_phrases = [
             "don't want to", "dont want to", "no thanks", "skip", 
             "i'd rather not", "id rather not", "prefer not to",
-            "not share", "not comfortable", "pass on that"
+            "not share", "not comfortable", "pass on that", "no phone",
+            "rather not", "don't have", "dont have", "no number"
         ]
         message_lower = request.message.lower()
         is_declining_phone = any(phrase in message_lower for phrase in decline_phrases)
         
         # If user declined phone but we have name + email, trigger closure
         if is_declining_phone and user_info.get("name") and user_info.get("email") and not user_info.get("phone"):
-            # Mark phone as skipped
+            # Mark phone as skipped IMMEDIATELY and update user_info
+            user_info["phone"] = "skipped"
             await db.chat_sessions.update_one(
                 {"session_id": request.session_id},
                 {
                     "$set": {
                         "user_phone": "skipped",
                         "info_collected": True,
+                        "info_collected_flow_complete": True,
                         "updated_at": datetime.utcnow()
                     }
                 }
