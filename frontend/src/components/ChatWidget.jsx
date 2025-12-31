@@ -173,7 +173,7 @@ function ChatWidget() {
           <div
             style={{
               padding: '1rem',
-              background: '#9333ea',
+              background: 'var(--text-primary)',
               color: 'white',
               display: 'flex',
               justifyContent: 'space-between',
