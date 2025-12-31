@@ -104,8 +104,32 @@ async def chat(request: ChatRequest):
                 }
             )
         
-        # Check if we just completed info collection (got phone and have name + email)
-        show_closure = (just_got_phone and user_info.get("name") and user_info.get("email"))
+        # Check if user is declining to provide phone
+        decline_phrases = [
+            "don't want to", "dont want to", "no thanks", "skip", 
+            "i'd rather not", "id rather not", "prefer not to",
+            "not share", "not comfortable", "pass on that"
+        ]
+        message_lower = request.message.lower()
+        is_declining_phone = any(phrase in message_lower for phrase in decline_phrases)
+        
+        # If user declined phone but we have name + email, trigger closure
+        if is_declining_phone and user_info.get("name") and user_info.get("email") and not user_info.get("phone"):
+            # Mark phone as skipped
+            await db.chat_sessions.update_one(
+                {"session_id": request.session_id},
+                {
+                    "$set": {
+                        "user_phone": "skipped",
+                        "info_collected": True,
+                        "updated_at": datetime.utcnow()
+                    }
+                }
+            )
+            show_closure = True
+        else:
+            # Check if we just completed info collection (got phone and have name + email)
+            show_closure = (just_got_phone and user_info.get("name") and user_info.get("email"))
         
         # Add user message to session
         await db.chat_sessions.update_one(
