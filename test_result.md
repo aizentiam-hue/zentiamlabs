@@ -288,6 +288,21 @@ frontend:
           agent: "testing"
           comment: "✅ CHATBOT WIDGET TESTING COMPLETED: Comprehensive testing of chat widget on production URL https://chat-name-extract.preview.emergentagent.com/contact. FINDINGS: 1) Chat widget button renders correctly in bottom-right corner, 2) Chat window opens successfully when clicked, 3) Welcome message displays: 'Hi! I'm Zentiam's AI assistant. I can help you learn about our AI consulting services, automation solutions, and products. How can I assist you today?', 4) All API endpoints working correctly (/api/chatbot/init and /api/chatbot/session both return 200 status), 5) Backend chatbot routes properly implemented and accessible. MINOR ISSUE: Some duplicate API requests are made during initialization causing net::ERR_ABORTED errors in console, but core functionality works correctly. Manual API testing confirms endpoints are fully functional. Chat widget is operational and ready for user interaction."
 
+  - task: "Chatbot Name Extraction Fix"
+    implemented: true
+    working: "NA"
+    file: "/app/backend/chatbot_routes.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+        - working: false
+          agent: "main"
+          comment: "Previous implementation had flawed name extraction that would incorrectly identify generic messages like 'I need help' as user names. The issue was: 1) Name extraction ran on every message regardless of context, 2) Excluded phrases list used substring matching causing false positives (e.g., 'Johnson' matched 'so'), 3) No state awareness for when bot asked for name."
+        - working: "NA"
+          agent: "main"
+          comment: "Implemented comprehensive fix with: 1) Context-aware extraction that only triggers when bot explicitly asked for name OR user uses explicit patterns like 'My name is X', 2) Fixed excluded phrases to use proper word matching instead of substring, 3) Added intelligent name validation with common word filtering, 4) Added support for explicit name patterns ('My name is', 'I am', 'I'm', 'Call me', etc.) with proper multi-word name support. Manual curl tests all passed: 'I need help' correctly returns None, 'My name is Sarah and I need help' correctly extracts 'Sarah', bot-prompted flow correctly extracts names."
+
   - task: "Chatbot Conversation Closure Fix"
     implemented: true
     working: true
