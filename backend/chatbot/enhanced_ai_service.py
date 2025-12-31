@@ -333,9 +333,25 @@ Remember: Your goal is to be genuinely helpful first, and naturally guide toward
         """Generate comprehensive closure message with options"""
         name = user_info.get('name', 'there')
         email = user_info.get('email', 'your email')
-        phone = user_info.get('phone', 'your phone')
+        phone = user_info.get('phone', 'skipped')
         
-        closure_message = f"""Perfect! Thank you, {name}. I've noted down your details.
+        # Adjust message based on whether phone was provided
+        if phone == 'skipped' or not phone:
+            closure_message = f"""Perfect! Thank you, {name}. I've noted down your details.
+
+**What happens next:**
+✓ Our team will review your inquiry
+✓ You'll hear from us at {email} within 24 hours
+✓ We'll prepare specific recommendations for your situation
+
+**Or, you can take immediate action:**
+→ Submit a detailed request via our [contact form](/contact)
+→ Book a 30-minute consultation directly
+→ Take our AI Assessment to get instant insights
+
+Feel free to ask me anything else in the meantime! I'm here to help."""
+        else:
+            closure_message = f"""Perfect! Thank you, {name}. I've noted down your details.
 
 **What happens next:**
 ✓ Our team will review your inquiry
