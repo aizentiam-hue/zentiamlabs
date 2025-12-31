@@ -294,7 +294,7 @@ function ChatWidget() {
                   padding: '0.75rem',
                   borderRadius: '50%',
                   border: 'none',
-                  background: inputMessage.trim() && isInitialized && !isLoading ? 'var(--text-primary)' : 'rgba(255, 255, 255, 0.2)',
+                  background: inputMessage.trim() && isInitialized && !isLoading ? '#9333ea' : 'rgba(255, 255, 255, 0.2)',
                   color: 'white',
                   cursor: inputMessage.trim() && isInitialized && !isLoading ? 'pointer' : 'not-allowed',
                   display: 'flex',
