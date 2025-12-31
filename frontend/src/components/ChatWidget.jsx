@@ -276,15 +276,16 @@ function ChatWidget() {
                   flex: 1,
                   padding: '0.75rem',
                   borderRadius: '1.5rem',
-                  border: '1px solid var(--border-input)',
-                  background: 'var(--bg-page)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  background: 'rgba(255, 255, 255, 0.05)',
                   fontSize: '0.875rem',
                   resize: 'none',
                   outline: 'none',
                   fontFamily: 'inherit',
-                  color: 'var(--text-secondary)',
+                  color: 'white',
                   maxHeight: '100px'
                 }}
+                placeholder="Type your message..."
               />
               <button
                 onClick={sendMessage}
