@@ -259,8 +259,8 @@ function ChatWidget() {
           <div
             style={{
               padding: '1rem',
-              borderTop: '1px solid var(--border-light)',
-              background: 'var(--bg-card)'
+              borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+              background: '#1a1a2e'
             }}
           >
             <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-end' }}>
