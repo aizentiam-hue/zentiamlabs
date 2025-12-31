@@ -276,7 +276,14 @@ def extract_user_info(message: str, current_info: dict) -> dict:
         has_url = 'http' in message.lower() or 'www' in message.lower()
         is_mostly_numbers = len(re.findall(r'\d', message)) > len(message) / 2
         
-        if not has_email and not has_url and not is_mostly_numbers:
+        # Exclude common phrases that are NOT names
+        excluded_phrases = [
+            'i need', 'i want', 'i have', 'i am looking', 'help', 'question',
+            'assistance', 'information', 'hello', 'hi', 'hey', 'thanks', 'thank you'
+        ]
+        is_excluded_phrase = any(phrase in message.lower() for phrase in excluded_phrases)
+        
+        if not has_email and not has_url and not is_mostly_numbers and not is_excluded_phrase:
             # Clean the message - remove common prefixes
             clean_name = re.sub(r'(?i)^(my name is|i am|i\'m|this is|call me)\s+', '', message.strip())
             clean_name = re.sub(r'[^\w\s]', '', clean_name).strip()
