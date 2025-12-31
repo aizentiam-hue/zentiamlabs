@@ -296,23 +296,27 @@ def extract_user_info(message: str, current_info: dict, last_bot_message: str = 
             ]
             bot_asked_for_name = any(pattern in last_bot_message.lower() for pattern in name_ask_patterns)
         
-        # Check if user is explicitly providing their name
+        # Check if user is explicitly providing their name (can appear anywhere in message)
         explicit_name_patterns = [
-            r"^my name is\s+(.+)$",
-            r"^i am\s+(.+)$",
-            r"^i'm\s+(.+)$",
-            r"^this is\s+(.+)$",
-            r"^call me\s+(.+)$",
-            r"^it's\s+(.+)$",
-            r"^name:\s*(.+)$",
-            r"^(.+)\s+here$",  # "John here"
+            r"my name is\s+([A-Za-z][A-Za-z\-\']*(?:\s+[A-Za-z][A-Za-z\-\']*)?)",
+            r"i am\s+([A-Za-z][A-Za-z\-\']*(?:\s+[A-Za-z][A-Za-z\-\']*)?)",
+            r"i'm\s+([A-Za-z][A-Za-z\-\']*(?:\s+[A-Za-z][A-Za-z\-\']*)?)",
+            r"this is\s+([A-Za-z][A-Za-z\-\']*(?:\s+[A-Za-z][A-Za-z\-\']*)?)",
+            r"call me\s+([A-Za-z][A-Za-z\-\']*(?:\s+[A-Za-z][A-Za-z\-\']*)?)",
+            r"name:\s*([A-Za-z][A-Za-z\-\']*(?:\s+[A-Za-z][A-Za-z\-\']*)?)",
         ]
         
         explicit_name = None
         for pattern in explicit_name_patterns:
-            match = re.match(pattern, message_lower.strip())
+            match = re.search(pattern, message_lower.strip(), re.IGNORECASE)
             if match:
-                explicit_name = match.group(1).strip()
+                # Get the original case from the message
+                start, end = match.span(1)
+                explicit_name = message.strip()[start:end].strip()
+                # Validate it's not a common non-name word
+                if explicit_name.lower() in ['here', 'there', 'looking', 'interested', 'wondering', 'trying']:
+                    explicit_name = None
+                    continue
                 break
         
         # If bot asked for name OR user explicitly provided name, try to extract
