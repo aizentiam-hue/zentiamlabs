@@ -471,6 +471,171 @@ def test_admin_portal_verification():
         print(f"❌ Admin portal verification error: {str(e)}")
         return False
 
+def test_phone_number_decline_fix():
+    """Test phone number decline fix - specific test for the review request"""
+    print("\n=== Testing Phone Number Decline Fix ===")
+    
+    decline_phrases = [
+        "I dont want to share that",
+        "skip", 
+        "no thanks",
+        "I prefer not to"
+    ]
+    
+    results = []
+    
+    for phrase in decline_phrases:
+        print(f"\n--- Testing decline phrase: '{phrase}' ---")
+        success = test_single_phone_decline_scenario(phrase)
+        results.append((f"Decline with '{phrase}'", success))
+    
+    # Summary for phone decline tests
+    print("\n" + "=" * 50)
+    print("📊 PHONE NUMBER DECLINE TEST SUMMARY")
+    print("=" * 50)
+    
+    passed = 0
+    total = len(results)
+    
+    for test_name, success in results:
+        status = "✅ PASS" if success else "❌ FAIL"
+        print(f"{status} - {test_name}")
+        if success:
+            passed += 1
+    
+    print(f"\nPhone Decline Results: {passed}/{total} tests passed")
+    return passed == total
+
+def test_single_phone_decline_scenario(decline_phrase):
+    """Test a single phone number decline scenario"""
+    try:
+        print(f"Testing phone decline with phrase: '{decline_phrase}'")
+        
+        # Create session
+        session_response = requests.post(f"{BACKEND_URL}/chatbot/session")
+        if session_response.status_code != 200:
+            print(f"❌ Failed to create session: {session_response.status_code}")
+            return False
+        
+        session_id = session_response.json()["session_id"]
+        print(f"Created session: {session_id}")
+        
+        # Step 1: Start conversation
+        messages = [
+            "Hello",
+            "Test User",  # Name
+            "test@example.com",  # Email
+            decline_phrase  # Decline phone
+        ]
+        
+        bot_responses = []
+        
+        for i, message in enumerate(messages):
+            chat_data = {
+                "session_id": session_id,
+                "message": message
+            }
+            
+            chat_response = requests.post(f"{BACKEND_URL}/chatbot/chat", json=chat_data)
+            if chat_response.status_code != 200:
+                print(f"❌ Chat failed at step {i+1}: {chat_response.status_code}")
+                print(f"Response: {chat_response.text}")
+                return False
+            
+            bot_response = chat_response.json()["response"]
+            bot_responses.append(bot_response)
+            print(f"Step {i+1} - User: '{message}' → Bot: '{bot_response[:100]}...'")
+            
+            # After declining phone (step 4), check for immediate closure
+            if i == 3:  # Phone decline step
+                # Check if bot provides closure message
+                closure_indicators = [
+                    "perfect", "thank you", "noted", "details", "test user",
+                    "reach out", "24 hours", "contact", "team"
+                ]
+                
+                has_closure = any(indicator in bot_response.lower() for indicator in closure_indicators)
+                
+                if not has_closure:
+                    print(f"❌ No closure message after declining phone. Bot response: {bot_response}")
+                    return False
+                
+                # Check that bot mentions the user's name
+                if "test user" not in bot_response.lower():
+                    print(f"❌ Closure message doesn't mention user's name. Response: {bot_response}")
+                    return False
+                
+                print("✅ Bot provided proper closure message with user's name")
+        
+        # Verify session state
+        session_details = requests.get(f"{BACKEND_URL}/chatbot/session/{session_id}")
+        if session_details.status_code != 200:
+            print(f"❌ Failed to get session details: {session_details.status_code}")
+            return False
+        
+        session_data = session_details.json()
+        
+        # Check session state
+        expected_name = "Test User"
+        expected_email = "test@example.com"
+        expected_phone = "skipped"
+        expected_info_collected = True
+        
+        actual_name = session_data.get("user_name")
+        actual_email = session_data.get("user_email")
+        actual_phone = session_data.get("user_phone")
+        actual_info_collected = session_data.get("info_collected")
+        
+        print(f"Session state - Name: {actual_name}, Email: {actual_email}, Phone: {actual_phone}, Info Collected: {actual_info_collected}")
+        
+        # Verify all expected values
+        if actual_name != expected_name:
+            print(f"❌ Expected name '{expected_name}' but got '{actual_name}'")
+            return False
+        
+        if actual_email != expected_email:
+            print(f"❌ Expected email '{expected_email}' but got '{actual_email}'")
+            return False
+        
+        if actual_phone != expected_phone:
+            print(f"❌ Expected phone '{expected_phone}' but got '{actual_phone}'")
+            return False
+        
+        if actual_info_collected != expected_info_collected:
+            print(f"❌ Expected info_collected '{expected_info_collected}' but got '{actual_info_collected}'")
+            return False
+        
+        # Test that bot doesn't ask for phone again
+        print("\n--- Testing that bot doesn't ask for phone again ---")
+        follow_up_data = {
+            "session_id": session_id,
+            "message": "What services do you offer?"
+        }
+        
+        follow_up_response = requests.post(f"{BACKEND_URL}/chatbot/chat", json=follow_up_data)
+        if follow_up_response.status_code != 200:
+            print(f"❌ Follow-up chat failed: {follow_up_response.status_code}")
+            return False
+        
+        follow_up_bot_response = follow_up_response.json()["response"]
+        print(f"Follow-up - User: 'What services do you offer?' → Bot: '{follow_up_bot_response[:100]}...'")
+        
+        # Check that bot doesn't ask for phone again
+        phone_ask_indicators = ["phone", "number", "contact number", "phone number"]
+        asks_for_phone_again = any(indicator in follow_up_bot_response.lower() for indicator in phone_ask_indicators)
+        
+        if asks_for_phone_again:
+            print(f"❌ Bot asked for phone again after decline: {follow_up_bot_response}")
+            return False
+        
+        print("✅ Bot correctly did NOT ask for phone number again")
+        print(f"✅ Phone decline scenario with '{decline_phrase}' PASSED")
+        return True
+        
+    except Exception as e:
+        print(f"❌ Error testing phone decline with '{decline_phrase}': {str(e)}")
+        return False
+
 def main():
     """Run all backend tests"""
     print("🚀 Starting Zentiam Backend API Tests")
@@ -506,6 +671,10 @@ def main():
     # Test 7: Admin Portal Verification (NEW)
     success = test_admin_portal_verification()
     results.append(("Admin Portal Chat Sessions", success))
+    
+    # Test 8: Phone Number Decline Fix (SPECIFIC TEST FOR REVIEW REQUEST)
+    success = test_phone_number_decline_fix()
+    results.append(("Phone Number Decline Fix", success))
     
     # Summary
     print("\n" + "=" * 60)
