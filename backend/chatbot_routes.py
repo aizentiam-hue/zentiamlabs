@@ -248,11 +248,17 @@ async def get_session(session_id: str):
         logger.error(f"Error getting session: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
-def extract_user_info(message: str, current_info: dict) -> dict:
-    """Extract user information from message"""
+def extract_user_info(message: str, current_info: dict, last_bot_message: str = "") -> dict:
+    """
+    Extract user information from message with context awareness.
+    Only extracts name when:
+    - Bot has explicitly asked for it, OR
+    - User explicitly states their name with patterns like "My name is...", "I'm...", "Call me..."
+    """
     extracted = {}
+    message_lower = message.lower().strip()
     
-    # Extract email (most reliable)
+    # Extract email (most reliable - always check)
     if not current_info.get("email"):
         email_pattern = r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
         match = re.search(email_pattern, message)
@@ -269,29 +275,133 @@ def extract_user_info(message: str, current_info: dict) -> dict:
             if match:
                 extracted["phone"] = match.group(0).strip()
     
-    # Extract name - accept any reasonable text ONLY when bot explicitly asked for name
+    # Extract name - ONLY when appropriate context exists
     if not current_info.get("name"):
-        # Check if message looks like a name (not an email, not just numbers, has letters)
-        has_email = '@' in message
-        has_url = 'http' in message.lower() or 'www' in message.lower()
-        is_mostly_numbers = len(re.findall(r'\d', message)) > len(message) / 2
+        # Check if bot explicitly asked for name
+        bot_asked_for_name = False
+        if last_bot_message:
+            name_ask_patterns = [
+                'your name', 'may i know your name', 'what is your name',
+                "what's your name", 'who am i speaking', 'who am i talking',
+                'could you share your name', 'can i get your name',
+                'could i get your name', 'may i have your name'
+            ]
+            bot_asked_for_name = any(pattern in last_bot_message.lower() for pattern in name_ask_patterns)
         
-        # Exclude common phrases that are NOT names
-        excluded_phrases = [
-            'i need', 'i want', 'i have', 'i am looking', 'help', 'question',
-            'assistance', 'information', 'hello', 'hi', 'hey', 'thanks', 'thank you'
+        # Check if user is explicitly providing their name
+        explicit_name_patterns = [
+            r"^my name is\s+(.+)$",
+            r"^i am\s+(.+)$",
+            r"^i'm\s+(.+)$",
+            r"^this is\s+(.+)$",
+            r"^call me\s+(.+)$",
+            r"^it's\s+(.+)$",
+            r"^name:\s*(.+)$",
+            r"^(.+)\s+here$",  # "John here"
         ]
-        is_excluded_phrase = any(phrase in message.lower() for phrase in excluded_phrases)
         
-        if not has_email and not has_url and not is_mostly_numbers and not is_excluded_phrase:
-            # Clean the message - remove common prefixes
-            clean_name = re.sub(r'(?i)^(my name is|i am|i\'m|this is|call me)\s+', '', message.strip())
-            clean_name = re.sub(r'[^\w\s]', '', clean_name).strip()
+        explicit_name = None
+        for pattern in explicit_name_patterns:
+            match = re.match(pattern, message_lower.strip())
+            if match:
+                explicit_name = match.group(1).strip()
+                break
+        
+        # If bot asked for name OR user explicitly provided name, try to extract
+        if bot_asked_for_name or explicit_name:
+            # If explicit name pattern matched, use that
+            if explicit_name:
+                name_candidate = explicit_name
+            else:
+                name_candidate = message.strip()
             
-            # If it's 1-4 words and each word starts with a letter, consider it a name
-            words = clean_name.split()
-            if 1 <= len(words) <= 4 and all(word[0].isalpha() for word in words if word):
-                # Capitalize properly
-                extracted["name"] = ' '.join(word.capitalize() for word in words)
+            # Validate the name candidate
+            name = _validate_and_extract_name(name_candidate)
+            if name:
+                extracted["name"] = name
     
     return extracted
+
+
+def _validate_and_extract_name(text: str) -> str:
+    """
+    Validate and clean a potential name string.
+    Returns cleaned name or empty string if invalid.
+    """
+    # Comprehensive list of phrases that are NOT names
+    excluded_phrases = [
+        # Common greetings and fillers
+        'hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening',
+        'thanks', 'thank you', 'please', 'okay', 'ok', 'sure', 'yes', 'no', 'yeah', 'yep', 'nope',
+        
+        # Help-related phrases
+        'i need', 'i want', 'i have', 'i am looking', 'i would like', 'i\'d like',
+        'help', 'help me', 'help with', 'question', 'questions', 'query',
+        'assistance', 'support', 'information', 'info', 'details',
+        
+        # Service-related phrases
+        'pricing', 'cost', 'price', 'quote', 'demo', 'consultation', 'consult',
+        'ai services', 'ai solutions', 'services', 'products', 'solutions',
+        'automation', 'chatbot', 'machine learning', 'data', 'analytics',
+        
+        # Question starters
+        'what', 'how', 'why', 'when', 'where', 'which', 'who', 'can you', 'could you',
+        'do you', 'does', 'is there', 'are there', 'tell me',
+        
+        # Action phrases
+        'looking for', 'interested in', 'want to know', 'need to know',
+        'trying to', 'wondering', 'curious', 'exploring', 'checking',
+        
+        # Common sentence starters that aren't names
+        'just', 'actually', 'basically', 'well', 'so', 'anyway', 'like',
+        'something', 'anything', 'nothing', 'someone', 'anyone',
+        
+        # Problem descriptions
+        'problem', 'issue', 'trouble', 'struggling', 'difficult', 'challenge',
+        'not working', 'broken', 'error', 'bug',
+        
+        # General inquiries
+        'general inquiry', 'inquiry', 'enquiry', 'contact', 'reach',
+    ]
+    
+    text_lower = text.lower().strip()
+    
+    # Check if it's an excluded phrase
+    if any(phrase in text_lower for phrase in excluded_phrases):
+        return ""
+    
+    # Check for clear non-name patterns
+    has_email = '@' in text
+    has_url = 'http' in text_lower or 'www' in text_lower
+    is_mostly_numbers = len(re.findall(r'\d', text)) > len(text) / 2
+    has_question_mark = '?' in text
+    
+    # Sentences that are likely questions or statements, not names
+    is_sentence = len(text.split()) > 5 or text.endswith('?') or text.endswith('!')
+    
+    if has_email or has_url or is_mostly_numbers or has_question_mark or is_sentence:
+        return ""
+    
+    # Clean the text
+    # Remove punctuation except hyphens and apostrophes (common in names)
+    clean_name = re.sub(r"[^\w\s\-\']", '', text).strip()
+    
+    # Split into words
+    words = clean_name.split()
+    
+    # Valid name should be 1-4 words
+    if not (1 <= len(words) <= 4):
+        return ""
+    
+    # Each word should start with a letter and be reasonable length
+    for word in words:
+        if not word or not word[0].isalpha():
+            return ""
+        # Names are typically 2-20 characters
+        if len(word) < 2 or len(word) > 20:
+            return ""
+    
+    # Capitalize properly (Title Case)
+    formatted_name = ' '.join(word.capitalize() for word in words)
+    
+    return formatted_name
