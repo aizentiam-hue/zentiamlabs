@@ -80,8 +80,16 @@ async def chat(request: ChatRequest):
             "phone": session.get("user_phone")
         }
         
-        # Extract user info BEFORE generating response
-        extracted_info = extract_user_info(request.message, user_info)
+        # Get the last bot message for context (to check if bot asked for name)
+        messages = session.get("messages", [])
+        last_bot_message = ""
+        for msg in reversed(messages):
+            if msg.get("sender") == "bot":
+                last_bot_message = msg.get("message", "")
+                break
+        
+        # Extract user info BEFORE generating response (with context awareness)
+        extracted_info = extract_user_info(request.message, user_info, last_bot_message)
         
         # Track what was just extracted
         just_got_name = "name" in extracted_info
