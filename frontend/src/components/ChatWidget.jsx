@@ -225,7 +225,7 @@ function ChatWidget() {
                     maxWidth: '80%',
                     padding: '0.75rem 1rem',
                     borderRadius: msg.sender === 'user' ? '1rem 1rem 0 1rem' : '1rem 1rem 1rem 0',
-                    background: msg.sender === 'user' ? 'var(--text-primary)' : 'rgba(255, 255, 255, 0.1)',
+                    background: msg.sender === 'user' ? '#9333ea' : 'rgba(255, 255, 255, 0.1)',
                     color: 'white',
                     fontSize: '0.9rem',
                     lineHeight: '1.4',
