@@ -182,8 +182,8 @@ function ChatWidget() {
             }}
           >
             <div>
-              <h3 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 'bold' }}>Zentiam AI Assistant</h3>
-              <p style={{ margin: 0, fontSize: '0.8rem', opacity: 0.9 }}>We're here to help!</p>
+              <h3 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 'bold' }}>Zia</h3>
+              <p style={{ margin: 0, fontSize: '0.8rem', opacity: 0.9 }}>Zentiam AI Assistant</p>
             </div>
             <button
               onClick={() => setIsOpen(false)}
