@@ -87,14 +87,28 @@ class EnhancedAIService:
             contact_request_phrases = ['contact me', 'call me', 'reach out', 'get in touch', 'send me info', 'get back to me']
             explicit_contact_request = any(phrase in user_message.lower() for phrase in contact_request_phrases)
             
+            # Business/service related keywords - if ANY of these are present, answer first
+            business_keywords = [
+                'help', 'need', 'looking for', 'want', 'can you', 'how', 'what', 'why', 'when',
+                'service', 'services', 'offering', 'offerings', 'product', 'products',
+                'price', 'pricing', 'cost', 'consultation', 'consult',
+                'ai', 'automation', 'solution', 'solutions', 'tell me', 'know more',
+                'about', 'information', 'info', 'details', 'explain', 'describe',
+                'do you', 'can i', 'could you', 'would you', 'interested',
+                'demo', 'trial', 'learn', 'understand', 'provide', 'offer'
+            ]
+            
+            message_lower = user_message.lower()
+            
             # Check if this message contains a question or business request that needs answering
             is_business_query = (
                 '?' in user_message or  # Direct question
                 context_analysis['intent'] in ['specific_problem', 'ready_to_convert', 'exploring'] or
-                any(kw in user_message.lower() for kw in ['help', 'need', 'looking for', 'want', 'can you', 'how', 'what'])
+                any(kw in message_lower for kw in business_keywords)
             )
             
             # If it's a business query, ALWAYS answer first (unless explicit contact request)
+            if is_business_query and not explicit_contact_request:
             if is_business_query and not explicit_contact_request:
                 # Answer the query first
                 context_results = knowledge_base.query(user_message)
