@@ -91,23 +91,23 @@ const AdminLayout = ({ children }) => {
             gap: '0.75rem',
             padding: '0.75rem 1rem',
             borderRadius: '0.5rem',
-            background: 'transparent',
-            border: '1px solid var(--border-primary)',
-            color: 'rgba(255, 255, 255, 0.95)',
+            background: '#fef2f2',
+            border: '1px solid #fecaca',
+            color: '#dc2626',
             cursor: 'pointer',
             fontSize: '0.875rem',
             transition: 'all 0.2s ease',
             width: '100%',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            fontWeight: 500
           }}
           onMouseEnter={(e) => {
-            e.target.style.background = '#fee';
-            e.target.style.borderColor = '#c00';
-            e.target.style.color = '#c00';
+            e.target.style.background = '#fee2e2';
+            e.target.style.borderColor = '#f87171';
           }}
           onMouseLeave={(e) => {
-            e.target.style.background = 'transparent';
-            e.target.style.borderColor = 'var(--border-primary)';
+            e.target.style.background = '#fef2f2';
+            e.target.style.borderColor = '#fecaca';
             e.target.style.color = 'var(--text-primary)';
           }}
         >
