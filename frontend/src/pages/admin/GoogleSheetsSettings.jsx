@@ -30,6 +30,10 @@ const GoogleSheetsSettings = () => {
     try {
       const response = await axios.get(`${API}/admin/sheets/status`);
       setStatus(response.data);
+      // Pre-populate the spreadsheet URL if configured
+      if (response.data.spreadsheet_id) {
+        setSpreadsheetUrl(`https://docs.google.com/spreadsheets/d/${response.data.spreadsheet_id}/edit`);
+      }
     } catch (error) {
       console.error('Error fetching status:', error);
     } finally {
