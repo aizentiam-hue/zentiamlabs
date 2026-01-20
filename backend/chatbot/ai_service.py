@@ -104,7 +104,7 @@ Provide helpful, accurate answers based on the context. If you don't have specif
         except Exception as e:
             logger.error(f"Error generating response: {e}")
             return {
-                "response": "I apologize, but I'm having trouble processing your request right now. Please try again or contact us directly at contact@zentiam.com.",
+                "response": "I apologize, but I'm having trouble processing your request right now. Please try again or contact us directly at ai.zentiam@gmail.com.",
                 "needs_info": False,
                 "is_answered": False,
                 "info_complete": False

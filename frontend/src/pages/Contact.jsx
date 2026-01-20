@@ -490,14 +490,14 @@ const Contact = () => {
                         Email
                       </div>
                       <a 
-                        href="mailto:contact@zentiam.com" 
+                        href="mailto:ai.zentiam@gmail.com" 
                         style={{ 
                           color: 'rgba(255, 255, 255, 0.95)', 
                           textDecoration: 'none',
                           fontSize: '0.875rem'
                         }}
                       >
-                        contact@zentiam.com
+                        ai.zentiam@gmail.com
                       </a>
                     </div>
                   </div>

@@ -86,7 +86,7 @@ const Home = () => {
     "description": "AI consulting agency delivering 3.7x ROI with custom AI solutions, automation, and strategic consulting",
     "contactPoint": {
       "@type": "ContactPoint",
-      "email": "contact@zentiam.com",
+      "email": "ai.zentiam@gmail.com",
       "contactType": "Customer Service"
     },
     "sameAs": []

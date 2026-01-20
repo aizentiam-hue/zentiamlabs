@@ -112,7 +112,7 @@ const Footer = () => {
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <a
-                href="mailto:contact@zentiam.com"
+                href="mailto:ai.zentiam@gmail.com"
                 style={{
                   color: 'rgba(255, 255, 255, 0.9)',
                   textDecoration: 'none',
@@ -126,7 +126,7 @@ const Footer = () => {
                 onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.9)'}
               >
                 <Mail size={16} />
-                contact@zentiam.com
+                ai.zentiam@gmail.com
               </a>
               <div style={{ display: 'flex', gap: '1rem', marginTop: '0.5rem' }}>
                 <a

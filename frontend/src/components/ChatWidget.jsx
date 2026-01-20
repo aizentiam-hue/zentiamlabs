@@ -45,7 +45,7 @@ function ChatWidget() {
           console.error('Error initializing chat:', error);
           const errorMessage = {
             sender: 'bot',
-            text: "Hello! I'm having trouble connecting right now. Please try again or contact us at contact@zentiam.com",
+            text: "Hello! I'm having trouble connecting right now. Please try again or contact us at ai.zentiam@gmail.com",
             timestamp: new Date()
           };
           setMessages([errorMessage]);
