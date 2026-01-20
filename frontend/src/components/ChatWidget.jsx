@@ -229,11 +229,30 @@ function ChatWidget() {
                     background: msg.sender === 'user' ? '#9333ea' : 'rgba(255, 255, 255, 0.1)',
                     color: 'white',
                     fontSize: '0.9rem',
-                    lineHeight: '1.4',
+                    lineHeight: '1.5',
                     wordWrap: 'break-word'
                   }}
+                  className={msg.sender === 'bot' ? 'chat-markdown' : ''}
                 >
-                  {msg.text}
+                  {msg.sender === 'bot' ? (
+                    <ReactMarkdown
+                      components={{
+                        p: ({children}) => <p style={{margin: '0 0 0.5rem 0'}}>{children}</p>,
+                        ul: ({children}) => <ul style={{margin: '0.5rem 0', paddingLeft: '1.25rem'}}>{children}</ul>,
+                        ol: ({children}) => <ol style={{margin: '0.5rem 0', paddingLeft: '1.25rem'}}>{children}</ol>,
+                        li: ({children}) => <li style={{margin: '0.25rem 0'}}>{children}</li>,
+                        strong: ({children}) => <strong style={{fontWeight: '600'}}>{children}</strong>,
+                        em: ({children}) => <em>{children}</em>,
+                        h1: ({children}) => <h1 style={{fontSize: '1.1rem', fontWeight: '600', margin: '0.5rem 0'}}>{children}</h1>,
+                        h2: ({children}) => <h2 style={{fontSize: '1rem', fontWeight: '600', margin: '0.5rem 0'}}>{children}</h2>,
+                        h3: ({children}) => <h3 style={{fontSize: '0.95rem', fontWeight: '600', margin: '0.5rem 0'}}>{children}</h3>,
+                      }}
+                    >
+                      {msg.text}
+                    </ReactMarkdown>
+                  ) : (
+                    msg.text
+                  )}
                 </div>
                 <div
                   style={{
