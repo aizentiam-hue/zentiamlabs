@@ -522,7 +522,7 @@ const Contact = () => {
                         Phone
                       </div>
                       <span style={{ color: 'rgba(255, 255, 255, 0.95)', fontSize: '0.875rem' }}>
-                        +1 (555) 123-4567
+                        +91 80889-83706
                       </span>
                     </div>
                   </div>
@@ -547,7 +547,7 @@ const Contact = () => {
                         Office
                       </div>
                       <span style={{ color: 'rgba(255, 255, 255, 0.95)', fontSize: '0.875rem' }}>
-                        San Francisco, CA
+                        Bangalore, India
                       </span>
                     </div>
                   </div>

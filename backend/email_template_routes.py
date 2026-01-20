@@ -241,7 +241,7 @@ async def preview_template(template_id: str):
             "service": "AI Strategy Consulting",
             "company": "Acme Corp",
             "email": "john@example.com",
-            "phone": "+1 (555) 123-4567",
+            "phone": "+91 80889-83706",
             "unsubscribe_link": "https://zentiam.com/unsubscribe"
         }
         
