@@ -108,7 +108,6 @@ const AdminLayout = ({ children }) => {
           onMouseLeave={(e) => {
             e.target.style.background = '#fef2f2';
             e.target.style.borderColor = '#fecaca';
-            e.target.style.color = 'var(--text-primary)';
           }}
         >
           <LogOut size={18} />
