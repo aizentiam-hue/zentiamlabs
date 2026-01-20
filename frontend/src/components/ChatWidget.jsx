@@ -116,6 +116,21 @@ function ChatWidget() {
     }
   };
 
+  const handleFeedback = async (messageIndex, feedbackType) => {
+    if (feedbackGiven[messageIndex]) return;
+    
+    try {
+      await axios.post(`${API}/chatbot/feedback`, {
+        session_id: sessionId,
+        message_index: messageIndex,
+        feedback_type: feedbackType
+      });
+      setFeedbackGiven(prev => ({ ...prev, [messageIndex]: feedbackType }));
+    } catch (error) {
+      console.error('Error submitting feedback:', error);
+    }
+  };
+
   const formatTime = (date) => {
     return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
   };
