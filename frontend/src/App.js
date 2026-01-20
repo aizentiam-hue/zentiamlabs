@@ -22,6 +22,8 @@ import Settings from './pages/admin/Settings';
 import SEOManagement from './pages/admin/SEOManagement';
 import EmailTemplates from './pages/admin/EmailTemplates';
 import ProjectDocs from './pages/admin/ProjectDocs';
+import GoogleSheetsSettings from './pages/admin/GoogleSheetsSettings';
+import LearningDashboard from './pages/admin/LearningDashboard';
 
 function App() {
   return (
