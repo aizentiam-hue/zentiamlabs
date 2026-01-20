@@ -169,7 +169,7 @@ const GoogleSheetsSettings = () => {
                 disabled={syncing}
                 style={{
                   padding: '0.5rem 1rem',
-                  background: 'var(--accent-blue)',
+                  background: '#3b82f6',
                   color: 'white',
                   border: 'none',
                   borderRadius: '0.5rem',
@@ -177,7 +177,8 @@ const GoogleSheetsSettings = () => {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.5rem',
-                  opacity: syncing ? 0.7 : 1
+                  opacity: syncing ? 0.7 : 1,
+                  fontWeight: 500
                 }}
               >
                 <RefreshCw size={16} className={syncing ? 'spin' : ''} />
@@ -187,11 +188,12 @@ const GoogleSheetsSettings = () => {
                 onClick={handleTestConnection}
                 style={{
                   padding: '0.5rem 1rem',
-                  background: 'transparent',
-                  color: 'var(--text-primary)',
-                  border: '1px solid var(--border-primary)',
+                  background: '#f3f4f6',
+                  color: '#374151',
+                  border: '1px solid #d1d5db',
                   borderRadius: '0.5rem',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  fontWeight: 500
                 }}
               >
                 Test Connection
