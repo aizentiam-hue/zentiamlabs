@@ -166,11 +166,11 @@ class EnhancedAIService:
                         "intent": "info_collection"
                     }
             
-            # Search knowledge base
+            # DEFAULT BEHAVIOR: Always generate a helpful response
+            # This is the catch-all - if we reach here, just be helpful
             context_results = knowledge_base.query(user_message)
             context = "\n".join(context_results) if context_results else ""
             
-            # Generate contextual response
             response = await self._generate_contextual_response(
                 session_id,
                 user_message,
