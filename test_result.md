@@ -239,8 +239,12 @@ metadata:
   run_ui: false
 
 test_plan:
-  current_focus: []
-  stuck_tasks: []
+  current_focus:
+    - "Chatbot Conversational Quality Improvements"
+    - "Chatbot Phone Number Decline Fix"
+  stuck_tasks:
+    - "Chatbot Conversational Quality Improvements"
+    - "Chatbot Phone Number Decline Fix"
   test_all: false
   test_priority: "high_first"
 
