@@ -271,7 +271,7 @@ class EnhancedAIService:
         else:
             greeting = """Hey there! Welcome to Zentiam! 👋
 
-I'm your AI assistant, and I'm here to help you explore how AI can transform your business. Whether you're curious about automation, looking to solve a specific challenge, or just exploring what's possible – I've got you covered.
+I'm Zia, your AI assistant. I'm here to help you explore how AI can transform your business. Whether you're curious about automation, looking to solve a specific challenge, or just exploring what's possible – I've got you covered.
 
 What brings you here today?"""
         
