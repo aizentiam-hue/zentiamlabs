@@ -63,6 +63,8 @@ function App() {
           <Route path="/admin/seo" element={<SEOManagement />} />
           <Route path="/admin/email-templates" element={<EmailTemplates />} />
           <Route path="/admin/project-docs" element={<ProjectDocs />} />
+          <Route path="/admin/google-sheets" element={<GoogleSheetsSettings />} />
+          <Route path="/admin/learning" element={<LearningDashboard />} />
         </Routes>
       </BrowserRouter>
     </div>
