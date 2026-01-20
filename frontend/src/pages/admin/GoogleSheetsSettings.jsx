@@ -263,12 +263,13 @@ const GoogleSheetsSettings = () => {
               disabled={configuring}
               style={{
                 padding: '0.75rem 1.5rem',
-                background: 'var(--accent-blue)',
+                background: '#3b82f6',
                 color: 'white',
                 border: 'none',
                 borderRadius: '0.5rem',
                 cursor: configuring ? 'not-allowed' : 'pointer',
-                opacity: configuring ? 0.7 : 1
+                opacity: configuring ? 0.7 : 1,
+                fontWeight: 500
               }}
             >
               {configuring ? 'Configuring...' : 'Save Configuration'}
