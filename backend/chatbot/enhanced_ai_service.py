@@ -109,7 +109,6 @@ class EnhancedAIService:
             
             # If it's a business query, ALWAYS answer first (unless explicit contact request)
             if is_business_query and not explicit_contact_request:
-            if is_business_query and not explicit_contact_request:
                 # Answer the query first
                 context_results = knowledge_base.query(user_message)
                 context = "\n".join(context_results) if context_results else ""
