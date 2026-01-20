@@ -165,6 +165,49 @@ class EnhancedAIService:
                         "intent": "info_collection"
                     }
             
+            # Check if user just provided info (name/email) in response to our question
+            # In this case, acknowledge and ask for next info, don't generate new response
+            last_bot_message = ""
+            if conversation_history:
+                for msg in reversed(conversation_history):
+                    if msg.get('sender') == 'bot':
+                        last_bot_message = msg.get('message', '').lower()
+                        break
+            
+            # If we were asking for name and user provided something that looks like a name
+            bot_asked_for_name = 'your name' in last_bot_message or "who i'm chatting with" in last_bot_message
+            bot_asked_for_email = 'email' in last_bot_message and ('reach you' in last_bot_message or 'best email' in last_bot_message)
+            bot_asked_for_phone = 'phone' in last_bot_message or 'number' in last_bot_message
+            
+            # If user just provided name (short message, no business keywords, bot asked for name)
+            is_likely_name_response = (
+                bot_asked_for_name and 
+                len(user_message.split()) <= 4 and 
+                not any(kw in user_message.lower() for kw in ['help', 'service', 'price', 'what', 'how', 'can'])
+            )
+            
+            # If user just provided email
+            is_email_response = '@' in user_message and '.' in user_message
+            
+            # If user just provided phone or skipped
+            is_phone_response = bot_asked_for_phone and (
+                re.search(r'\d{10,}', user_message.replace(' ', '').replace('-', '')) or
+                any(phrase in user_message.lower() for phrase in ['skip', 'no thanks', 'prefer not'])
+            )
+            
+            # Handle info collection flow
+            if is_likely_name_response or is_email_response or is_phone_response:
+                # Check what info we still need
+                needs_info, info_type = self._check_needs_info(user_info, user_message)
+                if needs_info:
+                    return {
+                        "response": self._get_info_collection_prompt(info_type, user_info, conversation_memory),
+                        "needs_info": True,
+                        "is_answered": False,
+                        "info_complete": False,
+                        "intent": "info_collection"
+                    }
+            
             # DEFAULT BEHAVIOR: Always generate a helpful response
             # This is the catch-all - if we reach here, just be helpful
             context_results = knowledge_base.query(user_message)
