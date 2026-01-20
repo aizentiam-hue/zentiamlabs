@@ -110,7 +110,7 @@ const LearningDashboard = () => {
     <AdminLayout>
       <div>
         <h1 className="heading-1" style={{ marginBottom: '0.5rem' }}>Learning Dashboard</h1>
-        <p className="body-medium" style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
+        <p className="body-medium" style={{ color: '#6b7280', marginBottom: '1.5rem' }}>
           Track feedback, review responses, and improve Zia's knowledge
         </p>
 
@@ -230,7 +230,7 @@ const LearningDashboard = () => {
                           <button onClick={() => handleApproveItem(item.id)} style={{ padding: '0.5rem 1rem', background: '#22c55e', color: 'white', border: 'none', borderRadius: '0.25rem', cursor: 'pointer' }}>
                             Approve
                           </button>
-                          <button onClick={() => handleDismissItem(item.id)} style={{ padding: '0.5rem 1rem', background: 'transparent', color: 'var(--text-secondary)', border: '1px solid var(--border-primary)', borderRadius: '0.25rem', cursor: 'pointer' }}>
+                          <button onClick={() => handleDismissItem(item.id)} style={{ padding: '0.5rem 1rem', background: 'transparent', color: '#6b7280', border: '1px solid #d1d5db', borderRadius: '0.25rem', cursor: 'pointer' }}>
                             Dismiss
                           </button>
                         </div>
@@ -255,7 +255,7 @@ const LearningDashboard = () => {
                         value={newAnswer.question_pattern}
                         onChange={(e) => setNewAnswer({ ...newAnswer, question_pattern: e.target.value })}
                         placeholder="e.g., What is your pricing?"
-                        style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid var(--border-primary)', background: 'var(--bg-section)', color: 'var(--text-primary)' }}
+                        style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid #d1d5db', background: 'var(--bg-section)', color: 'var(--text-primary)' }}
                         required
                       />
                     </div>
@@ -265,7 +265,7 @@ const LearningDashboard = () => {
                         value={newAnswer.approved_answer}
                         onChange={(e) => setNewAnswer({ ...newAnswer, approved_answer: e.target.value })}
                         placeholder="The ideal response for this question..."
-                        style={{ width: '100%', minHeight: '100px', padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid var(--border-primary)', background: 'var(--bg-section)', color: 'var(--text-primary)' }}
+                        style={{ width: '100%', minHeight: '100px', padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid #d1d5db', background: 'var(--bg-section)', color: 'var(--text-primary)' }}
                         required
                       />
                     </div>
@@ -276,10 +276,10 @@ const LearningDashboard = () => {
                         value={newAnswer.context_tags}
                         onChange={(e) => setNewAnswer({ ...newAnswer, context_tags: e.target.value })}
                         placeholder="e.g., pricing, sales, faq"
-                        style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid var(--border-primary)', background: 'var(--bg-section)', color: 'var(--text-primary)' }}
+                        style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid #d1d5db', background: 'var(--bg-section)', color: 'var(--text-primary)' }}
                       />
                     </div>
-                    <button type="submit" style={{ padding: '0.75rem 1.5rem', background: 'var(--accent-blue)', color: 'white', border: 'none', borderRadius: '0.5rem', cursor: 'pointer' }}>
+                    <button type="submit" style={{ padding: '0.75rem 1.5rem', background: '#3b82f6', color: 'white', border: 'none', borderRadius: '0.5rem', cursor: 'pointer' }}>
                       Save Answer
                     </button>
                   </form>
@@ -300,7 +300,7 @@ const LearningDashboard = () => {
                               Delete
                             </button>
                           </div>
-                          <p className="body-small" style={{ color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>{answer.approved_answer?.substring(0, 150)}...</p>
+                          <p className="body-small" style={{ color: '#6b7280', marginBottom: '0.5rem' }}>{answer.approved_answer?.substring(0, 150)}...</p>
                           {answer.context_tags?.length > 0 && (
                             <div style={{ display: 'flex', gap: '0.25rem', flexWrap: 'wrap' }}>
                               {answer.context_tags.map((tag, i) => (
