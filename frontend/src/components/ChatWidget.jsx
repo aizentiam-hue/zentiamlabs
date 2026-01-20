@@ -37,7 +37,7 @@ function ChatWidget() {
           // Set welcome message
           const welcomeMessage = {
             sender: 'bot',
-            text: "Hi! I'm Zentiam's AI assistant. I can help you learn about our AI consulting services, automation solutions, and products. How can I assist you today?",
+            text: "Hey there! 👋 I'm Zia, your AI assistant at Zentiam. I'm here to help you explore our AI consulting services, automation solutions, and products. What brings you here today?",
             timestamp: new Date()
           };
           setMessages([welcomeMessage]);
