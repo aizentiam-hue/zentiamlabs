@@ -80,46 +80,48 @@ class EnhancedAIService:
             if self._wants_human(user_message):
                 return self._generate_handoff_response(user_info)
             
-            # IMPORTANT: Answer questions first, collect info later
-            # Only start collecting info after we've had a meaningful conversation
-            # or if the user explicitly asks to be contacted
+            # IMPORTANT: ALWAYS help first, collect info later
+            # The bot should provide value BEFORE asking for contact details
             
             # Check for explicit contact requests
             contact_request_phrases = ['contact me', 'call me', 'reach out', 'get in touch', 'send me info', 'get back to me']
             explicit_contact_request = any(phrase in user_message.lower() for phrase in contact_request_phrases)
             
-            # Determine if we should ask for info
-            # Only ask after at least 2 exchanges AND user seems engaged
-            should_collect_info = (
-                explicit_contact_request or
-                (context_analysis['conversation_depth'] >= 2 and 
-                 context_analysis['intent'] in ['specific_problem', 'ready_to_convert'])
+            # Check if this message contains a question or business request that needs answering
+            is_business_query = (
+                '?' in user_message or  # Direct question
+                context_analysis['intent'] in ['specific_problem', 'ready_to_convert', 'exploring'] or
+                any(kw in user_message.lower() for kw in ['help', 'need', 'looking for', 'want', 'can you', 'how', 'what'])
             )
             
-            # If we should collect info and don't have it yet
-            if should_collect_info:
-                needs_info, info_type = self._check_needs_info(user_info, user_message)
-                if needs_info:
-                    # But first, if they asked a question, answer it AND ask for info
-                    if '?' in user_message and not explicit_contact_request:
-                        # Answer the question first, then ask for info
-                        context_results = knowledge_base.query(user_message)
-                        context = "\n".join(context_results) if context_results else ""
-                        
-                        response = await self._generate_contextual_response(
-                            session_id,
-                            user_message,
-                            context,
-                            conversation_history,
-                            context_analysis,
-                            conversation_memory,
-                            user_info
-                        )
-                        
-                        # Append info request to the response
+            # If it's a business query, ALWAYS answer first (unless explicit contact request)
+            if is_business_query and not explicit_contact_request:
+                # Answer the query first
+                context_results = knowledge_base.query(user_message)
+                context = "\n".join(context_results) if context_results else ""
+                
+                response = await self._generate_contextual_response(
+                    session_id,
+                    user_message,
+                    context,
+                    conversation_history,
+                    context_analysis,
+                    conversation_memory,
+                    user_info
+                )
+                
+                # Only ask for info if we've had enough exchanges (at least 3)
+                # and user seems engaged
+                should_ask_info = (
+                    context_analysis['conversation_depth'] >= 3 and
+                    not user_info.get('name')
+                )
+                
+                if should_ask_info:
+                    needs_info, info_type = self._check_needs_info(user_info, user_message)
+                    if needs_info:
                         info_prompt = self._get_info_collection_prompt(info_type, user_info, conversation_memory)
                         response = response + "\n\n" + info_prompt
-                        
                         return {
                             "response": response,
                             "needs_info": True,
@@ -127,15 +129,28 @@ class EnhancedAIService:
                             "info_complete": False,
                             "intent": context_analysis['intent']
                         }
-                    else:
-                        # Just ask for info
-                        return {
-                            "response": self._get_info_collection_prompt(info_type, user_info, conversation_memory),
-                            "needs_info": True,
-                            "is_answered": False,
-                            "info_complete": False,
-                            "intent": "info_collection"
-                        }
+                
+                return {
+                    "response": response,
+                    "needs_info": False,
+                    "is_answered": True,
+                    "has_context": bool(context),
+                    "info_complete": False,
+                    "intent": context_analysis['intent'],
+                    "sentiment": context_analysis['sentiment']
+                }
+            
+            # If explicit contact request, ask for info
+            if explicit_contact_request:
+                needs_info, info_type = self._check_needs_info(user_info, user_message)
+                if needs_info:
+                    return {
+                        "response": self._get_info_collection_prompt(info_type, user_info, conversation_memory),
+                        "needs_info": True,
+                        "is_answered": False,
+                        "info_complete": False,
+                        "intent": "info_collection"
+                    }
             
             # Search knowledge base
             context_results = knowledge_base.query(user_message)
