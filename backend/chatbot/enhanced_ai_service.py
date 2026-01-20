@@ -80,31 +80,62 @@ class EnhancedAIService:
             if self._wants_human(user_message):
                 return self._generate_handoff_response(user_info)
             
-            # Don't ask for contact immediately - help first!
-            should_request_contact = (
-                context_analysis['conversation_depth'] >= 4 and 
-                context_analysis['intent'] in ['specific_problem', 'ready_to_convert'] and
-                not all([user_info.get('name'), user_info.get('email')])
-            )
+            # IMPORTANT: Answer questions first, collect info later
+            # Only start collecting info after we've had a meaningful conversation
+            # or if the user explicitly asks to be contacted
             
             # Check for explicit contact requests
-            contact_request_phrases = ['contact me', 'call me', 'reach out', 'get in touch', 'send me info']
-            if any(phrase in user_message.lower() for phrase in contact_request_phrases):
-                should_request_contact = True
+            contact_request_phrases = ['contact me', 'call me', 'reach out', 'get in touch', 'send me info', 'get back to me']
+            explicit_contact_request = any(phrase in user_message.lower() for phrase in contact_request_phrases)
             
-            if should_request_contact and context_analysis['needs_contact_collection']:
-                return self._generate_contact_request(context_analysis, user_info)
+            # Determine if we should ask for info
+            # Only ask after at least 2 exchanges AND user seems engaged
+            should_collect_info = (
+                explicit_contact_request or
+                (context_analysis['conversation_depth'] >= 2 and 
+                 context_analysis['intent'] in ['specific_problem', 'ready_to_convert'])
+            )
             
-            # If we need basic info collection (name/email/phone progression)
-            needs_info, info_type = self._check_needs_info(user_info, user_message)
-            if needs_info:
-                return {
-                    "response": self._get_info_collection_prompt(info_type, user_info, conversation_memory),
-                    "needs_info": True,
-                    "is_answered": False,
-                    "info_complete": False,
-                    "intent": "info_collection"
-                }
+            # If we should collect info and don't have it yet
+            if should_collect_info:
+                needs_info, info_type = self._check_needs_info(user_info, user_message)
+                if needs_info:
+                    # But first, if they asked a question, answer it AND ask for info
+                    if '?' in user_message and not explicit_contact_request:
+                        # Answer the question first, then ask for info
+                        context_results = knowledge_base.query(user_message)
+                        context = "\n".join(context_results) if context_results else ""
+                        
+                        response = await self._generate_contextual_response(
+                            session_id,
+                            user_message,
+                            context,
+                            conversation_history,
+                            context_analysis,
+                            conversation_memory,
+                            user_info
+                        )
+                        
+                        # Append info request to the response
+                        info_prompt = self._get_info_collection_prompt(info_type, user_info, conversation_memory)
+                        response = response + "\n\n" + info_prompt
+                        
+                        return {
+                            "response": response,
+                            "needs_info": True,
+                            "is_answered": True,
+                            "info_complete": False,
+                            "intent": context_analysis['intent']
+                        }
+                    else:
+                        # Just ask for info
+                        return {
+                            "response": self._get_info_collection_prompt(info_type, user_info, conversation_memory),
+                            "needs_info": True,
+                            "is_answered": False,
+                            "info_complete": False,
+                            "intent": "info_collection"
+                        }
             
             # Search knowledge base
             context_results = knowledge_base.query(user_message)
