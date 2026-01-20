@@ -86,6 +86,8 @@ app.include_router(settings_router)
 app.include_router(seo_router)
 app.include_router(email_template_router)
 app.include_router(project_docs_router)
+app.include_router(sheets_router)
+app.include_router(feedback_router)
 
 app.add_middleware(
     CORSMiddleware,
