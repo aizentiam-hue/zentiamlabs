@@ -636,6 +636,426 @@ def test_single_phone_decline_scenario(decline_phrase):
         print(f"❌ Error testing phone decline with '{decline_phrase}': {str(e)}")
         return False
 
+def test_chatbot_conversational_quality():
+    """Test improved chatbot conversational quality as per review request"""
+    print("\n=== Testing Chatbot Conversational Quality Improvements ===")
+    
+    results = []
+    
+    # Test 1: Greeting Test
+    print("\n--- Test 1: Greeting Test ---")
+    success = test_greeting_response()
+    results.append(("Greeting Test", success))
+    
+    # Test 2: Question Answering (Help First)
+    print("\n--- Test 2: Question Answering (Help First) ---")
+    success = test_question_answering_help_first()
+    results.append(("Question Answering (Help First)", success))
+    
+    # Test 3: Industry Context
+    print("\n--- Test 3: Industry Context ---")
+    success = test_industry_context_response()
+    results.append(("Industry Context", success))
+    
+    # Test 4: Pricing Query
+    print("\n--- Test 4: Pricing Query ---")
+    success = test_pricing_query_response()
+    results.append(("Pricing Query", success))
+    
+    # Test 5: Full Flow Test
+    print("\n--- Test 5: Full Flow Test ---")
+    success = test_full_conversational_flow()
+    results.append(("Full Flow Test", success))
+    
+    # Summary for conversational quality tests
+    print("\n" + "=" * 50)
+    print("📊 CHATBOT CONVERSATIONAL QUALITY TEST SUMMARY")
+    print("=" * 50)
+    
+    passed = 0
+    total = len(results)
+    
+    for test_name, success in results:
+        status = "✅ PASS" if success else "❌ FAIL"
+        print(f"{status} - {test_name}")
+        if success:
+            passed += 1
+    
+    print(f"\nConversational Quality Results: {passed}/{total} tests passed")
+    return passed == total
+
+def test_greeting_response():
+    """Test greeting with 'Hello' or 'Hi' - should get warm, friendly greeting with emoji"""
+    try:
+        greetings = ["Hello", "Hi"]
+        
+        for greeting in greetings:
+            print(f"Testing greeting: '{greeting}'")
+            
+            # Create session
+            session_response = requests.post(f"{BACKEND_URL}/chatbot/session")
+            if session_response.status_code != 200:
+                print(f"❌ Failed to create session: {session_response.status_code}")
+                return False
+            
+            session_id = session_response.json()["session_id"]
+            
+            # Send greeting
+            chat_data = {
+                "session_id": session_id,
+                "message": greeting
+            }
+            
+            chat_response = requests.post(f"{BACKEND_URL}/chatbot/chat", json=chat_data)
+            if chat_response.status_code != 200:
+                print(f"❌ Chat failed for '{greeting}': {chat_response.status_code}")
+                return False
+            
+            bot_response = chat_response.json()["response"]
+            print(f"Bot response to '{greeting}': {bot_response}")
+            
+            # Check for warm, friendly greeting indicators
+            friendly_indicators = [
+                "hi", "hello", "welcome", "great", "wonderful", "help", "assist"
+            ]
+            
+            # Check for emoji presence (basic check for common emojis)
+            emoji_indicators = ["👋", "😊", "🤖", "✨", "💡", "🚀", "!"]
+            
+            # Check for inviting question
+            question_indicators = ["?", "how can", "what can", "help you", "assist you"]
+            
+            has_friendly_tone = any(indicator in bot_response.lower() for indicator in friendly_indicators)
+            has_emoji_or_enthusiasm = any(indicator in bot_response for indicator in emoji_indicators)
+            has_inviting_question = any(indicator in bot_response.lower() for indicator in question_indicators)
+            
+            print(f"   - Friendly tone: {has_friendly_tone}")
+            print(f"   - Emoji/enthusiasm: {has_emoji_or_enthusiasm}")
+            print(f"   - Inviting question: {has_inviting_question}")
+            
+            if not (has_friendly_tone and has_emoji_or_enthusiasm and has_inviting_question):
+                print(f"❌ Greeting response lacks warmth or invitation for '{greeting}'")
+                return False
+            
+            print(f"✅ Greeting response is warm and inviting for '{greeting}'")
+        
+        return True
+        
+    except Exception as e:
+        print(f"❌ Error testing greeting response: {str(e)}")
+        return False
+
+def test_question_answering_help_first():
+    """Test that bot answers questions first, doesn't ask for name immediately"""
+    try:
+        question = "Can AI help with inventory management?"
+        print(f"Testing question: '{question}'")
+        
+        # Create session
+        session_response = requests.post(f"{BACKEND_URL}/chatbot/session")
+        if session_response.status_code != 200:
+            print(f"❌ Failed to create session: {session_response.status_code}")
+            return False
+        
+        session_id = session_response.json()["session_id"]
+        
+        # Send question
+        chat_data = {
+            "session_id": session_id,
+            "message": question
+        }
+        
+        chat_response = requests.post(f"{BACKEND_URL}/chatbot/chat", json=chat_data)
+        if chat_response.status_code != 200:
+            print(f"❌ Chat failed for question: {chat_response.status_code}")
+            return False
+        
+        bot_response = chat_response.json()["response"]
+        print(f"Bot response to question: {bot_response}")
+        
+        # Check that bot ANSWERS the question (mentions AI, inventory, management, solutions)
+        answer_indicators = [
+            "ai", "artificial intelligence", "inventory", "management", "solution", 
+            "help", "assist", "optimize", "automation", "system", "we offer", "our"
+        ]
+        
+        # Check that bot does NOT immediately ask for name
+        name_ask_indicators = [
+            "what is your name", "may i know your name", "what's your name", 
+            "could you tell me your name", "name please"
+        ]
+        
+        provides_answer = any(indicator in bot_response.lower() for indicator in answer_indicators)
+        asks_for_name_immediately = any(indicator in bot_response.lower() for indicator in name_ask_indicators)
+        
+        print(f"   - Provides answer about AI/inventory: {provides_answer}")
+        print(f"   - Asks for name immediately: {asks_for_name_immediately}")
+        
+        if not provides_answer:
+            print("❌ Bot did not answer the question about AI and inventory management")
+            return False
+        
+        if asks_for_name_immediately:
+            print("❌ Bot asked for name immediately instead of answering question first")
+            return False
+        
+        print("✅ Bot correctly answered question first without asking for name immediately")
+        return True
+        
+    except Exception as e:
+        print(f"❌ Error testing question answering: {str(e)}")
+        return False
+
+def test_industry_context_response():
+    """Test industry-specific response for logistics company"""
+    try:
+        industry_question = "We're a logistics company struggling with route optimization. Can you help?"
+        print(f"Testing industry question: '{industry_question}'")
+        
+        # Create session
+        session_response = requests.post(f"{BACKEND_URL}/chatbot/session")
+        if session_response.status_code != 200:
+            print(f"❌ Failed to create session: {session_response.status_code}")
+            return False
+        
+        session_id = session_response.json()["session_id"]
+        
+        # Send industry question
+        chat_data = {
+            "session_id": session_id,
+            "message": industry_question
+        }
+        
+        chat_response = requests.post(f"{BACKEND_URL}/chatbot/chat", json=chat_data)
+        if chat_response.status_code != 200:
+            print(f"❌ Chat failed for industry question: {chat_response.status_code}")
+            return False
+        
+        bot_response = chat_response.json()["response"]
+        print(f"Bot response to industry question: {bot_response}")
+        
+        # Check for specific, relevant response about logistics/AI
+        logistics_indicators = [
+            "logistics", "route", "optimization", "delivery", "transportation", 
+            "supply chain", "fleet", "efficiency", "cost", "time"
+        ]
+        
+        # Check for conversational tone (first person)
+        conversational_indicators = ["we", "our", "us", "i can", "we can", "we offer"]
+        
+        # Check for AI solution mentions
+        ai_solution_indicators = [
+            "ai", "artificial intelligence", "machine learning", "algorithm", 
+            "optimization", "solution", "technology", "automation"
+        ]
+        
+        mentions_logistics = any(indicator in bot_response.lower() for indicator in logistics_indicators)
+        uses_conversational_tone = any(indicator in bot_response.lower() for indicator in conversational_indicators)
+        mentions_ai_solutions = any(indicator in bot_response.lower() for indicator in ai_solution_indicators)
+        
+        print(f"   - Mentions logistics/route optimization: {mentions_logistics}")
+        print(f"   - Uses conversational tone (we/our): {uses_conversational_tone}")
+        print(f"   - Mentions AI solutions: {mentions_ai_solutions}")
+        
+        if not mentions_logistics:
+            print("❌ Bot response doesn't address logistics/route optimization specifically")
+            return False
+        
+        if not uses_conversational_tone:
+            print("❌ Bot response doesn't use conversational first-person tone")
+            return False
+        
+        if not mentions_ai_solutions:
+            print("❌ Bot response doesn't mention AI solutions")
+            return False
+        
+        print("✅ Bot provided specific, relevant response about logistics with conversational tone")
+        return True
+        
+    except Exception as e:
+        print(f"❌ Error testing industry context response: {str(e)}")
+        return False
+
+def test_pricing_query_response():
+    """Test pricing query - should be helpful, not evasive"""
+    try:
+        pricing_question = "What's your pricing?"
+        print(f"Testing pricing question: '{pricing_question}'")
+        
+        # Create session
+        session_response = requests.post(f"{BACKEND_URL}/chatbot/session")
+        if session_response.status_code != 200:
+            print(f"❌ Failed to create session: {session_response.status_code}")
+            return False
+        
+        session_id = session_response.json()["session_id"]
+        
+        # Send pricing question
+        chat_data = {
+            "session_id": session_id,
+            "message": pricing_question
+        }
+        
+        chat_response = requests.post(f"{BACKEND_URL}/chatbot/chat", json=chat_data)
+        if chat_response.status_code != 200:
+            print(f"❌ Chat failed for pricing question: {chat_response.status_code}")
+            return False
+        
+        bot_response = chat_response.json()["response"]
+        print(f"Bot response to pricing question: {bot_response}")
+        
+        # Check for helpful response about pricing (not evasive)
+        helpful_indicators = [
+            "pricing", "cost", "price", "consultation", "discuss", "depends", 
+            "project", "requirements", "custom", "contact", "call", "meeting"
+        ]
+        
+        # Check for evasive responses (should NOT contain these)
+        evasive_indicators = [
+            "i don't know", "i can't help", "not sure", "unable to", "sorry"
+        ]
+        
+        # Check for follow-up questions or next steps
+        followup_indicators = [
+            "?", "would you like", "can we", "shall we", "let's", "how about"
+        ]
+        
+        is_helpful = any(indicator in bot_response.lower() for indicator in helpful_indicators)
+        is_evasive = any(indicator in bot_response.lower() for indicator in evasive_indicators)
+        has_followup = any(indicator in bot_response.lower() for indicator in followup_indicators)
+        
+        print(f"   - Provides helpful pricing information: {is_helpful}")
+        print(f"   - Is evasive: {is_evasive}")
+        print(f"   - Has follow-up question: {has_followup}")
+        
+        if not is_helpful:
+            print("❌ Bot response is not helpful about pricing")
+            return False
+        
+        if is_evasive:
+            print("❌ Bot response is evasive about pricing")
+            return False
+        
+        print("✅ Bot provided helpful response about pricing")
+        return True
+        
+    except Exception as e:
+        print(f"❌ Error testing pricing query response: {str(e)}")
+        return False
+
+def test_full_conversational_flow():
+    """Test complete conversational flow as specified in review request"""
+    try:
+        print("Testing full conversational flow...")
+        
+        # Create session
+        session_response = requests.post(f"{BACKEND_URL}/chatbot/session")
+        if session_response.status_code != 200:
+            print(f"❌ Failed to create session: {session_response.status_code}")
+            return False
+        
+        session_id = session_response.json()["session_id"]
+        
+        # Step 1: Start with greeting
+        messages_and_checks = [
+            {
+                "message": "Hello",
+                "check": "greeting_warmth",
+                "description": "Warm greeting with emoji"
+            },
+            {
+                "message": "We need help with AI automation for our business",
+                "check": "business_answer",
+                "description": "Answer business question first"
+            },
+            {
+                "message": "What's your pricing for AI consulting?",
+                "check": "pricing_helpful",
+                "description": "Helpful pricing response"
+            },
+            {
+                "message": "My name is Alex Thompson",
+                "check": "name_acknowledgment",
+                "description": "Acknowledge name and ask for email"
+            },
+            {
+                "message": "alex.thompson@company.com",
+                "check": "email_acknowledgment",
+                "description": "Acknowledge email and ask for phone"
+            },
+            {
+                "message": "skip",
+                "check": "closure_message",
+                "description": "Provide closure message with name"
+            }
+        ]
+        
+        for i, step in enumerate(messages_and_checks):
+            print(f"\nStep {i+1}: {step['description']}")
+            print(f"User message: '{step['message']}'")
+            
+            chat_data = {
+                "session_id": session_id,
+                "message": step["message"]
+            }
+            
+            chat_response = requests.post(f"{BACKEND_URL}/chatbot/chat", json=chat_data)
+            if chat_response.status_code != 200:
+                print(f"❌ Chat failed at step {i+1}: {chat_response.status_code}")
+                return False
+            
+            bot_response = chat_response.json()["response"]
+            print(f"Bot response: {bot_response[:150]}...")
+            
+            # Check specific requirements for each step
+            if step["check"] == "greeting_warmth":
+                if not any(indicator in bot_response.lower() for indicator in ["hi", "hello", "welcome"]):
+                    print("❌ Greeting lacks warmth")
+                    return False
+                if not any(indicator in bot_response for indicator in ["👋", "😊", "!", "?"]):
+                    print("❌ Greeting lacks emoji or enthusiasm")
+                    return False
+                    
+            elif step["check"] == "business_answer":
+                if not any(indicator in bot_response.lower() for indicator in ["ai", "automation", "help", "assist", "we"]):
+                    print("❌ Doesn't answer business question")
+                    return False
+                    
+            elif step["check"] == "pricing_helpful":
+                if not any(indicator in bot_response.lower() for indicator in ["pricing", "cost", "consultation", "discuss"]):
+                    print("❌ Pricing response not helpful")
+                    return False
+                    
+            elif step["check"] == "name_acknowledgment":
+                if "alex" not in bot_response.lower():
+                    print("❌ Doesn't acknowledge name")
+                    return False
+                if not any(indicator in bot_response.lower() for indicator in ["email", "contact"]):
+                    print("❌ Doesn't ask for email after name")
+                    return False
+                    
+            elif step["check"] == "email_acknowledgment":
+                if not any(indicator in bot_response.lower() for indicator in ["phone", "number"]):
+                    print("❌ Doesn't ask for phone after email")
+                    return False
+                    
+            elif step["check"] == "closure_message":
+                if "alex" not in bot_response.lower():
+                    print("❌ Closure doesn't mention user's name")
+                    return False
+                if not any(indicator in bot_response.lower() for indicator in ["thank", "noted", "reach out", "24 hours"]):
+                    print("❌ Closure message incomplete")
+                    return False
+            
+            print(f"✅ Step {i+1} passed: {step['description']}")
+        
+        print("✅ Full conversational flow completed successfully")
+        return True
+        
+    except Exception as e:
+        print(f"❌ Error testing full conversational flow: {str(e)}")
+        return False
+
 def main():
     """Run all backend tests"""
     print("🚀 Starting Zentiam Backend API Tests")
@@ -675,6 +1095,10 @@ def main():
     # Test 8: Phone Number Decline Fix (SPECIFIC TEST FOR REVIEW REQUEST)
     success = test_phone_number_decline_fix()
     results.append(("Phone Number Decline Fix", success))
+    
+    # Test 9: Chatbot Conversational Quality (NEW - MAIN FOCUS OF REVIEW REQUEST)
+    success = test_chatbot_conversational_quality()
+    results.append(("Chatbot Conversational Quality", success))
     
     # Summary
     print("\n" + "=" * 60)
