@@ -10,9 +10,11 @@ logger = logging.getLogger(__name__)
 class EnhancedAIService:
     """
     Enhanced AI service with:
+    - Warm, humane conversation style
     - Intent detection
     - Sentiment analysis
     - Context-aware responses
+    - Conversation memory
     - Smart closure logic
     """
     
@@ -61,16 +63,29 @@ class EnhancedAIService:
                 user_info
             )
             
+            # Extract conversation memory (key points mentioned)
+            conversation_memory = self._extract_conversation_memory(conversation_history)
+            
+            # Check for greeting - respond warmly
+            if self._is_greeting(user_message) and len(conversation_history) == 0:
+                return self._generate_greeting_response(user_info)
+            
+            # Check if user is expressing frustration
+            if context_analysis['is_frustrated']:
+                return await self._generate_empathy_response(
+                    session_id, user_message, conversation_history, context_analysis
+                )
+            
+            # Check if user is asking to speak to a human
+            if self._wants_human(user_message):
+                return self._generate_handoff_response(user_info)
+            
             # Don't ask for contact immediately - help first!
-            # Only ask for contact if:
-            # 1. User is frustrated after we tried to help
-            # 2. User explicitly asks to be contacted
-            # 3. After 4+ exchanges and user seems ready
             should_request_contact = (
                 context_analysis['conversation_depth'] >= 4 and 
                 context_analysis['intent'] in ['specific_problem', 'ready_to_convert'] and
                 not all([user_info.get('name'), user_info.get('email')])
-            ) or context_analysis['is_frustrated']
+            )
             
             # Check for explicit contact requests
             contact_request_phrases = ['contact me', 'call me', 'reach out', 'get in touch', 'send me info']
@@ -84,7 +99,7 @@ class EnhancedAIService:
             needs_info, info_type = self._check_needs_info(user_info, user_message)
             if needs_info:
                 return {
-                    "response": self._get_info_collection_prompt(info_type, user_info),
+                    "response": self._get_info_collection_prompt(info_type, user_info, conversation_memory),
                     "needs_info": True,
                     "is_answered": False,
                     "info_complete": False,
@@ -101,18 +116,13 @@ class EnhancedAIService:
                 user_message,
                 context,
                 conversation_history,
-                context_analysis
+                context_analysis,
+                conversation_memory,
+                user_info
             )
             
             # Analyze if question was answered
             is_answered = self._is_question_answered(response, context)
-            
-            # Check if we should ask for satisfaction
-            should_check_satisfaction = (
-                len(conversation_history) >= 4 and 
-                is_answered and 
-                not user_info.get('satisfaction_checked')
-            )
             
             return {
                 "response": response,
@@ -121,20 +131,165 @@ class EnhancedAIService:
                 "has_context": bool(context),
                 "info_complete": all([user_info.get('name'), user_info.get('email'), user_info.get('phone')]),
                 "intent": context_analysis['intent'],
-                "sentiment": context_analysis['sentiment'],
-                "should_check_satisfaction": should_check_satisfaction
+                "sentiment": context_analysis['sentiment']
             }
             
         except Exception as e:
             logger.error(f"Error in enhanced AI service: {e}")
-            # Fallback to basic response
             return {
-                "response": "I apologize, but I'm having trouble processing your request right now. Could you rephrase your question, or would you like me to connect you with our team directly?",
+                "response": "I apologize, I'm having a moment of difficulty here. Could you rephrase that, or would you prefer I connect you with our team directly? They're always happy to help!",
                 "needs_info": False,
                 "is_answered": False,
                 "info_complete": False,
                 "intent": "unknown"
             }
+    
+    def _is_greeting(self, message: str) -> bool:
+        """Check if message is a greeting"""
+        greetings = ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening', 'greetings', 'howdy']
+        message_lower = message.lower().strip()
+        # Check if it's primarily a greeting (short message)
+        return any(message_lower.startswith(g) or message_lower == g for g in greetings) and len(message.split()) <= 5
+    
+    def _wants_human(self, message: str) -> bool:
+        """Check if user wants to speak to a human"""
+        human_phrases = [
+            'speak to a human', 'talk to a person', 'real person', 'human agent',
+            'speak to someone', 'talk to someone', 'customer service', 'representative',
+            'speak with a human', 'talk with a person', 'actual person'
+        ]
+        return any(phrase in message.lower() for phrase in human_phrases)
+    
+    def _generate_greeting_response(self, user_info: Dict) -> Dict:
+        """Generate a warm, friendly greeting"""
+        name = user_info.get('name', '')
+        
+        if name:
+            greeting = f"Hey {name}! Great to have you back. 😊 How can I help you today?"
+        else:
+            greeting = """Hey there! Welcome to Zentiam! 👋
+
+I'm your AI assistant, and I'm here to help you explore how AI can transform your business. Whether you're curious about automation, looking to solve a specific challenge, or just exploring what's possible – I've got you covered.
+
+What brings you here today?"""
+        
+        return {
+            "response": greeting,
+            "needs_info": False,
+            "is_answered": True,
+            "info_complete": False,
+            "intent": "greeting"
+        }
+    
+    def _generate_handoff_response(self, user_info: Dict) -> Dict:
+        """Generate response for human handoff request"""
+        name = user_info.get('name', '')
+        
+        response = f"""Absolutely{', ' + name if name else ''}! I completely understand wanting to speak with someone directly.
+
+Here are your options:
+📧 **Email us:** ai.zentiam@gmail.com
+📞 **Call us:** +91 80889-83706
+📝 **Or** leave your details and our team will reach out within 24 hours
+
+What works best for you?"""
+        
+        return {
+            "response": response,
+            "needs_info": False,
+            "is_answered": True,
+            "info_complete": False,
+            "intent": "handoff"
+        }
+    
+    async def _generate_empathy_response(
+        self,
+        session_id: str,
+        user_message: str,
+        history: List[Dict],
+        context_analysis: Dict
+    ) -> Dict:
+        """Generate an empathetic response when user is frustrated"""
+        
+        system_message = """You are a warm, empathetic AI assistant for Zentiam. The user seems frustrated or confused.
+
+Your goal is to:
+1. Acknowledge their frustration genuinely
+2. Apologize if we haven't been helpful
+3. Try a different approach or offer alternatives
+4. Keep it brief and focused
+
+Speak naturally, like a helpful friend. Use "we" and "our" as you're part of the Zentiam team.
+
+DO NOT:
+- Be defensive
+- Repeat the same information
+- Use corporate speak
+- Be overly formal"""
+
+        chat = self.create_chat(session_id + "_empathy", system_message)
+        response = await chat.send_message(UserMessage(text=f"User says: {user_message}\n\nRespond with empathy and try to help differently."))
+        
+        return {
+            "response": response,
+            "needs_info": False,
+            "is_answered": False,
+            "info_complete": False,
+            "intent": "empathy",
+            "sentiment": "frustrated"
+        }
+    
+    def _extract_conversation_memory(self, history: List[Dict]) -> Dict:
+        """Extract key information mentioned in conversation"""
+        memory = {
+            "user_industry": None,
+            "user_company_size": None,
+            "user_challenges": [],
+            "topics_discussed": [],
+            "questions_asked": [],
+            "user_interests": []
+        }
+        
+        if not history:
+            return memory
+        
+        for msg in history:
+            if msg.get('sender') == 'user':
+                text = msg.get('message', '').lower()
+                
+                # Detect industry mentions
+                industries = {
+                    'healthcare': ['healthcare', 'medical', 'hospital', 'clinic', 'patient'],
+                    'finance': ['finance', 'banking', 'financial', 'investment', 'trading'],
+                    'retail': ['retail', 'ecommerce', 'e-commerce', 'store', 'shopping'],
+                    'manufacturing': ['manufacturing', 'factory', 'production', 'assembly'],
+                    'logistics': ['logistics', 'shipping', 'supply chain', 'warehouse'],
+                    'technology': ['tech', 'software', 'saas', 'startup', 'app']
+                }
+                for industry, keywords in industries.items():
+                    if any(kw in text for kw in keywords):
+                        memory['user_industry'] = industry
+                        break
+                
+                # Detect challenges
+                challenge_keywords = ['struggling', 'challenge', 'problem', 'issue', 'difficult', 'pain point', 'bottleneck']
+                if any(kw in text for kw in challenge_keywords):
+                    memory['user_challenges'].append(text[:100])
+                
+                # Detect topics of interest
+                if 'pricing' in text or 'cost' in text:
+                    memory['topics_discussed'].append('pricing')
+                if 'automation' in text:
+                    memory['topics_discussed'].append('automation')
+                if 'chatbot' in text or 'chat bot' in text:
+                    memory['topics_discussed'].append('chatbots')
+                if 'data' in text and ('analysis' in text or 'analytics' in text):
+                    memory['topics_discussed'].append('data analytics')
+        
+        # Remove duplicates
+        memory['topics_discussed'] = list(set(memory['topics_discussed']))
+        
+        return memory
     
     def _analyze_conversation_context(
         self, 
@@ -154,20 +309,14 @@ class EnhancedAIService:
         # Check if user seems frustrated or lost
         frustrated_signals = [
             'i don\'t understand', 'confused', 'not helpful', 
-            'not what i asked', 'this doesn\'t help'
+            'not what i asked', 'this doesn\'t help', 'you\'re not listening',
+            'that\'s not right', 'wrong', 'useless', 'frustrating'
         ]
         is_frustrated = any(signal in message_lower for signal in frustrated_signals)
         
-        # Check if user indicates they can't find answer
-        cant_find_answer = any(phrase in message_lower for phrase in [
-            'can\'t find', 'don\'t see', 'where is', 'how do i find',
-            'i need help', 'struggling with'
-        ])
-        
         # Determine if we should collect contact info
-        # Only if genuinely frustrated or explicitly can't help
         needs_contact_collection = (
-            is_frustrated and len(history) >= 2  # Frustrated after trying to help
+            is_frustrated and len(history) >= 2
         )
         
         return {
@@ -179,23 +328,19 @@ class EnhancedAIService:
         }
     
     def _detect_intent(self, message: str, history: List[Dict]) -> str:
-        """
-        Detect user intent:
-        - exploring: Just browsing, asking general questions
-        - specific_problem: Has a specific problem to solve
-        - ready_to_convert: Ready to engage, wants details
-        """
+        """Detect user intent"""
         message_lower = message.lower()
         
         # Exploring signals
-        exploring_keywords = ['what is', 'tell me about', 'how does', 'what are', 'explain']
+        exploring_keywords = ['what is', 'tell me about', 'how does', 'what are', 'explain', 'can you tell me']
         if any(kw in message_lower for kw in exploring_keywords) and len(history) < 3:
             return 'exploring'
         
         # Specific problem signals
         problem_keywords = [
             'we are struggling', 'we need', 'we have a problem', 'challenge',
-            'difficult', 'manual', 'time-consuming', 'inefficient'
+            'difficult', 'manual', 'time-consuming', 'inefficient', 'help us with',
+            'looking for a solution', 'need to automate', 'want to improve'
         ]
         if any(kw in message_lower for kw in problem_keywords):
             return 'specific_problem'
@@ -203,41 +348,38 @@ class EnhancedAIService:
         # Ready to convert signals
         convert_keywords = [
             'pricing', 'cost', 'how much', 'timeline', 'when can',
-            'get started', 'sign up', 'demo', 'trial'
+            'get started', 'sign up', 'demo', 'trial', 'next steps',
+            'schedule', 'book', 'consultation'
         ]
         if any(kw in message_lower for kw in convert_keywords):
             return 'ready_to_convert'
         
         # Default based on conversation depth
         if len(history) >= 4:
-            return 'ready_to_convert'
+            return 'engaged'
         
         return 'exploring'
     
     def _detect_sentiment(self, message: str) -> str:
-        """
-        Detect sentiment:
-        - satisfied: User is happy with responses
-        - neutral: No clear emotional signals
-        - frustrated: User is confused or unhappy
-        """
+        """Detect sentiment"""
         message_lower = message.lower()
         
-        # Satisfied signals
-        satisfied_keywords = [
+        # Positive signals
+        positive_keywords = [
             'great', 'perfect', 'exactly', 'thank you', 'thanks',
-            'helpful', 'that helps', 'good', 'excellent'
+            'helpful', 'that helps', 'good', 'excellent', 'awesome',
+            'love it', 'sounds good', 'interesting', 'amazing'
         ]
-        if any(kw in message_lower for kw in satisfied_keywords):
-            return 'satisfied'
+        if any(kw in message_lower for kw in positive_keywords):
+            return 'positive'
         
-        # Frustrated signals
-        frustrated_keywords = [
+        # Negative signals
+        negative_keywords = [
             'confused', 'not sure', 'don\'t understand', 'not helpful',
-            'still don\'t', 'i give up'
+            'still don\'t', 'doesn\'t make sense', 'unclear', 'frustrated'
         ]
-        if any(kw in message_lower for kw in frustrated_keywords):
-            return 'frustrated'
+        if any(kw in message_lower for kw in negative_keywords):
+            return 'negative'
         
         return 'neutral'
     
@@ -247,79 +389,104 @@ class EnhancedAIService:
         user_message: str,
         context: str,
         history: List[Dict],
-        context_analysis: Dict
+        context_analysis: Dict,
+        conversation_memory: Dict,
+        user_info: Dict
     ) -> str:
         """Generate response based on context and conversation state"""
         
-        # Build conversation summary for context
-        recent_topics = self._extract_recent_topics(history)
+        # Build personalization elements
+        user_name = user_info.get('name', '')
+        industry_context = ""
+        if conversation_memory.get('user_industry'):
+            industry_context = f"The user is in the {conversation_memory['user_industry']} industry."
+        
+        topics_context = ""
+        if conversation_memory.get('topics_discussed'):
+            topics_context = f"Previously discussed: {', '.join(conversation_memory['topics_discussed'])}"
         
         # Create enhanced system message
-        system_message = f"""You are an intelligent AI assistant representing Zentiam, an AI consulting company. 
+        system_message = f"""You are a friendly, knowledgeable AI assistant for Zentiam, an AI consulting company based in Bangalore, India.
 
-**Your Role:** Help visitors understand how we can solve their problems with AI solutions.
+**YOUR PERSONALITY:**
+- Warm, approachable, and genuinely helpful
+- Confident but not arrogant
+- You speak naturally, like a smart friend who happens to know a lot about AI
+- You use "we" and "our" because you're part of the Zentiam team
+- You occasionally use emojis sparingly to add warmth (1-2 per message max)
 
-**Speaking Style:**
-- Speak as "we" and "our" (you ARE part of Zentiam team)
-- Be conversational, warm, and helpful
-- Show understanding of their problem
-- Ask clarifying questions when needed
-- Be specific with examples and numbers when available
-
-**Conversation Context:**
+**CONVERSATION CONTEXT:**
+- User Name: {user_name if user_name else 'Not yet shared'}
 - User Intent: {context_analysis['intent']}
-- User Sentiment: {context_analysis['sentiment']}
-- Recent Topics: {recent_topics}
-- Conversation Depth: {context_analysis['conversation_depth']} exchanges
+- User Mood: {context_analysis['sentiment']}
+- Conversation Depth: {context_analysis['conversation_depth']} messages
+{industry_context}
+{topics_context}
 
-**Knowledge Base Context:**
-{context if context else "No specific context found - use general knowledge about AI consulting"}
+**KNOWLEDGE BASE INFO:**
+{context if context else "No specific info found - use your general knowledge about AI consulting."}
 
-**Guidelines:**
-1. If user has a specific problem: Show empathy, relate it to similar cases we've solved
-2. If user is exploring: Provide helpful overview, ask what interests them most
-3. If user is ready to convert: Share concrete details, suggest next steps
-4. Always relate answers to BUSINESS VALUE (ROI, time savings, efficiency)
-5. Cite specific numbers when available (3.7x ROI, 40% productivity, etc.)
-6. If unsure about something, admit it and offer to connect with our team
+**RESPONSE GUIDELINES:**
 
-**Example Responses:**
+1. **Be Conversational:** Write like you're chatting, not lecturing. Use contractions (we're, you'll, it's).
 
-User: "Can AI help with data entry?"
-Good: "Absolutely! We've helped clients automate 70-80% of their data entry work using AI. For example, we recently helped a logistics company reduce their invoice processing time from 2 hours to 15 minutes per batch. This typically involves OCR, intelligent extraction, and validation. What type of data entry are you dealing with?"
+2. **Show You're Listening:** Reference what they said. If they mentioned a challenge, acknowledge it specifically.
 
-User: "We're struggling with customer support volume"
-Good: "I hear you - high support volume is challenging. We've helped several companies scale their support using AI chatbots and smart routing. One e-commerce client reduced response time by 60% while handling 3x more tickets. The key is combining AI automation for common queries with smart escalation to humans for complex issues. What's your current support setup like?"
+3. **Be Specific:** Instead of "AI can help with many things," say "AI can cut your invoice processing time by 70%."
 
-Remember: Your goal is to be genuinely helpful first, and naturally guide towards engagement when it makes sense."""
+4. **Ask Smart Questions:** End with a relevant follow-up question to keep the conversation flowing.
+
+5. **Keep it Scannable:** Use short paragraphs. One idea per paragraph. Bullet points for lists.
+
+6. **Match Their Energy:** 
+   - If they're excited → be enthusiastic
+   - If they're skeptical → be factual and measured
+   - If they're confused → be patient and clear
+
+**WHAT TO AVOID:**
+- Long walls of text
+- Corporate jargon
+- Being pushy about sales
+- Repeating the same information
+- Generic responses that could apply to anyone
+
+**EXAMPLE TONE:**
+
+User: "Can AI help with customer support?"
+
+Good Response:
+"Definitely! 🎯 Customer support is actually one of the areas where we see the biggest wins.
+
+A few things AI can do:
+• Handle common questions instantly (think FAQs, order status, etc.)
+• Route complex issues to the right team member
+• Provide 24/7 coverage without burning out your team
+
+One of our retail clients reduced their response time from 4 hours to under 5 minutes for 60% of tickets.
+
+What's your current support setup like? Are you mainly dealing with high volume, or more complex technical queries?"
+
+Remember: Be helpful first. Sales happen naturally when you genuinely help people."""
 
         chat = self.create_chat(session_id, system_message)
         response = await chat.send_message(UserMessage(text=user_message))
         
-        # Add satisfaction check if needed
-        if context_analysis['conversation_depth'] >= 4 and context_analysis['sentiment'] != 'frustrated':
-            response += "\n\nIs this helpful? Or would you like me to explore a different angle?"
-        
         return response
-    
-    def _extract_recent_topics(self, history: List[Dict]) -> str:
-        """Extract main topics from recent conversation"""
-        if not history:
-            return "New conversation"
-        
-        # Get last 4 messages
-        recent = history[-4:] if len(history) >= 4 else history
-        topics = [msg.get('message', '')[:50] for msg in recent if msg.get('role') == 'user']
-        return ", ".join(topics) if topics else "General inquiry"
     
     def _generate_contact_request(self, context: Dict, user_info: Dict) -> Dict:
         """Generate smart contact collection request based on context"""
         if context['is_frustrated']:
-            message = "I sense this might be getting complex. Let me connect you with our team who can give you personalized guidance. Could you share your name and email so they can reach out within 24 hours?"
+            message = """I can see this is getting complex, and I want to make sure you get the help you need. 
+
+Would it be okay if our team reached out to you directly? They can dive deeper into your specific situation. Just need your name and email, and someone will be in touch within 24 hours. 🤝"""
         elif context['intent'] == 'specific_problem':
-            message = "This sounds like something our team should review directly with you. They can provide a tailored solution for your specific situation. May I get your name and email so they can prepare a custom assessment?"
+            message = """This sounds like something our team should take a closer look at! We've solved similar challenges before and can probably give you some specific recommendations.
+
+Mind sharing your name and email? One of our consultants can reach out with some tailored suggestions."""
         else:
-            message = "To give you the most accurate information for your situation, our team should discuss this with you directly. Could you share your name and email? They'll reach out within 24 hours."
+            message = """I'd love to get you connected with our team for more detailed information. 
+
+Could you share your name and email? They'll reach out within 24 hours with exactly what you need. 📧"""
         
         return {
             "response": message,
@@ -332,38 +499,34 @@ Remember: Your goal is to be genuinely helpful first, and naturally guide toward
     def _generate_closure_message(self, user_info: Dict) -> Dict:
         """Generate comprehensive closure message with options"""
         name = user_info.get('name', 'there')
-        email = user_info.get('email', 'your email')
-        phone = user_info.get('phone', 'skipped')
+        email = user_info.get('email', '')
+        phone = user_info.get('phone', '')
         
-        # Adjust message based on whether phone was provided
-        if phone == 'skipped' or not phone:
-            closure_message = f"""Perfect! Thank you, {name}. I've noted down your details.
+        # Build contact method string
+        contact_methods = []
+        if email:
+            contact_methods.append(f"**{email}**")
+        if phone and phone != 'skipped':
+            contact_methods.append(f"**{phone}**")
+        
+        contact_str = " or ".join(contact_methods) if contact_methods else "your provided contact"
+        
+        closure_message = f"""Awesome, {name}! ✨ I've got all your details.
 
-**What happens next:**
-✓ Our team will review your inquiry
-✓ You'll hear from us at {email} within 24 hours
-✓ We'll prepare specific recommendations for your situation
+**Here's what happens next:**
+→ Our team will review your inquiry
+→ You'll hear from us at {contact_str} within 24 hours
+→ We'll come prepared with specific recommendations for you
 
-**Or, you can take immediate action:**
-→ Submit a detailed request via our [contact form](/contact)
-→ Book a 30-minute consultation directly
-→ Take our AI Assessment to get instant insights
+**In the meantime:**
+Feel free to keep chatting with me if you have more questions! I'm here to help.
 
-Feel free to ask me anything else in the meantime! I'm here to help."""
-        else:
-            closure_message = f"""Perfect! Thank you, {name}. I've noted down your details.
+Or if you'd like to explore on your own:
+• Check out our [Services](/services) page
+• Browse our [AI Products](/products)
+• Read some [case studies](/about) on our About page
 
-**What happens next:**
-✓ Our team will review your inquiry
-✓ You'll hear from us at {email} or {phone} within 24 hours
-✓ We'll prepare specific recommendations for your situation
-
-**Or, you can take immediate action:**
-→ Submit a detailed request via our [contact form](/contact)
-→ Book a 30-minute consultation directly
-→ Take our AI Assessment to get instant insights
-
-Feel free to ask me anything else in the meantime! I'm here to help."""
+Thanks for reaching out – we're excited to help! 🚀"""
         
         return {
             "response": closure_message,
@@ -406,17 +569,24 @@ Feel free to ask me anything else in the meantime! I'm here to help."""
         if not phone_collected and not is_declining:
             return True, "phone"
         
-        # User declined phone - don't ask again, return False
         return False, None
     
-    def _get_info_collection_prompt(self, info_type: str, user_info: Dict) -> str:
+    def _get_info_collection_prompt(self, info_type: str, user_info: Dict, memory: Dict) -> str:
         """Get natural prompt for collecting user info"""
+        # Add personalization based on conversation memory
+        industry = memory.get('user_industry', '')
+        
         if info_type == "name":
-            return "I'd love to help you better! May I know your name?"
+            return "By the way, I'd love to know who I'm chatting with! What's your name? 😊"
         elif info_type == "email":
-            return "Thanks! If you'd like our team to follow up with detailed information, could you share your email address?"
+            name = user_info.get('name', '')
+            if name:
+                return f"Thanks, {name}! If you'd like our team to follow up with some personalized recommendations, what's the best email to reach you?"
+            return "Great! What's the best email for our team to reach you with more details?"
         elif info_type == "phone":
-            return "Great! And if you'd like a quick call from our team, what's the best number to reach you? (Optional - you can skip this if you prefer email)"
+            name = user_info.get('name', '')
+            prefix = f"Perfect, {name}!" if name else "Great!"
+            return f"{prefix} And if you'd prefer a quick call instead of email, what's your number? (Totally optional – just skip if you prefer email)"
         return ""
     
     def _is_question_answered(self, response: str, context: str) -> bool:
