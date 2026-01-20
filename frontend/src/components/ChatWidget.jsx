@@ -270,6 +270,47 @@ function ChatWidget() {
                     msg.text
                   )}
                 </div>
+                {/* Feedback buttons for bot messages */}
+                {msg.sender === 'bot' && index > 0 && (
+                  <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.5rem' }}>
+                    <button
+                      onClick={() => handleFeedback(index, 'positive')}
+                      disabled={feedbackGiven[index]}
+                      style={{
+                        background: feedbackGiven[index] === 'positive' ? 'rgba(34, 197, 94, 0.2)' : 'transparent',
+                        border: '1px solid rgba(255, 255, 255, 0.2)',
+                        borderRadius: '0.25rem',
+                        padding: '0.25rem 0.5rem',
+                        cursor: feedbackGiven[index] ? 'default' : 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.25rem',
+                        opacity: feedbackGiven[index] && feedbackGiven[index] !== 'positive' ? 0.3 : 1
+                      }}
+                      title="Helpful"
+                    >
+                      <ThumbsUp size={12} color={feedbackGiven[index] === 'positive' ? '#22c55e' : 'rgba(255,255,255,0.6)'} />
+                    </button>
+                    <button
+                      onClick={() => handleFeedback(index, 'negative')}
+                      disabled={feedbackGiven[index]}
+                      style={{
+                        background: feedbackGiven[index] === 'negative' ? 'rgba(239, 68, 68, 0.2)' : 'transparent',
+                        border: '1px solid rgba(255, 255, 255, 0.2)',
+                        borderRadius: '0.25rem',
+                        padding: '0.25rem 0.5rem',
+                        cursor: feedbackGiven[index] ? 'default' : 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.25rem',
+                        opacity: feedbackGiven[index] && feedbackGiven[index] !== 'negative' ? 0.3 : 1
+                      }}
+                      title="Not helpful"
+                    >
+                      <ThumbsDown size={12} color={feedbackGiven[index] === 'negative' ? '#ef4444' : 'rgba(255,255,255,0.6)'} />
+                    </button>
+                  </div>
+                )}
                 <div
                   style={{
                     fontSize: '0.7rem',
