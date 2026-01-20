@@ -631,16 +631,19 @@ Thanks for reaching out – we're excited to help! 🚀"""
         return False, None
     
     def _get_info_collection_prompt(self, info_type: str, user_info: Dict, memory: Dict) -> str:
-        """Get natural prompt for collecting user info"""
-        # Add personalization based on conversation memory
-        industry = memory.get('user_industry', '')
+        """Get natural prompt for collecting user info while maintaining conversation context"""
+        topics = memory.get('topics_discussed', [])
+        topics_str = ', '.join(topics) if topics else ''
         
         if info_type == "name":
             return "By the way, I'd love to know who I'm chatting with! What's your name? 😊"
         elif info_type == "email":
             name = user_info.get('name', '')
-            if name:
-                return f"Thanks, {name}! If you'd like our team to follow up with some personalized recommendations, what's the best email to reach you?"
+            if name and topics_str:
+                # Acknowledge name AND reference what we were discussing
+                return f"Great to meet you, {name}! 😊 I've been enjoying our chat about {topics_str}. If you'd like our team to follow up with personalized recommendations, what's the best email to reach you?"
+            elif name:
+                return f"Great to meet you, {name}! 😊 If you'd like our team to follow up with some personalized recommendations, what's the best email to reach you?"
             return "Great! What's the best email for our team to reach you with more details?"
         elif info_type == "phone":
             name = user_info.get('name', '')
