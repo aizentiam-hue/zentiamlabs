@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Users, Mail, MessageSquare, Settings, Upload, LogOut, Search, FileText } from 'lucide-react';
+import { LayoutDashboard, Users, Mail, MessageSquare, Settings, Upload, LogOut, Search, FileText, FileSpreadsheet, Brain } from 'lucide-react';
 
 const AdminLayout = ({ children }) => {
   const navigate = useNavigate();
@@ -16,8 +16,10 @@ const AdminLayout = ({ children }) => {
     { path: '/admin/consultations', label: 'Consultations', icon: Users },
     { path: '/admin/subscribers', label: 'Subscribers', icon: Mail },
     { path: '/admin/chats', label: 'Chat Sessions', icon: MessageSquare },
+    { path: '/admin/learning', label: 'Learning', icon: Brain },
     { path: '/admin/documents', label: 'Documents', icon: Upload },
     { path: '/admin/project-docs', label: 'Project Docs', icon: FileText },
+    { path: '/admin/google-sheets', label: 'Google Sheets', icon: FileSpreadsheet },
     { path: '/admin/seo', label: 'SEO Management', icon: Search },
     { path: '/admin/email-templates', label: 'Email Templates', icon: Mail },
     { path: '/admin/settings', label: 'Settings', icon: Settings }
