@@ -31,6 +31,7 @@ class ChatResponse(BaseModel):
     response: str
     needs_info: bool = False
     info_type: Optional[str] = None  # "name", "email", "phone"
+    used_approved_answer: bool = False  # Self-learning: indicates if response came from approved answers
 
 class DocumentUpload(BaseModel):
     filename: str
