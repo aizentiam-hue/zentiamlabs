@@ -4,8 +4,23 @@ import logging
 from typing import Dict, List, Optional, Tuple
 from .knowledge_base import knowledge_base
 import re
+from motor.motor_asyncio import AsyncIOMotorClient
+from difflib import SequenceMatcher
 
 logger = logging.getLogger(__name__)
+
+# Database connection for approved answers
+_mongo_client = None
+_db = None
+
+def get_db():
+    global _mongo_client, _db
+    if _db is None:
+        mongo_url = os.environ.get('MONGO_URL')
+        db_name = os.environ.get('DB_NAME')
+        _mongo_client = AsyncIOMotorClient(mongo_url)
+        _db = _mongo_client[db_name]
+    return _db
 
 class EnhancedAIService:
     """
