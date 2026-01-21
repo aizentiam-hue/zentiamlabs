@@ -31,11 +31,88 @@ class EnhancedAIService:
     - Context-aware responses
     - Conversation memory
     - Smart closure logic
+    - Self-learning from approved answers
     """
     
     def __init__(self):
         self.api_key = None
+        self.approved_answers_cache = None
+        self.cache_timestamp = None
         logger.info("Enhanced AI Service initialized")
+    
+    async def _get_approved_answers(self) -> List[Dict]:
+        """Get approved answers from database with caching"""
+        import time
+        current_time = time.time()
+        
+        # Cache for 5 minutes
+        if self.approved_answers_cache is not None and self.cache_timestamp:
+            if current_time - self.cache_timestamp < 300:  # 5 minutes
+                return self.approved_answers_cache
+        
+        try:
+            db = get_db()
+            answers = await db.approved_answers.find(
+                {"is_active": True},
+                {"_id": 0, "id": 1, "question_pattern": 1, "approved_answer": 1, "context_tags": 1}
+            ).to_list(500)
+            
+            self.approved_answers_cache = answers
+            self.cache_timestamp = current_time
+            return answers
+        except Exception as e:
+            logger.error(f"Error fetching approved answers: {e}")
+            return []
+    
+    async def _find_matching_approved_answer(self, user_message: str) -> Optional[Dict]:
+        """Find a matching approved answer for the user's question"""
+        approved_answers = await self._get_approved_answers()
+        
+        if not approved_answers:
+            return None
+        
+        user_lower = user_message.lower().strip()
+        best_match = None
+        best_score = 0.0
+        
+        # Minimum similarity threshold for a match
+        SIMILARITY_THRESHOLD = 0.65
+        
+        for answer in approved_answers:
+            pattern = answer.get("question_pattern", "").lower().strip()
+            
+            # Direct substring match (highest priority)
+            if pattern in user_lower or user_lower in pattern:
+                score = 0.95
+            else:
+                # Fuzzy matching using SequenceMatcher
+                score = SequenceMatcher(None, user_lower, pattern).ratio()
+                
+                # Also check word overlap for better matching
+                user_words = set(user_lower.split())
+                pattern_words = set(pattern.split())
+                if pattern_words:
+                    word_overlap = len(user_words & pattern_words) / len(pattern_words)
+                    # Combine fuzzy score with word overlap
+                    score = (score + word_overlap) / 2
+            
+            if score > best_score and score >= SIMILARITY_THRESHOLD:
+                best_score = score
+                best_match = answer
+        
+        if best_match:
+            logger.info(f"Found approved answer match (score: {best_score:.2f}) for: {user_message[:50]}...")
+            # Track usage
+            try:
+                db = get_db()
+                await db.approved_answers.update_one(
+                    {"id": best_match["id"]},
+                    {"$inc": {"usage_count": 1}}
+                )
+            except Exception as e:
+                logger.warning(f"Failed to update usage count: {e}")
+        
+        return best_match
     
     def _get_api_key(self):
         if not self.api_key:
