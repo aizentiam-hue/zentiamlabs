@@ -339,32 +339,6 @@ class GoogleSheetsService:
         summary_parts.append(f"Initial ask: {first_query}")
         
         return ' | '.join(summary_parts)
-        }
-        
-        for msg in user_messages:
-            text = msg.get('message', '').lower()
-            for topic, keywords in topic_keywords.items():
-                if any(kw in text for kw in keywords):
-                    topics.add(topic)
-        
-        return list(topics)
-    
-    def _create_summary(self, messages: List[Dict]) -> str:
-        """Create a brief summary of the conversation"""
-        if not messages:
-            return "No messages"
-        
-        user_msgs = [m.get('message', '') for m in messages if m.get('sender') == 'user']
-        if not user_msgs:
-            return "Bot-only conversation"
-        
-        # Take first and last user messages for summary
-        first_query = user_msgs[0][:100] if user_msgs else ''
-        last_query = user_msgs[-1][:100] if len(user_msgs) > 1 else ''
-        
-        if last_query and last_query != first_query:
-            return f"Started: {first_query}... | Ended: {last_query}..."
-        return f"Query: {first_query}..."
     
     def test_connection(self) -> Dict:
         """Test the connection to Google Sheets"""
