@@ -10,8 +10,8 @@ const AdminLogin = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     
-    // Secure admin password - Keep this confidential
-    const ADMIN_PASSWORD = 'MHeGIYH9u#gqztsB';
+    // Admin password from environment variable for deployment security
+    const ADMIN_PASSWORD = process.env.REACT_APP_ADMIN_PASSWORD || 'MHeGIYH9u#gqztsB';
     
     if (password === ADMIN_PASSWORD) {
       localStorage.setItem('adminAuth', 'true');
