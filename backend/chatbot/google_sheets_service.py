@@ -76,11 +76,11 @@ class GoogleSheetsService:
             values = result.get('values', [])
             
             if not values:
-                # Add headers
+                # Add headers - Business-focused columns
                 headers = [
-                    ['Timestamp', 'Session ID', 'User Name', 'User Email', 'User Phone',
-                     'Topics Discussed', 'Message Count', 'Duration (mins)', 
-                     'Questions Answered', 'Unanswered Questions', 'User Satisfaction', 'Summary']
+                    ['Date', 'Time', 'Lead Name', 'Email', 'Phone', 
+                     'Query Type', 'Services Interested', 'Industry', 
+                     'Key Requirements', 'Lead Status', 'Follow-up Priority', 'Conversation Summary']
                 ]
                 
                 self.service.spreadsheets().values().update(
@@ -90,7 +90,7 @@ class GoogleSheetsService:
                     body={'values': headers}
                 ).execute()
                 
-                # Format headers (bold)
+                # Format headers (bold with blue background)
                 requests = [{
                     'repeatCell': {
                         'range': {
@@ -101,7 +101,7 @@ class GoogleSheetsService:
                         'cell': {
                             'userEnteredFormat': {
                                 'textFormat': {'bold': True},
-                                'backgroundColor': {'red': 0.9, 'green': 0.9, 'blue': 0.9}
+                                'backgroundColor': {'red': 0.2, 'green': 0.4, 'blue': 0.8}
                             }
                         },
                         'fields': 'userEnteredFormat(textFormat,backgroundColor)'
@@ -113,7 +113,7 @@ class GoogleSheetsService:
                     body={'requests': requests}
                 ).execute()
                 
-                logger.info("Sheet initialized with headers")
+                logger.info("Sheet initialized with business-focused headers")
         except Exception as e:
             logger.error(f"Error initializing sheet: {e}")
     
