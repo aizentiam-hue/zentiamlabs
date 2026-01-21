@@ -95,10 +95,11 @@ class EmailService:
             if config["provider"] == "resend":
                 resend.api_key = config["apiKey"]
                 
-                # Replace template variables
+                # Replace template variables - use environment variable for base URL
                 html_content = template["htmlContent"]
+                base_url = os.environ.get('APP_BASE_URL', 'https://zentiam.com')
                 variables = {
-                    "unsubscribe_link": "https://zentiam.com/unsubscribe"
+                    "unsubscribe_link": f"{base_url}/unsubscribe"
                 }
                 
                 for key, value in variables.items():
