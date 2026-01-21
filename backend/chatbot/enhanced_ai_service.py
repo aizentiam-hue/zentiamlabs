@@ -172,6 +172,24 @@ class EnhancedAIService:
             if self._wants_human(user_message):
                 return self._generate_handoff_response(user_info)
             
+            # ===== SELF-LEARNING: Check for approved answers first =====
+            # Before generating an LLM response, check if we have a curated answer
+            approved_answer = await self._find_matching_approved_answer(user_message)
+            if approved_answer:
+                logger.info(f"Using approved answer for question: {user_message[:50]}...")
+                response = approved_answer.get("approved_answer", "")
+                return {
+                    "response": response,
+                    "needs_info": False,
+                    "is_answered": True,
+                    "info_complete": False,
+                    "intent": context_analysis['intent'],
+                    "sentiment": context_analysis['sentiment'],
+                    "used_approved_answer": True,
+                    "approved_answer_id": approved_answer.get("id")
+                }
+            # ===== END SELF-LEARNING =====
+            
             # IMPORTANT: ALWAYS help first, collect info later
             # The bot should provide value BEFORE asking for contact details
             
