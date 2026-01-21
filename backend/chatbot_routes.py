@@ -198,7 +198,8 @@ async def chat(request: ChatRequest):
             session_id=request.session_id,
             response=response_data["response"],
             needs_info=response_data.get("needs_info", False),
-            info_type=response_data.get("info_type")
+            info_type=response_data.get("info_type"),
+            used_approved_answer=response_data.get("used_approved_answer", False)
         )
         
     except Exception as e:
