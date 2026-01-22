@@ -58,17 +58,22 @@ async def get_recent_activity(limit: int = 20):
     Get recent activity across all channels
     """
     try:
-        # Get recent consultations
-        consultations = await db.consultations.find().sort("created_at", -1).limit(limit).to_list(limit)
+        # Get recent consultations - with field projection for performance
+        consultations = await db.consultations.find(
+            {},
+            {"_id": 0, "id": 1, "name": 1, "email": 1, "service": 1, "status": 1, "created_at": 1, "message": 1}
+        ).sort("created_at", -1).limit(limit).to_list(limit)
         
-        # Get recent chat sessions with messages
+        # Get recent chat sessions - exclude large message arrays, include only summary fields
         chat_sessions = await db.chat_sessions.find(
-            {"messages": {"$exists": True, "$ne": []}}
+            {"messages": {"$exists": True, "$ne": []}},
+            {"_id": 0, "session_id": 1, "user_name": 1, "user_email": 1, "user_phone": 1, "created_at": 1, "updated_at": 1, "info_collected": 1}
         ).sort("updated_at", -1).limit(limit).to_list(limit)
         
-        # Get recent subscribers
+        # Get recent subscribers - with field projection
         subscribers = await db.newsletter_subscribers.find(
-            {"status": "active"}
+            {"status": "active"},
+            {"_id": 0, "email": 1, "subscribed_at": 1, "status": 1}
         ).sort("subscribed_at", -1).limit(limit).to_list(limit)
         
         return {
