@@ -235,10 +235,10 @@ async def upload_document(file: UploadFile = File(...)):
 async def get_sessions(limit: int = 50):
     """Get all chat sessions"""
     try:
-        # Only get sessions that have at least one message
+        # Only get sessions that have at least one message - with field projection for performance
         sessions = await db.chat_sessions.find(
             {"messages.0": {"$exists": True}},
-            {"_id": 0}
+            {"_id": 0, "session_id": 1, "user_name": 1, "user_email": 1, "user_phone": 1, "created_at": 1, "updated_at": 1, "info_collected": 1}
         ).sort("created_at", -1).limit(limit).to_list(limit)
         return {"sessions": sessions}
     except Exception as e:
