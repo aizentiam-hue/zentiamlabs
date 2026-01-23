@@ -32,6 +32,12 @@ db = client[os.environ['DB_NAME']]
 # Create the main app without a prefix
 app = FastAPI()
 
+# Health check endpoint for Kubernetes liveness/readiness probes - MUST be first
+@app.get("/health")
+async def health_check():
+    """Health check endpoint for Kubernetes deployment"""
+    return {"status": "healthy", "service": "zentiam-backend"}
+
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
 
