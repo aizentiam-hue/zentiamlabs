@@ -159,7 +159,7 @@ async def create_approved_answer(answer: ApprovedAnswerRequest):
 async def update_approved_answer(answer_id: str, update: ApprovedAnswerUpdate):
     """Update an approved answer"""
     try:
-        update_data = {k: v for k, v in update.dict().items() if v is not None}
+        update_data = {k: v for k, v in update.model_dump().items() if v is not None}
         update_data["updated_at"] = datetime.utcnow()
         
         result = await db.approved_answers.update_one(
