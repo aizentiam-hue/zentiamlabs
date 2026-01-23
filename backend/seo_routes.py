@@ -51,7 +51,7 @@ async def get_page_seo(page_name: str):
 async def save_page_seo(seo: SEOData):
     """Save or update SEO data for a page"""
     try:
-        seo_dict = seo.dict()
+        seo_dict = seo.model_dump()
         seo_dict["lastUpdated"] = datetime.now().isoformat()
         
         result = await db.seo_settings.update_one(
