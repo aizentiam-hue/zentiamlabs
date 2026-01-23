@@ -134,7 +134,7 @@ async def get_template(template_id: str):
 async def save_template(template: EmailTemplate):
     """Save or update email template"""
     try:
-        template_dict = template.dict()
+        template_dict = template.model_dump()
         template_dict["lastUpdated"] = datetime.now().isoformat()
         
         result = await db.email_templates.update_one(
