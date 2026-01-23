@@ -95,12 +95,6 @@ app.include_router(project_docs_router)
 app.include_router(sheets_router)
 app.include_router(feedback_router)
 
-# Health check endpoint for Kubernetes liveness/readiness probes
-@app.get("/health")
-async def health_check():
-    """Health check endpoint for Kubernetes deployment"""
-    return {"status": "healthy", "service": "zentiam-backend"}
-
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
