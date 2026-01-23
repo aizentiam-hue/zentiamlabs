@@ -58,7 +58,7 @@ async def create_session():
     """Create a new chat session"""
     try:
         session = ChatSession()
-        await db.chat_sessions.insert_one(session.dict())
+        await db.chat_sessions.insert_one(session.model_dump())
         return {"session_id": session.session_id}
     except Exception as e:
         logger.error(f"Error creating session: {e}")
