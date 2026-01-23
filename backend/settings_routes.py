@@ -66,7 +66,7 @@ async def save_email_config(config: EmailConfig):
             {"type": "system"},
             {
                 "$set": {
-                    "email_config": config.dict()
+                    "email_config": config.model_dump()
                 }
             },
             upsert=True
