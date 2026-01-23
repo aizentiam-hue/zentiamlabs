@@ -1,0 +1,68 @@
+<svg
+  width="200"
+  height="200"
+  viewBox="0 0 100 100"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <!-- Gradient for the logo -->
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9333ea" />
+      <stop offset="50%" stop-color="#a78bfa" />
+      <stop offset="100%" stop-color="#7c3aed" />
+    </linearGradient>
+    
+    <!-- Glow filter -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background circle (optional - for better visibility) -->
+  <rect width="100" height="100" fill="#0f0a1e" rx="10"/>
+
+  <!-- Outer hexagon frame -->
+  <path
+    d="M50 5 L85 27.5 L85 72.5 L50 95 L15 72.5 L15 27.5 Z"
+    stroke="url(#logoGradient)"
+    stroke-width="3"
+    fill="none"
+    filter="url(#glow)"
+  />
+
+  <!-- Stylized "Z" with neural network nodes -->
+  <g filter="url(#glow)">
+    <!-- Top part of Z -->
+    <line x1="30" y1="30" x2="70" y2="30" stroke="url(#logoGradient)" stroke-width="4" stroke-linecap="round"/>
+    
+    <!-- Diagonal of Z with nodes -->
+    <line x1="70" y1="30" x2="30" y2="70" stroke="url(#logoGradient)" stroke-width="4" stroke-linecap="round"/>
+    
+    <!-- Bottom part of Z -->
+    <line x1="30" y1="70" x2="70" y2="70" stroke="url(#logoGradient)" stroke-width="4" stroke-linecap="round"/>
+    
+    <!-- Neural network nodes -->
+    <circle cx="30" cy="30" r="4" fill="#a78bfa"/>
+    <circle cx="70" cy="30" r="4" fill="#a78bfa"/>
+    <circle cx="50" cy="50" r="5" fill="#9333ea"/>
+    <circle cx="30" cy="70" r="4" fill="#a78bfa"/>
+    <circle cx="70" cy="70" r="4" fill="#a78bfa"/>
+    
+    <!-- Connection lines (subtle) -->
+    <line x1="30" y1="30" x2="50" y2="50" stroke="#a78bfa" stroke-width="1" opacity="0.5"/>
+    <line x1="70" y1="30" x2="50" y2="50" stroke="#a78bfa" stroke-width="1" opacity="0.5"/>
+    <line x1="50" y1="50" x2="30" y2="70" stroke="#a78bfa" stroke-width="1" opacity="0.5"/>
+    <line x1="50" y1="50" x2="70" y2="70" stroke="#a78bfa" stroke-width="1" opacity="0.5"/>
+  </g>
+
+  <!-- Corner accents for tech feel -->
+  <circle cx="85" cy="27.5" r="2" fill="#9333ea" opacity="0.8"/>
+  <circle cx="85" cy="72.5" r="2" fill="#9333ea" opacity="0.8"/>
+  <circle cx="15" cy="27.5" r="2" fill="#9333ea" opacity="0.8"/>
+  <circle cx="15" cy="72.5" r="2" fill="#9333ea" opacity="0.8"/>
+</svg>
