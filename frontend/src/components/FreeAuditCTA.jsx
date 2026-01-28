@@ -72,8 +72,8 @@ const FreeAuditCTA = () => {
     <div
       style={{
         background: 'linear-gradient(135deg, #9333ea 0%, #7c3aed 100%)',
-        borderRadius: '24px',
-        padding: '3rem',
+        borderRadius: '16px',
+        padding: 'clamp(1.5rem, 5vw, 3rem)',
         position: 'relative',
         overflow: 'hidden',
         color: 'white',
@@ -85,7 +85,7 @@ const FreeAuditCTA = () => {
       <div className="scan-effect" />
       
       <div style={{ position: 'relative', zIndex: 2 }}>
-        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
           {/* Badge */}
           <div
             style={{
@@ -95,63 +95,64 @@ const FreeAuditCTA = () => {
               background: 'rgba(255, 255, 255, 0.2)',
               padding: '0.5rem 1rem',
               borderRadius: '50px',
-              marginBottom: '1.5rem',
+              marginBottom: '1rem',
               backdropFilter: 'blur(10px)'
             }}
           >
             <Sparkles size={16} />
-            <span style={{ fontSize: '0.875rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            <span style={{ fontSize: '0.8rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               Limited Time Offer
             </span>
           </div>
 
-          <h2 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '1rem' }}>
+          <h2 style={{ fontSize: 'clamp(1.5rem, 6vw, 2.5rem)', fontWeight: 700, marginBottom: '0.75rem' }}>
             Free AI Strategy Audit
           </h2>
-          <p style={{ fontSize: '1.125rem', opacity: 0.9, maxWidth: '600px', margin: '0 auto' }}>
+          <p style={{ fontSize: 'clamp(0.9rem, 3vw, 1.125rem)', opacity: 0.9, maxWidth: '600px', margin: '0 auto' }}>
             Get a personalized AI roadmap for your business. Discover opportunities worth $100K+ in potential savings.
           </p>
         </div>
 
         {/* Countdown & Spots */}
         <div
+          className="audit-stats-grid"
           style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '1.5rem',
-            marginBottom: '2rem',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1rem',
+            marginBottom: '1.5rem',
             maxWidth: '600px',
-            margin: '0 auto 2rem'
+            margin: '0 auto 1.5rem'
           }}
         >
           {/* Countdown */}
           <div
             style={{
               background: 'rgba(255, 255, 255, 0.1)',
-              borderRadius: '16px',
-              padding: '1.5rem',
+              borderRadius: '12px',
+              padding: '1rem',
               border: '1px solid rgba(255, 255, 255, 0.2)',
               backdropFilter: 'blur(10px)'
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-              <Clock size={20} />
-              <span style={{ fontSize: '0.875rem', fontWeight: 600, textTransform: 'uppercase' }}>Time Left</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+              <Clock size={18} />
+              <span style={{ fontSize: '0.8rem', fontWeight: 600, textTransform: 'uppercase' }}>Time Left</span>
             </div>
-            <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', gap: '0.375rem', justifyContent: 'center' }}>
               <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '2rem', fontWeight: 700 }}>{String(timeLeft.hours).padStart(2, '0')}</div>
-                <div style={{ fontSize: '0.75rem', opacity: 0.8 }}>Hours</div>
+                <div style={{ fontSize: 'clamp(1.5rem, 5vw, 2rem)', fontWeight: 700 }}>{String(timeLeft.hours).padStart(2, '0')}</div>
+                <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>Hours</div>
               </div>
-              <div style={{ fontSize: '2rem', fontWeight: 700 }}>:</div>
+              <div style={{ fontSize: 'clamp(1.5rem, 5vw, 2rem)', fontWeight: 700 }}>:</div>
               <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '2rem', fontWeight: 700 }}>{String(timeLeft.minutes).padStart(2, '0')}</div>
-                <div style={{ fontSize: '0.75rem', opacity: 0.8 }}>Mins</div>
+                <div style={{ fontSize: 'clamp(1.5rem, 5vw, 2rem)', fontWeight: 700 }}>{String(timeLeft.minutes).padStart(2, '0')}</div>
+                <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>Mins</div>
               </div>
-              <div style={{ fontSize: '2rem', fontWeight: 700 }}>:</div>
+              <div style={{ fontSize: 'clamp(1.5rem, 5vw, 2rem)', fontWeight: 700 }}>:</div>
               <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '2rem', fontWeight: 700 }}>{String(timeLeft.seconds).padStart(2, '0')}</div>
-                <div style={{ fontSize: '0.75rem', opacity: 0.8 }}>Secs</div>
+                <div style={{ fontSize: 'clamp(1.5rem, 5vw, 2rem)', fontWeight: 700 }}>{String(timeLeft.seconds).padStart(2, '0')}</div>
+                <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>Secs</div>
               </div>
             </div>
           </div>
@@ -160,19 +161,23 @@ const FreeAuditCTA = () => {
           <div
             style={{
               background: 'rgba(255, 255, 255, 0.1)',
-              borderRadius: '16px',
-              padding: '1.5rem',
+              borderRadius: '12px',
+              padding: '1rem',
               border: '1px solid rgba(255, 255, 255, 0.2)',
-              backdropFilter: 'blur(10px)'
+              backdropFilter: 'blur(10px)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '1rem'
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-              <Calendar size={20} />
-              <span style={{ fontSize: '0.875rem', fontWeight: 600, textTransform: 'uppercase' }}>Spots Available</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Calendar size={18} />
+              <span style={{ fontSize: '0.8rem', fontWeight: 600, textTransform: 'uppercase' }}>Spots Available</span>
             </div>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '3rem', fontWeight: 700, color: '#22c55e' }}>{spotsLeft}</div>
-              <div style={{ fontSize: '0.875rem', opacity: 0.8 }}>This Week</div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span style={{ fontSize: 'clamp(1.75rem, 6vw, 2.5rem)', fontWeight: 700, color: '#22c55e' }}>{spotsLeft}</span>
+              <span style={{ fontSize: '0.8rem', opacity: 0.8 }}>This Week</span>
             </div>
           </div>
         </div>
@@ -183,17 +188,17 @@ const FreeAuditCTA = () => {
             style={{
               maxWidth: '500px',
               margin: '0 auto',
-              padding: '2rem',
+              padding: '1.5rem',
               background: 'rgba(34, 197, 94, 0.2)',
-              borderRadius: '16px',
+              borderRadius: '12px',
               border: '2px solid rgba(34, 197, 94, 0.5)',
               textAlign: 'center'
             }}
             className="fade-in-scale"
           >
-            <CheckCircle size={48} style={{ marginBottom: '1rem' }} />
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>You're In!</h3>
-            <p>Redirecting to booking page...</p>
+            <CheckCircle size={40} style={{ marginBottom: '0.75rem' }} />
+            <h3 style={{ fontSize: '1.25rem', marginBottom: '0.375rem' }}>You're In!</h3>
+            <p style={{ fontSize: '0.9rem' }}>Redirecting to booking page...</p>
           </div>
         ) : (
           <form
@@ -202,8 +207,8 @@ const FreeAuditCTA = () => {
               maxWidth: '500px',
               margin: '0 auto',
               display: 'flex',
-              gap: '1rem',
-              flexWrap: 'wrap'
+              flexDirection: 'column',
+              gap: '0.75rem'
             }}
           >
             <input
@@ -213,27 +218,28 @@ const FreeAuditCTA = () => {
               placeholder="Enter your work email"
               required
               style={{
-                flex: 1,
-                minWidth: '250px',
-                padding: '1rem 1.5rem',
-                borderRadius: '12px',
+                width: '100%',
+                padding: '0.875rem 1.25rem',
+                borderRadius: '10px',
                 border: '2px solid rgba(255, 255, 255, 0.3)',
                 background: 'rgba(255, 255, 255, 0.1)',
                 color: 'white',
                 fontSize: '1rem',
-                backdropFilter: 'blur(10px)'
+                backdropFilter: 'blur(10px)',
+                boxSizing: 'border-box'
               }}
             />
             <button
               type="submit"
               style={{
-                padding: '1.25rem 2.5rem',
+                width: '100%',
+                padding: '1rem 2rem',
                 background: 'white',
                 color: '#7c3aed',
                 border: 'none',
-                borderRadius: '12px',
+                borderRadius: '10px',
                 fontWeight: 800,
-                fontSize: '1.05rem',
+                fontSize: '1rem',
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
                 textTransform: 'uppercase',
@@ -248,19 +254,19 @@ const FreeAuditCTA = () => {
         )}
 
         {/* What You Get */}
-        <div style={{ marginTop: '2rem', maxWidth: '600px', margin: '2rem auto 0' }}>
+        <div style={{ marginTop: '1.5rem', maxWidth: '600px', margin: '1.5rem auto 0' }}>
           <div
             style={{
               background: 'rgba(255, 255, 255, 0.1)',
-              borderRadius: '16px',
-              padding: '1.5rem',
+              borderRadius: '12px',
+              padding: '1rem',
               backdropFilter: 'blur(10px)'
             }}
           >
-            <h4 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '1rem', textTransform: 'uppercase' }}>
+            <h4 style={{ fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.75rem', textTransform: 'uppercase' }}>
               What You'll Get:
             </h4>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.75rem' }}>
+            <div className="audit-benefits-grid" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '0.5rem' }}>
               {[
                 '60-min strategy session',
                 'AI readiness assessment',
@@ -270,8 +276,8 @@ const FreeAuditCTA = () => {
                 'Quick-win opportunities'
               ].map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <CheckCircle size={16} style={{ flexShrink: 0 }} />
-                  <span style={{ fontSize: '0.875rem' }}>{item}</span>
+                  <CheckCircle size={14} style={{ flexShrink: 0, color: '#22c55e' }} />
+                  <span style={{ fontSize: '0.8rem' }}>{item}</span>
                 </div>
               ))}
             </div>
@@ -280,9 +286,22 @@ const FreeAuditCTA = () => {
       </div>
 
       <style>{`
-        @media (max-width: 768px) {
-          .holographic > div > div:first-child {
-            grid-template-columns: 1fr !important;
+        @media (min-width: 640px) {
+          .audit-stats-grid {
+            flex-direction: row !important;
+          }
+          .audit-stats-grid > div {
+            flex: 1;
+          }
+          .audit-stats-grid > div:last-child {
+            flex-direction: column !important;
+            text-align: center;
+          }
+          .audit-stats-grid > div:last-child > div:last-child {
+            flex-direction: column !important;
+          }
+          .audit-benefits-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
           }
         }
       `}</style>
