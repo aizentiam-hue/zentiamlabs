@@ -616,7 +616,8 @@ const Contact = () => {
                 gap: '1rem',
                 maxWidth: '600px',
                 margin: '0 auto',
-                flexWrap: 'wrap'
+                flexWrap: 'wrap',
+                justifyContent: 'center'
               }}
             >
               <input
@@ -627,7 +628,8 @@ const Contact = () => {
                 required
                 style={{
                   flex: 1,
-                  minWidth: '300px',
+                  minWidth: '200px',
+                  maxWidth: '100%',
                   padding: '1rem 1.5rem',
                   borderRadius: '50px',
                   border: '1px solid rgba(147, 51, 234, 0.3)',
