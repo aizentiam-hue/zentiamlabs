@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Brain, TrendingUp, Users, Zap, CheckCircle, Share2, Download } from 'lucide-react';
+import { Brain, TrendingUp, Users, Zap, CheckCircle, Share2, Download, X } from 'lucide-react';
 
 const AIAssessment = ({ onClose }) => {
   const [step, setStep] = useState(0);
@@ -171,9 +171,10 @@ Powered by Zentiam AI
           background: 'rgba(0, 0, 0, 0.9)',
           zIndex: 9999,
           display: 'flex',
-          alignItems: 'center',
+          alignItems: 'flex-start',
           justifyContent: 'center',
-          padding: '2rem'
+          padding: '1rem',
+          overflowY: 'auto'
         }}
         onClick={onClose}
       >
@@ -181,12 +182,13 @@ Powered by Zentiam AI
           onClick={(e) => e.stopPropagation()}
           style={{
             background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            borderRadius: '24px',
-            padding: '3rem',
-            maxWidth: '600px',
+            borderRadius: '16px',
+            padding: '1.5rem',
+            maxWidth: '550px',
             width: '100%',
             color: 'white',
-            position: 'relative'
+            position: 'relative',
+            margin: '1rem 0'
           }}
           className="fade-in-scale"
         >
@@ -194,82 +196,88 @@ Powered by Zentiam AI
             onClick={onClose}
             style={{
               position: 'absolute',
-              top: '1rem',
-              right: '1rem',
+              top: '0.75rem',
+              right: '0.75rem',
               background: 'rgba(255, 255, 255, 0.2)',
               border: 'none',
               borderRadius: '50%',
-              width: '40px',
-              height: '40px',
+              width: '36px',
+              height: '36px',
               color: 'white',
               cursor: 'pointer',
-              fontSize: '1.5rem'
+              fontSize: '1.25rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 10
             }}
           >
-            ×
+            <X size={20} />
           </button>
 
-          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-            <div style={{ fontSize: '5rem', fontWeight: '700', marginBottom: '0.5rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: '1.5rem', paddingRight: '2rem' }}>
+            <div style={{ fontSize: 'clamp(3rem, 12vw, 4.5rem)', fontWeight: '700', marginBottom: '0.25rem' }}>
               {result.score}
-              <span style={{ fontSize: '3rem', opacity: 0.7 }}>/100</span>
+              <span style={{ fontSize: 'clamp(1.75rem, 6vw, 2.5rem)', opacity: 0.7 }}>/100</span>
             </div>
-            <h2 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{result.category}</h2>
-            <p style={{ opacity: 0.9 }}>{result.description}</p>
+            <h2 style={{ fontSize: 'clamp(1.25rem, 5vw, 1.75rem)', marginBottom: '0.5rem' }}>{result.category}</h2>
+            <p style={{ opacity: 0.9, fontSize: 'clamp(0.875rem, 3vw, 1rem)' }}>{result.description}</p>
           </div>
 
-          <div style={{ background: 'rgba(255, 255, 255, 0.1)', borderRadius: '16px', padding: '1.5rem', marginBottom: '2rem' }}>
-            <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Zap size={24} /> Recommended Actions
+          <div style={{ background: 'rgba(255, 255, 255, 0.1)', borderRadius: '12px', padding: '1.25rem', marginBottom: '1.5rem' }}>
+            <h3 style={{ fontSize: 'clamp(1rem, 4vw, 1.15rem)', marginBottom: '0.875rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Zap size={20} /> Recommended Actions
             </h3>
-            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
               {result.recommendations.map((rec, i) => (
-                <li key={i} style={{ display: 'flex', alignItems: 'start', gap: '0.5rem' }}>
-                  <CheckCircle size={20} style={{ flexShrink: 0, marginTop: '0.125rem' }} />
+                <li key={i} style={{ display: 'flex', alignItems: 'start', gap: '0.5rem', fontSize: '0.9rem' }}>
+                  <CheckCircle size={18} style={{ flexShrink: 0, marginTop: '0.125rem' }} />
                   <span>{rec}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '0.75rem', flexDirection: 'column' }}>
             <button
               onClick={shareResults}
               style={{
-                flex: 1,
-                padding: '1rem',
+                width: '100%',
+                padding: '0.875rem',
                 background: 'white',
                 color: '#667eea',
                 border: 'none',
-                borderRadius: '12px',
+                borderRadius: '10px',
                 fontWeight: '600',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '0.5rem'
+                gap: '0.5rem',
+                fontSize: '0.95rem'
               }}
             >
-              <Share2 size={20} /> Share Results
+              <Share2 size={18} /> Share Results
             </button>
             <button
               onClick={downloadReport}
               style={{
-                flex: 1,
-                padding: '1rem',
+                width: '100%',
+                padding: '0.875rem',
                 background: 'rgba(255, 255, 255, 0.2)',
                 color: 'white',
                 border: '2px solid white',
-                borderRadius: '12px',
+                borderRadius: '10px',
                 fontWeight: '600',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '0.5rem'
+                gap: '0.5rem',
+                fontSize: '0.95rem'
               }}
             >
-              <Download size={20} /> Download Report
+              <Download size={18} /> Download Report
             </button>
           </div>
         </div>
@@ -287,9 +295,10 @@ Powered by Zentiam AI
         background: 'rgba(0, 0, 0, 0.9)',
         zIndex: 9999,
         display: 'flex',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         justifyContent: 'center',
-        padding: '2rem'
+        padding: '1rem',
+        overflowY: 'auto'
       }}
       onClick={onClose}
     >
@@ -297,20 +306,46 @@ Powered by Zentiam AI
         onClick={(e) => e.stopPropagation()}
         style={{
           background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
-          borderRadius: '24px',
-          padding: '3rem',
-          maxWidth: '700px',
+          borderRadius: '16px',
+          padding: '1.5rem',
+          maxWidth: '600px',
           width: '100%',
           color: 'white',
-          border: '1px solid rgba(147, 51, 234, 0.3)'
+          border: '1px solid rgba(147, 51, 234, 0.3)',
+          position: 'relative',
+          margin: '1rem 0'
         }}
         className="fade-in-scale"
       >
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          style={{
+            position: 'absolute',
+            top: '0.75rem',
+            right: '0.75rem',
+            background: 'rgba(255, 255, 255, 0.1)',
+            border: 'none',
+            borderRadius: '50%',
+            width: '36px',
+            height: '36px',
+            color: 'white',
+            cursor: 'pointer',
+            fontSize: '1.25rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 10
+          }}
+        >
+          <X size={20} />
+        </button>
+
         {/* Progress Bar */}
-        <div style={{ marginBottom: '2rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-            <span style={{ fontSize: '0.875rem', opacity: 0.7 }}>Question {step + 1} of {questions.length}</span>
-            <span style={{ fontSize: '0.875rem', opacity: 0.7 }}>{Math.round(((step + 1) / questions.length) * 100)}%</span>
+        <div style={{ marginBottom: '1.5rem', paddingRight: '2rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.375rem' }}>
+            <span style={{ fontSize: '0.8rem', opacity: 0.7 }}>Question {step + 1} of {questions.length}</span>
+            <span style={{ fontSize: '0.8rem', opacity: 0.7 }}>{Math.round(((step + 1) / questions.length) * 100)}%</span>
           </div>
           <div style={{ height: '4px', background: 'rgba(255, 255, 255, 0.1)', borderRadius: '2px', overflow: 'hidden' }}>
             <div
@@ -325,20 +360,20 @@ Powered by Zentiam AI
         </div>
 
         {/* Question */}
-        <div style={{ marginBottom: '2rem' }}>
-          <h2 style={{ fontSize: '1.75rem', marginBottom: '2rem' }}>{currentQuestion.question}</h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <div style={{ marginBottom: '1.5rem' }}>
+          <h2 style={{ fontSize: 'clamp(1.1rem, 4vw, 1.5rem)', marginBottom: '1.25rem', lineHeight: 1.3 }}>{currentQuestion.question}</h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             {currentQuestion.options.map((option, index) => (
               <button
                 key={index}
                 onClick={() => handleAnswer(option.value)}
                 style={{
-                  padding: '1.25rem',
+                  padding: '1rem',
                   background: 'rgba(255, 255, 255, 0.05)',
                   border: '2px solid rgba(147, 51, 234, 0.3)',
-                  borderRadius: '16px',
+                  borderRadius: '12px',
                   color: 'white',
-                  fontSize: '1rem',
+                  fontSize: 'clamp(0.875rem, 3vw, 1rem)',
                   cursor: 'pointer',
                   textAlign: 'left',
                   transition: 'all 0.2s ease'
@@ -346,12 +381,10 @@ Powered by Zentiam AI
                 onMouseEnter={(e) => {
                   e.target.style.background = 'rgba(147, 51, 234, 0.2)';
                   e.target.style.borderColor = '#9333ea';
-                  e.target.style.transform = 'translateX(10px)';
                 }}
                 onMouseLeave={(e) => {
                   e.target.style.background = 'rgba(255, 255, 255, 0.05)';
                   e.target.style.borderColor = 'rgba(147, 51, 234, 0.3)';
-                  e.target.style.transform = 'translateX(0)';
                 }}
               >
                 {option.label}
@@ -359,26 +392,6 @@ Powered by Zentiam AI
             ))}
           </div>
         </div>
-
-        {/* Close button */}
-        <button
-          onClick={onClose}
-          style={{
-            position: 'absolute',
-            top: '1rem',
-            right: '1rem',
-            background: 'rgba(255, 255, 255, 0.1)',
-            border: 'none',
-            borderRadius: '50%',
-            width: '40px',
-            height: '40px',
-            color: 'white',
-            cursor: 'pointer',
-            fontSize: '1.5rem'
-          }}
-        >
-          ×
-        </button>
       </div>
     </div>
   );
