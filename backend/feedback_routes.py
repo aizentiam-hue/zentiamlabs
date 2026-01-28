@@ -14,7 +14,7 @@ router = APIRouter(prefix="/api")
 # Database connection
 mongo_url = os.environ.get('MONGO_URL')
 client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+db = client[os.environ.get('DB_NAME', 'zentiam_db')]
 
 # ==================== MODELS ====================
 

@@ -17,7 +17,7 @@ router = APIRouter(prefix="/api/admin/settings")
 # MongoDB connection
 mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+db = client[os.environ.get('DB_NAME', 'zentiam_db')]
 
 class EmailConfig(BaseModel):
     provider: str
