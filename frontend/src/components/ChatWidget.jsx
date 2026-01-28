@@ -169,11 +169,13 @@ function ChatWidget() {
       {/* Chat Window */}
       {isOpen && (
         <div
+          className="chat-window"
           style={{
             position: 'fixed',
             bottom: '2rem',
             right: '2rem',
             width: '380px',
+            maxWidth: 'calc(100vw - 2rem)',
             height: '600px',
             maxHeight: '80vh',
             background: '#1a1a2e',
