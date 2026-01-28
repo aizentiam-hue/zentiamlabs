@@ -124,7 +124,7 @@ const SuccessStories = () => {
           }}
         />
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
+        <div className="success-story-grid" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2rem', alignItems: 'start' }}>
           {/* Left: Story Details */}
           <div>
             <div
