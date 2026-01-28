@@ -414,20 +414,22 @@ const Services = () => {
               return (
                 <div
                   key={index}
-                  className="glass-card"
+                  className="glass-card approach-card"
                   style={{
-                    padding: '2rem',
+                    padding: '1.5rem',
                     marginBottom: '1.5rem',
                     borderColor: `${phase.color}40`,
                     display: 'flex',
-                    gap: '2rem',
+                    flexDirection: 'row',
+                    flexWrap: 'wrap',
+                    gap: '1.5rem',
                     alignItems: 'start'
                   }}
                 >
                   <div
                     style={{
-                      width: '80px',
-                      height: '80px',
+                      width: '60px',
+                      height: '60px',
                       borderRadius: '16px',
                       background: `${phase.color}20`,
                       border: `2px solid ${phase.color}40`,
