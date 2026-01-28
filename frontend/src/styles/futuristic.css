@@ -314,8 +314,8 @@
 /* General mobile adjustments */
 @media (max-width: 768px) {
   .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
   }
   
   /* Fix text overflow */
@@ -346,6 +346,16 @@
   .stat-number {
     font-size: 2rem;
   }
+  
+  /* Approach cards stack on mobile */
+  .approach-card {
+    flex-direction: column !important;
+  }
+  
+  /* Contact form container full width */
+  .contact-form-container {
+    grid-column: span 1 !important;
+  }
 }
 
 /* Small mobile devices */
@@ -366,6 +376,12 @@
     padding: 0.875rem 1rem !important;
     font-size: 0.875rem !important;
   }
+  
+  /* Hero section padding */
+  section {
+    padding-top: 4rem !important;
+    padding-bottom: 3rem !important;
+  }
 }
 
 /* Chat widget mobile positioning */
@@ -383,7 +399,8 @@
   .chat-window {
     width: calc(100vw - 2rem) !important;
     max-width: 100% !important;
-    right: 0 !important;
+    right: 1rem !important;
+    left: 1rem !important;
     bottom: 70px !important;
     max-height: 70vh !important;
   }
