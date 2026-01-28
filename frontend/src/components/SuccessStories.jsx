@@ -196,18 +196,18 @@ const SuccessStories = () => {
                     key={index}
                     style={{
                       background: 'rgba(255, 255, 255, 0.08)',
-                      borderRadius: '16px',
-                      padding: '1.5rem',
+                      borderRadius: '12px',
+                      padding: '1rem',
                       border: '2px solid rgba(255, 255, 255, 0.15)',
                       transition: 'all 0.3s ease'
                     }}
                     className="hover-lift"
                   >
-                    <Icon size={24} style={{ color: currentStory.color, marginBottom: '0.75rem' }} />
-                    <div style={{ fontSize: '2.25rem', fontWeight: 800, color: 'white', marginBottom: '0.25rem' }}>
+                    <Icon size={20} style={{ color: currentStory.color, marginBottom: '0.5rem' }} />
+                    <div style={{ fontSize: 'clamp(1.5rem, 5vw, 2rem)', fontWeight: 800, color: 'white', marginBottom: '0.125rem' }}>
                       {result.value}
                     </div>
-                    <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 600 }}>
+                    <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 600 }}>
                       {result.label}
                     </div>
                   </div>
