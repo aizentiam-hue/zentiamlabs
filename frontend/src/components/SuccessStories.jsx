@@ -185,10 +185,10 @@ const SuccessStories = () => {
 
           {/* Right: Results Grid */}
           <div>
-            <h4 style={{ fontSize: '1.25rem', fontWeight: 600, color: 'white', marginBottom: '1.5rem' }}>
+            <h4 style={{ fontSize: '1.125rem', fontWeight: 600, color: 'white', marginBottom: '1rem' }}>
               Key Results
             </h4>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            <div className="results-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.75rem' }}>
               {currentStory.results.map((result, index) => {
                 const Icon = result.icon;
                 return (
