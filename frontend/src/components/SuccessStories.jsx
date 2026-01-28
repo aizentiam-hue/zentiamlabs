@@ -243,9 +243,16 @@ const SuccessStories = () => {
       </div>
 
       <style>{`
-        @media (max-width: 768px) {
-          .glass-card > div {
-            grid-template-columns: 1fr !important;
+        @media (min-width: 768px) {
+          .success-story-grid {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 3rem !important;
+            align-items: center !important;
+          }
+        }
+        @media (max-width: 767px) {
+          .results-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
           }
         }
       `}</style>
