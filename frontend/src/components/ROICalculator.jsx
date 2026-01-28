@@ -61,65 +61,67 @@ const ROICalculator = ({ onClose }) => {
         background: 'rgba(0, 0, 0, 0.9)',
         zIndex: 9999,
         display: 'flex',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         justifyContent: 'center',
-        padding: '2rem',
+        padding: '1rem',
         overflowY: 'auto'
       }}
       onClick={onClose}
     >
       <div
         onClick={(e) => e.stopPropagation()}
+        className="roi-calculator-modal fade-in-scale"
         style={{
           background: 'linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)',
-          borderRadius: '24px',
-          padding: '3rem',
-          maxWidth: '1000px',
+          borderRadius: '16px',
+          padding: '1.5rem',
+          maxWidth: '900px',
           width: '100%',
           color: 'white',
           position: 'relative',
-          border: '1px solid rgba(59, 130, 246, 0.3)'
+          border: '1px solid rgba(59, 130, 246, 0.3)',
+          margin: '1rem 0'
         }}
-        className="fade-in-scale"
       >
         {/* Close Button */}
         <button
           onClick={onClose}
           style={{
             position: 'absolute',
-            top: '1rem',
-            right: '1rem',
+            top: '0.75rem',
+            right: '0.75rem',
             background: 'rgba(255, 255, 255, 0.1)',
             border: 'none',
             borderRadius: '50%',
-            width: '40px',
-            height: '40px',
+            width: '36px',
+            height: '36px',
             color: 'white',
             cursor: 'pointer',
-            fontSize: '1.5rem',
+            fontSize: '1.25rem',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            zIndex: 10
           }}
         >
-          <X size={24} />
+          <X size={20} />
         </button>
 
-        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>AI ROI Calculator</h2>
-          <p style={{ opacity: 0.8, fontSize: '1.1rem' }}>See how much you'll save with AI automation</p>
+        <div style={{ textAlign: 'center', marginBottom: '1.5rem', paddingRight: '2rem' }}>
+          <h2 style={{ fontSize: 'clamp(1.25rem, 5vw, 2rem)', marginBottom: '0.25rem' }}>AI ROI Calculator</h2>
+          <p style={{ opacity: 0.8, fontSize: 'clamp(0.875rem, 3vw, 1rem)' }}>See how much you'll save with AI automation</p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem' }}>
+        <div className="roi-grid" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
           {/* Input Section */}
           <div>
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Users size={24} /> Your Organization
+            <h3 style={{ fontSize: 'clamp(1rem, 4vw, 1.25rem)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Users size={20} /> Your Organization
             </h3>
             
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', opacity: 0.8 }}>
+                <label style={{ display: 'block', marginBottom: '0.375rem', fontSize: '0.8rem', opacity: 0.8 }}>
                   Number of Employees
                 </label>
                 <input
@@ -128,18 +130,19 @@ const ROICalculator = ({ onClose }) => {
                   onChange={(e) => handleInputChange('employees', e.target.value)}
                   style={{
                     width: '100%',
-                    padding: '0.75rem',
+                    padding: '0.625rem',
                     background: 'rgba(255, 255, 255, 0.1)',
                     border: '2px solid rgba(59, 130, 246, 0.3)',
-                    borderRadius: '12px',
+                    borderRadius: '10px',
                     color: 'white',
-                    fontSize: '1rem'
+                    fontSize: '1rem',
+                    boxSizing: 'border-box'
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', opacity: 0.8 }}>
+                <label style={{ display: 'block', marginBottom: '0.375rem', fontSize: '0.8rem', opacity: 0.8 }}>
                   Average Salary ($/year)
                 </label>
                 <input
@@ -148,18 +151,19 @@ const ROICalculator = ({ onClose }) => {
                   onChange={(e) => handleInputChange('avgSalary', e.target.value)}
                   style={{
                     width: '100%',
-                    padding: '0.75rem',
+                    padding: '0.625rem',
                     background: 'rgba(255, 255, 255, 0.1)',
                     border: '2px solid rgba(59, 130, 246, 0.3)',
-                    borderRadius: '12px',
+                    borderRadius: '10px',
                     color: 'white',
-                    fontSize: '1rem'
+                    fontSize: '1rem',
+                    boxSizing: 'border-box'
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', opacity: 0.8 }}>
+                <label style={{ display: 'block', marginBottom: '0.375rem', fontSize: '0.8rem', opacity: 0.8 }}>
                   Hours Worked Per Week
                 </label>
                 <input
@@ -168,21 +172,22 @@ const ROICalculator = ({ onClose }) => {
                   onChange={(e) => handleInputChange('hoursPerWeek', e.target.value)}
                   style={{
                     width: '100%',
-                    padding: '0.75rem',
+                    padding: '0.625rem',
                     background: 'rgba(255, 255, 255, 0.1)',
                     border: '2px solid rgba(59, 130, 246, 0.3)',
-                    borderRadius: '12px',
+                    borderRadius: '10px',
                     color: 'white',
-                    fontSize: '1rem'
+                    fontSize: '1rem',
+                    boxSizing: 'border-box'
                   }}
                 />
               </div>
 
               <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', opacity: 0.8 }}>
+                <label style={{ display: 'block', marginBottom: '0.375rem', fontSize: '0.8rem', opacity: 0.8 }}>
                   Tasks to Automate (%)
                 </label>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                   <input
                     type="range"
                     min="0"
@@ -191,12 +196,12 @@ const ROICalculator = ({ onClose }) => {
                     onChange={(e) => handleInputChange('tasksToAutomate', e.target.value)}
                     style={{ flex: 1 }}
                   />
-                  <span style={{ fontSize: '1.25rem', fontWeight: '600', minWidth: '50px' }}>{inputs.tasksToAutomate}%</span>
+                  <span style={{ fontSize: '1rem', fontWeight: '600', minWidth: '45px' }}>{inputs.tasksToAutomate}%</span>
                 </div>
               </div>
 
               <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', opacity: 0.8 }}>
+                <label style={{ display: 'block', marginBottom: '0.375rem', fontSize: '0.8rem', opacity: 0.8 }}>
                   Implementation Cost ($)
                 </label>
                 <input
@@ -205,12 +210,13 @@ const ROICalculator = ({ onClose }) => {
                   onChange={(e) => handleInputChange('implementationCost', e.target.value)}
                   style={{
                     width: '100%',
-                    padding: '0.75rem',
+                    padding: '0.625rem',
                     background: 'rgba(255, 255, 255, 0.1)',
                     border: '2px solid rgba(59, 130, 246, 0.3)',
-                    borderRadius: '12px',
+                    borderRadius: '10px',
                     color: 'white',
-                    fontSize: '1rem'
+                    fontSize: '1rem',
+                    boxSizing: 'border-box'
                   }}
                 />
               </div>
@@ -220,78 +226,78 @@ const ROICalculator = ({ onClose }) => {
           {/* Results Section */}
           {results && (
             <div>
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <TrendingUp size={24} /> Your AI ROI
+              <h3 style={{ fontSize: 'clamp(1rem, 4vw, 1.25rem)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <TrendingUp size={20} /> Your AI ROI
               </h3>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 {/* Big ROI Number */}
                 <div
                   style={{
                     background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(16, 185, 129, 0.2) 100%)',
                     border: '2px solid rgba(34, 197, 94, 0.3)',
-                    borderRadius: '16px',
-                    padding: '2rem',
+                    borderRadius: '12px',
+                    padding: '1.25rem',
                     textAlign: 'center'
                   }}
                 >
-                  <div style={{ fontSize: '4rem', fontWeight: '700', marginBottom: '0.5rem', color: '#22c55e' }}>
+                  <div style={{ fontSize: 'clamp(2.5rem, 10vw, 3.5rem)', fontWeight: '700', marginBottom: '0.25rem', color: '#22c55e' }}>
                     {results.roi > 0 ? '+' : ''}{results.roi}%
                   </div>
-                  <div style={{ fontSize: '1rem', opacity: 0.8 }}>Return on Investment</div>
+                  <div style={{ fontSize: '0.875rem', opacity: 0.8 }}>Return on Investment</div>
                 </div>
 
                 {/* Key Metrics */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
                   <div
                     style={{
                       background: 'rgba(59, 130, 246, 0.1)',
                       border: '1px solid rgba(59, 130, 246, 0.3)',
-                      borderRadius: '12px',
-                      padding: '1rem'
+                      borderRadius: '10px',
+                      padding: '0.875rem'
                     }}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem', opacity: 0.8 }}>
-                      <Clock size={16} />
-                      <span style={{ fontSize: '0.75rem' }}>Payback Period</span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.375rem', marginBottom: '0.375rem', opacity: 0.8 }}>
+                      <Clock size={14} />
+                      <span style={{ fontSize: '0.7rem' }}>Payback Period</span>
                     </div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: '600' }}>{results.paybackMonths} mo</div>
+                    <div style={{ fontSize: 'clamp(1.1rem, 4vw, 1.35rem)', fontWeight: '600' }}>{results.paybackMonths} mo</div>
                   </div>
 
                   <div
                     style={{
                       background: 'rgba(59, 130, 246, 0.1)',
                       border: '1px solid rgba(59, 130, 246, 0.3)',
-                      borderRadius: '12px',
-                      padding: '1rem'
+                      borderRadius: '10px',
+                      padding: '0.875rem'
                     }}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem', opacity: 0.8 }}>
-                      <DollarSign size={16} />
-                      <span style={{ fontSize: '0.75rem' }}>Annual Savings</span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.375rem', marginBottom: '0.375rem', opacity: 0.8 }}>
+                      <DollarSign size={14} />
+                      <span style={{ fontSize: '0.7rem' }}>Annual Savings</span>
                     </div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: '600' }}>${(results.totalAnnualSavings / 1000).toFixed(0)}K</div>
+                    <div style={{ fontSize: 'clamp(1.1rem, 4vw, 1.35rem)', fontWeight: '600' }}>${(results.totalAnnualSavings / 1000).toFixed(0)}K</div>
                   </div>
                 </div>
 
                 {/* Additional Metrics */}
-                <div style={{ background: 'rgba(255, 255, 255, 0.05)', borderRadius: '12px', padding: '1.5rem' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                <div style={{ background: 'rgba(255, 255, 255, 0.05)', borderRadius: '10px', padding: '1rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.75rem', fontSize: '0.875rem' }}>
                     <span style={{ opacity: 0.8 }}>Hours Saved/Year</span>
                     <span style={{ fontWeight: '600' }}>{results.hoursSavedPerYear.toLocaleString()}</span>
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.75rem', fontSize: '0.875rem' }}>
                     <span style={{ opacity: 0.8 }}>Productivity Increase</span>
                     <span style={{ fontWeight: '600', color: '#22c55e' }}>+{results.productivityIncrease}%</span>
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.75rem', fontSize: '0.875rem' }}>
                     <span style={{ opacity: 0.8 }}>Additional Revenue</span>
                     <span style={{ fontWeight: '600' }}>${(results.additionalRevenue / 1000).toFixed(0)}K</span>
                   </div>
-                  <div style={{ height: '1px', background: 'rgba(255, 255, 255, 0.1)', margin: '1rem 0' }} />
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <div style={{ height: '1px', background: 'rgba(255, 255, 255, 0.1)', margin: '0.75rem 0' }} />
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.875rem' }}>
                     <span style={{ opacity: 0.8 }}>3-Year Value</span>
-                    <span style={{ fontWeight: '700', fontSize: '1.25rem', color: '#22c55e' }}>
+                    <span style={{ fontWeight: '700', fontSize: '1.1rem', color: '#22c55e' }}>
                       ${(results.threeYearValue / 1000).toFixed(0)}K
                     </span>
                   </div>
@@ -304,15 +310,15 @@ const ROICalculator = ({ onClose }) => {
                     window.location.href = '/contact';
                   }}
                   style={{
-                    padding: '1rem',
+                    padding: '0.875rem',
                     background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
                     border: 'none',
-                    borderRadius: '12px',
+                    borderRadius: '10px',
                     color: 'white',
                     fontWeight: '600',
                     cursor: 'pointer',
-                    fontSize: '1rem',
-                    marginTop: '1rem'
+                    fontSize: '0.95rem',
+                    width: '100%'
                   }}
                 >
                   Get Your Custom AI Strategy →
@@ -323,12 +329,26 @@ const ROICalculator = ({ onClose }) => {
         </div>
 
         {/* Disclaimer */}
-        <div style={{ marginTop: '2rem', padding: '1rem', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '12px' }}>
-          <p style={{ fontSize: '0.75rem', opacity: 0.7, textAlign: 'center' }}>
+        <div style={{ marginTop: '1.5rem', padding: '0.75rem', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '10px' }}>
+          <p style={{ fontSize: '0.7rem', opacity: 0.7, textAlign: 'center', margin: 0 }}>
             * Calculations based on industry averages. Actual results may vary. Based on 2024-2025 AI ROI data from Accenture, Deloitte, and McKinsey studies.
           </p>
         </div>
       </div>
+
+      <style>{`
+        @media (min-width: 768px) {
+          .roi-grid {
+            flex-direction: row !important;
+          }
+          .roi-grid > div {
+            flex: 1;
+          }
+          .roi-calculator-modal {
+            padding: 2.5rem !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };
