@@ -109,7 +109,7 @@ const Home = () => {
           minHeight: '100vh',
           display: 'flex',
           alignItems: 'center',
-          padding: '10rem 2rem 4rem',
+          padding: '6rem 1rem 4rem',
           overflow: 'hidden'
         }}
       >
@@ -126,32 +126,34 @@ const Home = () => {
           }}
         />
 
-        <div className="container" style={{ position: 'relative', zIndex: 2, maxWidth: '1400px', width: '100%' }}>
-          <div style={{ 
+        <div className="container" style={{ position: 'relative', zIndex: 2, maxWidth: '1400px', width: '100%', margin: '0 auto' }}>
+          <div className="hero-grid" style={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))',
-            gap: '4rem',
+            gridTemplateColumns: '1fr',
+            gap: '3rem',
             alignItems: 'center'
           }}>
             {/* LEFT COLUMN - Content */}
-            <div style={{ textAlign: 'left' }}>
+            <div style={{ textAlign: 'left', padding: '0 0.5rem' }}>
               {/* Announcement Badge */}
               <div
                 className="fade-in-up"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '0.75rem',
+                  gap: '0.5rem',
                   background: 'rgba(147, 51, 234, 0.2)',
                   border: '2px solid rgba(147, 51, 234, 0.6)',
                   borderRadius: '50px',
-                  padding: '0.875rem 1.75rem',
-                  marginBottom: '2rem',
-                  backdropFilter: 'blur(10px)'
+                  padding: '0.625rem 1rem',
+                  marginBottom: '1.5rem',
+                  backdropFilter: 'blur(10px)',
+                  flexWrap: 'wrap',
+                  maxWidth: '100%'
                 }}
               >
-                <Sparkles size={20} style={{ color: '#c084fc' }} />
-                <span style={{ fontSize: '0.95rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'white' }}>
+                <Sparkles size={18} style={{ color: '#c084fc', flexShrink: 0 }} />
+                <span style={{ fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.03em', color: 'white' }}>
                   AI Solutions in Days, Not Months
                 </span>
               </div>
@@ -159,14 +161,15 @@ const Home = () => {
               <h1
                 className="fade-in-up delay-100"
                 style={{
-                  fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+                  fontSize: 'clamp(2rem, 8vw, 4.5rem)',
                   fontWeight: 800,
                   lineHeight: 1.1,
-                  marginBottom: '1.5rem',
+                  marginBottom: '1.25rem',
                   background: 'linear-gradient(135deg, #ffffff 0%, #a78bfa 50%, #9333ea 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
+                  backgroundClip: 'text',
+                  wordBreak: 'break-word'
                 }}
               >
                 Where Intelligence
@@ -177,8 +180,8 @@ const Home = () => {
               <p
                 className="fade-in-up delay-200"
                 style={{
-                  fontSize: 'clamp(1.125rem, 2vw, 1.35rem)',
-                  marginBottom: '3rem',
+                  fontSize: 'clamp(1rem, 3vw, 1.35rem)',
+                  marginBottom: '2rem',
                   color: 'rgba(255, 255, 255, 0.95)',
                   lineHeight: 1.6,
                   maxWidth: '600px'
@@ -193,41 +196,48 @@ const Home = () => {
                 className="fade-in-up delay-300"
                 style={{
                   display: 'flex',
-                  gap: '1rem',
-                  flexWrap: 'wrap',
-                  marginBottom: '3rem'
+                  gap: '0.75rem',
+                  flexDirection: 'column',
+                  marginBottom: '2rem',
+                  maxWidth: '100%'
                 }}
               >
                 <button
                   onClick={() => setShowAssessment(true)}
                   className="btn-neon btn-neon-purple"
                   style={{
-                    padding: '1.25rem 2.75rem',
-                    fontSize: '1.05rem',
+                    padding: '1rem 1.5rem',
+                    fontSize: '0.95rem',
                     fontWeight: 800,
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '0.75rem',
-                    boxShadow: '0 8px 24px rgba(147, 51, 234, 0.5)'
+                    justifyContent: 'center',
+                    gap: '0.5rem',
+                    boxShadow: '0 8px 24px rgba(147, 51, 234, 0.5)',
+                    width: '100%',
+                    maxWidth: '320px'
                   }}
                 >
-                  <Brain size={22} />
+                  <Brain size={20} />
                   Take AI Assessment
                 </button>
                 <button
                   onClick={() => setShowROICalc(true)}
                   className="btn-neon btn-neon-blue"
                   style={{
-                    padding: '1.25rem 2.75rem',
-                    fontSize: '1.05rem',
+                    padding: '1rem 1.5rem',
+                    fontSize: '0.95rem',
                     fontWeight: 800,
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '0.75rem',
-                    boxShadow: '0 8px 24px rgba(59, 130, 246, 0.5)'
+                    justifyContent: 'center',
+                    gap: '0.5rem',
+                    boxShadow: '0 8px 24px rgba(59, 130, 246, 0.5)',
+                    width: '100%',
+                    maxWidth: '320px'
                   }}
                 >
-                  <Zap size={22} />
+                  <Zap size={20} />
                   Calculate Your ROI
                 </button>
               </div>
@@ -236,9 +246,9 @@ const Home = () => {
               <div
                 className="fade-in-up delay-400"
                 style={{
-                  display: 'flex',
-                  gap: '2.5rem',
-                  flexWrap: 'wrap'
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+                  gap: '1rem'
                 }}
               >
                 {[
@@ -247,17 +257,17 @@ const Home = () => {
                   { label: '$184B+ AI Market', value: 'Growing 28% YoY' }
                 ].map((stat, i) => (
                   <div key={i}>
-                    <div style={{ fontSize: '1rem', fontWeight: 800, color: '#c084fc', marginBottom: '0.25rem' }}>
+                    <div style={{ fontSize: '0.875rem', fontWeight: 800, color: '#c084fc', marginBottom: '0.25rem' }}>
                       {stat.value}
                     </div>
-                    <div style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 600 }}>{stat.label}</div>
+                    <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 600 }}>{stat.label}</div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* RIGHT COLUMN - Visual Elements */}
-            <div className="fade-in-up delay-500" style={{ position: 'relative', minHeight: '500px' }}>
+            {/* RIGHT COLUMN - Visual Elements (Hidden on mobile) */}
+            <div className="fade-in-up delay-500 hero-visuals" style={{ position: 'relative', minHeight: '400px', display: 'none' }}>
               {/* Floating Stat Card 1 */}
               <div
                 className="glass-card hover-scale"
