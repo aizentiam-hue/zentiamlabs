@@ -183,13 +183,13 @@ const Contact = () => {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
               gap: '3rem',
               alignItems: 'start'
             }}
           >
             {/* Contact Form */}
-            <div style={{ gridColumn: 'span 2' }}>
+            <div className="contact-form-container">
               <div
                 className="glass-card"
                 style={{
