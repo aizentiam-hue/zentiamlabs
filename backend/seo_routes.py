@@ -4,13 +4,23 @@ from typing import Optional, Dict
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 from datetime import datetime
+import logging
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/api")
 
-# MongoDB connection
+# MongoDB connection with error handling
 MONGO_URL = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
-client = AsyncIOMotorClient(MONGO_URL)
-db = client[os.environ['DB_NAME']]
+DB_NAME = os.environ.get('DB_NAME', 'zentiam_db')
+
+try:
+    client = AsyncIOMotorClient(MONGO_URL)
+    db = client[DB_NAME]
+    logger.info(f"SEO routes connected to database: {DB_NAME}")
+except Exception as e:
+    logger.error(f"Failed to connect to MongoDB: {e}")
+    raise
 
 class SEOData(BaseModel):
     page: str
