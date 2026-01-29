@@ -1,7 +1,24 @@
-# robots.txt for Zentiam
+# Robots.txt for Zentiam AI Consulting Website
+# https://zentiam-ai-chat.emergent.host
+
 User-agent: *
 Allow: /
-Disallow: /admin/
-Disallow: /api/
 
-Sitemap: https://zentiam.com/sitemap.xml
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /admin/*
+
+# Allow important pages
+Allow: /
+Allow: /about
+Allow: /services
+Allow: /products
+Allow: /contact
+Allow: /blog
+Allow: /blog/*
+
+# Sitemap location
+Sitemap: https://zentiam-ai-chat.emergent.host/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
