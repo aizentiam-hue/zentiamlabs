@@ -203,7 +203,7 @@ const Services = () => {
               margin: '0 auto 2rem'
             }}
           >
-            Expert AI strategy consulting, custom AI solutions development, and seamless AI automation & integration. We help Indian businesses transform operations with practical, ROI-driven AI implementations.
+            Expert AI strategy consulting, custom AI solutions development, and seamless AI automation & integration. We support teams in India, Europe, and North America with practical, ROI-driven implementations.
           </p>
 
           <button
