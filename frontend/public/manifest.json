@@ -1,0 +1,21 @@
+{
+  "short_name": "Zentiam",
+  "name": "Zentiam AI Consulting",
+  "description": "Transform your business with AI solutions that deliver measurable results",
+  "icons": [
+    {
+      "src": "zentiam-logo-200.png",
+      "sizes": "200x200",
+      "type": "image/png"
+    },
+    {
+      "src": "zentiam-logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#9333ea",
+  "background_color": "#0f0a1e"
+}
