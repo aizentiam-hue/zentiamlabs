@@ -124,9 +124,9 @@ const Services = () => {
   return (
     <div style={{ background: '#1a1a2e', color: 'white', position: 'relative', minHeight: '100vh' }}>
       <SEO 
-        title="AI Services - Strategy, Custom Solutions & Automation | Zentiam"
-        description="Comprehensive AI services: strategic consulting, custom AI development, automation integration, and training. From idea to implementation in days with guaranteed ROI."
-        keywords="AI services, AI consulting services, custom AI development, AI automation, AI strategy, machine learning services, AI implementation"
+        title="AI Strategy Consulting & Custom AI Solutions | Zentiam Services"
+        description="Expert AI strategy consulting, custom AI solutions, and AI automation & integration services. Transform your business with our proven AI implementation approach in India."
+        keywords="AI strategy consulting, custom AI solutions, AI automation and integration, AI services India, machine learning consulting, AI implementation services"
         canonical="/services"
       />
       <ParticleBackground />
