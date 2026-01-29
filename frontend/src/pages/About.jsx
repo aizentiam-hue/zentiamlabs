@@ -133,9 +133,9 @@ const About = () => {
               backgroundClip: 'text'
             }}
           >
-            Where Intelligence
+            AI Consulting Firm
             <br />
-            Meets Impact
+            in Bangalore
           </h1>
 
           <p
@@ -148,7 +148,7 @@ const About = () => {
               margin: '0 auto'
             }}
           >
-            We're a team of strategists, engineers, and innovators dedicated to helping organizations harness the transformative power of artificial intelligence.
+            Zentiam is a leading AI consulting firm in Bangalore, India. Our team of AI experts and strategists help businesses harness the transformative power of artificial intelligence with practical, ROI-driven solutions.
           </p>
         </div>
       </section>
