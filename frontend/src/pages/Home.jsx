@@ -172,9 +172,9 @@ const Home = () => {
                   wordBreak: 'break-word'
                 }}
               >
-                Where Intelligence
+                AI Consulting Company
                 <br />
-                Meets Impact
+                in India
               </h1>
 
               <p
@@ -187,7 +187,7 @@ const Home = () => {
                   maxWidth: '600px'
                 }}
               >
-                Transform your business with AI solutions that deliver{' '}
+                Zentiam is a leading AI consulting company in India, helping businesses automate workflows and design practical AI strategy. Our AI consultants in Bangalore deliver{' '}
                 <span style={{ color: '#22c55e', fontWeight: 700 }}>3.7x ROI</span>,{' '}
                 <span style={{ color: '#3b82f6', fontWeight: 700 }}>40% productivity gains</span>, and measurable results in weeks.
               </p>
