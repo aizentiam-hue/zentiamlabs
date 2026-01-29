@@ -159,7 +159,7 @@ const Contact = () => {
           >
             Book Your AI
             <br />
-            Consultation Today
+            Consultation
           </h1>
 
           <p
@@ -172,7 +172,7 @@ const Contact = () => {
               margin: '0 auto'
             }}
           >
-            Ready to transform your business with AI? Book a free consultation with our AI consulting team in Bangalore. Get a personalized AI strategy roadmap for your organization.
+            Ready to transform your business with AI? Book a free consultation with our expert team. Based in Bengaluru, we serve clients globally with personalized AI strategy roadmaps.
           </p>
         </div>
       </section>
