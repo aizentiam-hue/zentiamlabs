@@ -468,21 +468,21 @@ Unless AI is your core business, you don't need to build everything from scratch
 
 ### ROI Calculation Framework
 
-```
+**AI ROI Formula:**
+
 AI ROI = (Benefits - Costs) / Costs × 100
 
-Benefits:
-+ Labor cost savings
-+ Revenue increase
-+ Error reduction value
-+ Speed-to-market value
+**Benefits include:**
+- Labor cost savings
+- Revenue increase
+- Error reduction value
+- Speed-to-market value
 
-Costs:
-+ Implementation costs
-+ Ongoing operational costs
-+ Training and change management
-+ Opportunity costs
-```
+**Costs include:**
+- Implementation costs
+- Ongoing operational costs
+- Training and change management
+- Opportunity costs
 
 ## The Path Forward
 
