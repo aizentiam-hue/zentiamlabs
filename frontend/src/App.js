@@ -10,6 +10,8 @@ import About from './pages/About';
 import Services from './pages/Services';
 import Products from './pages/Products';
 import Contact from './pages/Contact';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 
 // Admin Pages
 import AdminLogin from './pages/admin/Login';
@@ -44,6 +46,8 @@ function App() {
                     <Route path="/services" element={<Services />} />
                     <Route path="/products" element={<Products />} />
                     <Route path="/contact" element={<Contact />} />
+                    <Route path="/blog" element={<Blog />} />
+                    <Route path="/blog/:slug" element={<BlogPost />} />
                   </Routes>
                 </main>
                 <Footer />
