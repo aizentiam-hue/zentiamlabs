@@ -78,9 +78,9 @@ const Products = () => {
               backgroundClip: 'text'
             }}
           >
-            AI Platforms for
+            AI Platforms &
             <br />
-            Workflow Automation
+            Enterprise Software
           </h1>
 
           <p
@@ -93,7 +93,7 @@ const Products = () => {
               margin: '0 auto'
             }}
           >
-            Zentiam Labs develops AI platforms for workflow automation and customer intelligence. Our enterprise-ready products help Indian businesses streamline processes, enhance decision-making, and drive growth.
+            Zentiam Labs develops AI-powered platforms designed to streamline operations, enhance decision-making, and unlock new revenue streams for organizations worldwide.
           </p>
         </div>
       </section>
