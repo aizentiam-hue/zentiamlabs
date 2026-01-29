@@ -69,9 +69,9 @@ const About = () => {
   return (
     <div style={{ background: '#1a1a2e', color: 'white', position: 'relative', minHeight: '100vh' }}>
       <SEO 
-        title="About Zentiam - AI Consulting Experts | Our Story & Mission"
-        description="Learn about Zentiam's team of AI strategists and engineers. We democratize enterprise-grade AI solutions to help organizations of all sizes compete in an AI-driven world."
-        keywords="about zentiam, AI consulting team, AI experts, AI strategy consulting, machine learning consultants, AI agency"
+        title="About Zentiam | AI Consulting Firm in Bangalore | AI Experts India"
+        description="Zentiam is a leading AI consulting firm in Bangalore with expert AI consultants. Our team of AI strategists and engineers help Indian businesses implement practical AI solutions with measurable ROI."
+        keywords="AI consulting firm Bangalore, AI experts India, about zentiam, AI consulting team, AI strategy consulting, machine learning consultants India, AI agency Bangalore"
         canonical="/about"
       />
       <ParticleBackground />
