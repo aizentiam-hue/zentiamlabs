@@ -188,9 +188,9 @@ const Services = () => {
               backgroundClip: 'text'
             }}
           >
-            Intelligence. Automation.
+            AI Strategy Consulting
             <br />
-            Strategy.
+            & Custom Solutions
           </h1>
 
           <p
@@ -203,7 +203,7 @@ const Services = () => {
               margin: '0 auto 2rem'
             }}
           >
-            From consulting to implementation, we deliver AI solutions that transform your business operations and drive measurable results.
+            Expert AI strategy consulting, custom AI solutions development, and seamless AI automation & integration. We help Indian businesses transform operations with practical, ROI-driven AI implementations.
           </p>
 
           <button
