@@ -84,7 +84,7 @@ const Home = () => {
     "alternateName": "Zentiam AI Consulting",
     "url": "https://zentiam-ai-chat.emergent.host",
     "logo": "https://zentiam-ai-chat.emergent.host/zentiam-logo-512.png",
-    "description": "Zentiam is a leading AI consulting company in India. Our AI consultants in Bangalore deliver custom AI automation services, AI strategy consulting, and enterprise AI solutions with proven 3.7x ROI.",
+    "description": "Zentiam is an AI consulting company helping organizations transform operations with custom AI solutions, automation, and strategic consulting. We deliver proven 3.7x ROI across industries.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Bangalore",
@@ -95,7 +95,7 @@ const Home = () => {
       "@type": "ContactPoint",
       "email": "ai.zentiam@gmail.com",
       "contactType": "Customer Service",
-      "availableLanguage": ["English", "Hindi"]
+      "availableLanguage": ["English"]
     },
     "sameAs": [],
     "knowsAbout": [
@@ -104,12 +104,23 @@ const Home = () => {
       "AI Consulting",
       "AI Automation",
       "Business Process Automation",
-      "AI Strategy"
+      "AI Strategy",
+      "Enterprise AI Solutions"
     ],
-    "areaServed": {
-      "@type": "Country",
-      "name": "India"
-    },
+    "areaServed": [
+      {
+        "@type": "Country",
+        "name": "India"
+      },
+      {
+        "@type": "Country", 
+        "name": "United States"
+      },
+      {
+        "@type": "Country",
+        "name": "United Kingdom"
+      }
+    ],
     "priceRange": "$$"
   };
 
