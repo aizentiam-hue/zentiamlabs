@@ -116,9 +116,9 @@ const Home = () => {
   return (
     <div style={{ background: '#1a1a2e', color: 'white', position: 'relative' }}>
       <SEO 
-        title="AI Consulting Company in India | AI Automation Services | Zentiam"
-        description="Zentiam is a leading AI consulting company in India. Our AI consultants in Bangalore deliver custom AI automation services with 3.7x ROI. Transform your business with expert AI strategy consulting."
-        keywords="AI consulting company in India, AI automation services, AI consultants Bangalore, AI strategy consulting, custom AI solutions, business automation India"
+        title="AI Consulting & Automation for Modern Businesses | Zentiam"
+        description="Transform your business with AI solutions that deliver 3.7x ROI and 40% productivity gains. Expert AI consulting, custom solutions, and seamless automation implementation."
+        keywords="AI consulting company, AI automation services, AI implementation partner, AI strategy consulting, custom AI solutions, enterprise AI, business automation"
         structuredData={structuredData}
       />
       <ParticleBackground />
