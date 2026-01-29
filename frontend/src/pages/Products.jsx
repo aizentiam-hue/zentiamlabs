@@ -12,9 +12,9 @@ const Products = () => {
   return (
     <div style={{ background: '#1a1a2e', color: 'white', position: 'relative', minHeight: '100vh' }}>
       <SEO 
-        title="AI Platforms for Workflow Automation | Customer Intelligence Platform | Zentiam"
-        description="Discover Zentiam's AI platforms for workflow automation and customer intelligence. Enterprise-ready AI products that streamline operations, automate processes, and drive business growth in India."
-        keywords="AI platforms for workflow automation, customer intelligence platform, AI products India, enterprise AI solutions, intelligent automation platforms, business process automation"
+        title="AI Platforms & Enterprise Software | Process Automation Suite | Zentiam"
+        description="Discover Zentiam's AI platforms: customer intelligence platform, process automation suite, and AI assistant framework. Enterprise-ready software that streamlines operations and drives business growth."
+        keywords="AI platforms, customer intelligence platform, process automation suite, AI assistant framework, enterprise AI software, intelligent automation, business process automation"
         canonical="/products"
       />
       <ParticleBackground />
