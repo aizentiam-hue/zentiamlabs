@@ -78,9 +78,9 @@ const Products = () => {
               backgroundClip: 'text'
             }}
           >
-            Intelligent Systems
+            AI Platforms for
             <br />
-            for the Real World
+            Workflow Automation
           </h1>
 
           <p
@@ -93,7 +93,7 @@ const Products = () => {
               margin: '0 auto'
             }}
           >
-            Our in-house innovation lab develops AI-powered automation platforms designed to streamline processes, enhance decision-making, and unlock new revenue streams.
+            Zentiam Labs develops AI platforms for workflow automation and customer intelligence. Our enterprise-ready products help Indian businesses streamline processes, enhance decision-making, and drive growth.
           </p>
         </div>
       </section>
