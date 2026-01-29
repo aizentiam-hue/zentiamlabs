@@ -157,9 +157,9 @@ const Contact = () => {
               backgroundClip: 'text'
             }}
           >
-            Let's Build Something
+            Book Your AI
             <br />
-            Extraordinary
+            Consultation Today
           </h1>
 
           <p
@@ -172,7 +172,7 @@ const Contact = () => {
               margin: '0 auto'
             }}
           >
-            Ready to transform your business with AI? Get in touch with our team to discuss your project.
+            Ready to transform your business with AI? Book a free consultation with our AI consulting team in Bangalore. Get a personalized AI strategy roadmap for your organization.
           </p>
         </div>
       </section>
