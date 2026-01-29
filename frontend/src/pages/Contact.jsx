@@ -93,9 +93,9 @@ const Contact = () => {
   return (
     <div style={{ background: '#1a1a2e', color: 'white', position: 'relative', minHeight: '100vh' }}>
       <SEO 
-        title="Contact Zentiam - Get Started with AI Transformation Today"
-        description="Ready to transform your business with AI? Contact Zentiam for a free consultation. Book a strategy session, get AI audit, or explore how we can help you achieve measurable results."
-        keywords="contact zentiam, AI consultation, book AI consultation, AI strategy session, AI project inquiry, contact AI consultants"
+        title="Book AI Consultation | AI Consulting Contact | Zentiam India"
+        description="Book your AI consultation with Zentiam's expert consultants. Get a free AI strategy session, personalized roadmap, and discover how AI automation can transform your business in India."
+        keywords="book AI consultation, AI consulting contact, free AI consultation India, AI strategy session, contact AI consultants Bangalore, AI project inquiry"
         canonical="/contact"
       />
       <ParticleBackground />
